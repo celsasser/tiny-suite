@@ -1,0 +1,42 @@
+{
+	"author": "curt.elsasser@gmail.com",
+	"dependencies": {
+		"lodash": "4.17.21",
+		"tiny-core-module": "../core-module"
+	},
+	"description": "Tiny Graph to Stream generator. See README.md",
+	"devDependencies": {
+		"@types/jest": "26.0.23",
+		"@types/lodash": "4.14.170",
+		"@types/node": "14.14.31",
+		"@typescript-eslint/eslint-plugin": "4.25.0",
+		"@typescript-eslint/parser": "4.25.0",
+		"eslint": "7.27.0",
+		"jest": "27.0.3",
+		"jest-junit": "12.1.0",
+		"prettier": "2.3.0",
+		"ts-jest": "27.0.1",
+		"typescript": "4.3.2"
+	},
+	"engines": {
+		"node": ">=14.0.0"
+	},
+	"license": "ISC",
+	"main": "dist/src/index.js",
+	"name": "tiny-midi-gts",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/celsasser/tiny-midi-gts.git"
+	},
+	"scripts": {
+		"analyze": "npm run format && npm run lint:fix && npm run test",
+		"build": "$(npm bin)/tsc -p tsconfig.json && chmod u+x dist/src/index.js",
+		"coverage": "jest --coverage ./test/unit",
+		"format": "$(npm bin)/prettier --write './*.(js|json)'  './(src|test)/**/*.(js|json|ts)'",
+		"lint": "$(npm bin)/eslint .",
+		"lint:fix": "$(npm bin)/eslint --fix .",
+		"rebuild": "rm -rf ./dist; rm -f ./.buildcache; npm run build",
+		"test": "$(npm bin)/jest ./test/unit"
+	},
+	"version": "0.0.1"
+}

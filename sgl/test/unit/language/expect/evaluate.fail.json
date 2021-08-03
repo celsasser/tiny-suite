@@ -1,0 +1,30 @@
+[
+	{
+		"code": "+ 5",
+		"expected": "expecting operand",
+		"title": "Missing initial-value"
+	},
+	{
+		"code": "50 + 5",
+		"expected": "expecting operator",
+		"symbols": {
+			"initialValue": 50
+		},
+		"title": "Redundant initial-value"
+	},
+	{
+		"code": "5 $+ + 5 $- $- 0",
+		"expected": "evaluation stack is empty",
+		"title": "Pops exceed pushes"
+	},
+	{
+		"code": "[50, 60] -^ [10]",
+		"expected": "operand and result scalar lengths must agree",
+		"title": "Mismatched scalar operands"
+	},
+	{
+		"code": "50 -^ [5, 10]",
+		"expected": "operand and result types must agree",
+		"title": "Primitive to scalar"
+	}
+]

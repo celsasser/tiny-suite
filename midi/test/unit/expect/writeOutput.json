@@ -1,0 +1,74 @@
+[
+	{
+		"input": {
+			"props": {
+				"outputFile": "./test/sandbox/writeOutput.mid"
+			},
+			"song": {
+				"header": {
+					"formatType": 1,
+					"ticksPerQuarter": 480,
+					"trackCount": 2
+				},
+				"tracks": [
+					[
+						{
+							"deltaTime": 0,
+							"microsecondsPerBeat": 500000,
+							"subtype": "setTempo",
+							"type": "meta"
+						},
+						{
+							"deltaTime": 0,
+							"subtype": "endOfTrack",
+							"type": "meta"
+						}
+					],
+					[
+						{
+							"channel": 0,
+							"deltaTime": 0,
+							"noteNumber": 25,
+							"subtype": "noteOn",
+							"type": "channel",
+							"velocity": 80
+						},
+						{
+							"channel": 0,
+							"deltaTime": 100,
+							"noteNumber": 25,
+							"subtype": "noteOff",
+							"type": "channel",
+							"velocity": 80
+						},
+						{
+							"channel": 0,
+							"deltaTime": 0,
+							"noteNumber": 28,
+							"subtype": "noteOn",
+							"type": "channel",
+							"velocity": 80
+						},
+						{
+							"channel": 0,
+							"deltaTime": 100,
+							"noteNumber": 28,
+							"subtype": "noteOff",
+							"type": "channel",
+							"velocity": 80
+						},
+						{
+							"deltaTime": 0,
+							"subtype": "endOfTrack",
+							"type": "meta"
+						}
+					]
+				]
+			}
+		},
+		"output": {
+			"path": "./test/unit/expect/writeOutput.mid"
+		},
+		"text": "should properly write a midi buffer to an output file in options"
+	}
+]

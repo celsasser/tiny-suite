@@ -1,0 +1,18 @@
+#######################################
+# Testing velocity server in an vertex
+#######################################
+
+$collection1:
+notes = 50
+velocity = 70
+
+$collection2:
+notes = 60
+velocity = 80
+
+$collection1 -> $collection2:
+velocityOffset = cycle([20, -20])
+
+project:
+start = $collection1
+steps = 4

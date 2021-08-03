@@ -1,0 +1,42 @@
+{
+	"author": "curt.elsasser@gmail.com",
+	"dependencies": {
+		"joi": "17.4.0",
+		"midi-file-io": "3.0.1",
+		"tiny-core-module": "0.0.1"
+	},
+	"description": "Tiny machine that converts numeric sequences into MIDI format encodings",
+	"devDependencies": {
+		"@types/jest": "26.0.23",
+		"@types/node": "14.14.31",
+		"@typescript-eslint/eslint-plugin": "4.26.1",
+		"@typescript-eslint/parser": "4.26.1",
+		"eslint": "7.28.0",
+		"jest": "27.0.4",
+		"jest-junit": "12.2.0",
+		"prettier": "2.3.1",
+		"ts-jest": "27.0.3",
+		"typescript": "4.3.2"
+	},
+	"engines": {
+		"node": ">=14.0.0"
+	},
+	"license": "ISC",
+	"main": "dist/src/index.js",
+	"name": "tiny-midi-stm",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/celsasser/tiny-midi-stm.git"
+	},
+	"scripts": {
+		"analyze": "npm run format && npm run lint:fix && npm run test",
+		"build": "$(npm bin)/tsc -p tsconfig.json && chmod u+x dist/src/index.js",
+		"coverage": "jest --coverage ./test/unit",
+		"format": "$(npm bin)/prettier --write './*.(js|json)'  './(src|test)/**/*.(js|json|ts)'",
+		"lint": "$(npm bin)/eslint .",
+		"lint:fix": "$(npm bin)/eslint --fix .",
+		"rebuild": "rm -rf ./dist; rm -f ./.buildcache; npm run build",
+		"test": "$(npm bin)/jest ./test/unit"
+	},
+	"version": "0.0.1"
+}

@@ -1,0 +1,530 @@
+[
+	{
+		"input": {
+			"channels": [
+				{
+					"notes": [25, 28]
+				}
+			],
+			"options": {
+				"tempo": "120",
+				"pulsePerQuarter": "480",
+				"pulsePerNote": "100",
+				"velocity": "80"
+			}
+		},
+		"output": {
+			"header": {
+				"formatType": 1,
+				"ticksPerQuarter": 480,
+				"trackCount": 2
+			},
+			"tracks": [
+				[
+					{
+						"deltaTime": 0,
+						"microsecondsPerBeat": 500000,
+						"subtype": "setTempo",
+						"type": "meta"
+					},
+					{
+						"deltaTime": 0,
+						"subtype": "endOfTrack",
+						"type": "meta"
+					}
+				],
+				[
+					{
+						"channel": 0,
+						"deltaTime": 0,
+						"noteNumber": 25,
+						"subtype": "noteOn",
+						"type": "channel",
+						"velocity": 80
+					},
+					{
+						"channel": 0,
+						"deltaTime": 100,
+						"noteNumber": 25,
+						"subtype": "noteOff",
+						"type": "channel",
+						"velocity": 80
+					},
+					{
+						"channel": 0,
+						"deltaTime": 0,
+						"noteNumber": 28,
+						"subtype": "noteOn",
+						"type": "channel",
+						"velocity": 80
+					},
+					{
+						"channel": 0,
+						"deltaTime": 100,
+						"noteNumber": 28,
+						"subtype": "noteOff",
+						"type": "channel",
+						"velocity": 80
+					},
+					{
+						"deltaTime": 0,
+						"subtype": "endOfTrack",
+						"type": "meta"
+					}
+				]
+			]
+		},
+		"text": "should properly convert a single, monophonic track with option defaults"
+	},
+	{
+		"input": {
+			"channels": [
+				{
+					"notes": [
+						[25, 28],
+						[30, 31]
+					]
+				}
+			],
+			"options": {
+				"tempo": "120",
+				"pulsePerQuarter": "480",
+				"pulsePerNote": "100",
+				"velocity": "80"
+			}
+		},
+		"output": {
+			"header": {
+				"formatType": 1,
+				"ticksPerQuarter": 480,
+				"trackCount": 2
+			},
+			"tracks": [
+				[
+					{
+						"deltaTime": 0,
+						"microsecondsPerBeat": 500000,
+						"subtype": "setTempo",
+						"type": "meta"
+					},
+					{
+						"deltaTime": 0,
+						"subtype": "endOfTrack",
+						"type": "meta"
+					}
+				],
+				[
+					{
+						"channel": 0,
+						"deltaTime": 0,
+						"noteNumber": 25,
+						"subtype": "noteOn",
+						"type": "channel",
+						"velocity": 80
+					},
+					{
+						"channel": 0,
+						"deltaTime": 0,
+						"noteNumber": 28,
+						"subtype": "noteOn",
+						"type": "channel",
+						"velocity": 80
+					},
+					{
+						"channel": 0,
+						"deltaTime": 100,
+						"noteNumber": 25,
+						"subtype": "noteOff",
+						"type": "channel",
+						"velocity": 80
+					},
+					{
+						"channel": 0,
+						"deltaTime": 0,
+						"noteNumber": 28,
+						"subtype": "noteOff",
+						"type": "channel",
+						"velocity": 80
+					},
+					{
+						"channel": 0,
+						"deltaTime": 0,
+						"noteNumber": 30,
+						"subtype": "noteOn",
+						"type": "channel",
+						"velocity": 80
+					},
+					{
+						"channel": 0,
+						"deltaTime": 0,
+						"noteNumber": 31,
+						"subtype": "noteOn",
+						"type": "channel",
+						"velocity": 80
+					},
+					{
+						"channel": 0,
+						"deltaTime": 100,
+						"noteNumber": 30,
+						"subtype": "noteOff",
+						"type": "channel",
+						"velocity": 80
+					},
+					{
+						"channel": 0,
+						"deltaTime": 0,
+						"noteNumber": 31,
+						"subtype": "noteOff",
+						"type": "channel",
+						"velocity": 80
+					},
+					{
+						"deltaTime": 0,
+						"subtype": "endOfTrack",
+						"type": "meta"
+					}
+				]
+			]
+		},
+		"text": "should properly convert a single, polyphonic track with option defaults"
+	},
+	{
+		"input": {
+			"channels": [
+				{
+					"notes": [25, 28]
+				},
+				{
+					"notes": [30, 33]
+				}
+			],
+			"options": {
+				"tempo": "120",
+				"pulsePerQuarter": "480",
+				"pulsePerNote": "100",
+				"velocity": "80"
+			}
+		},
+		"output": {
+			"header": {
+				"formatType": 1,
+				"ticksPerQuarter": 480,
+				"trackCount": 3
+			},
+			"tracks": [
+				[
+					{
+						"deltaTime": 0,
+						"microsecondsPerBeat": 500000,
+						"subtype": "setTempo",
+						"type": "meta"
+					},
+					{
+						"deltaTime": 0,
+						"subtype": "endOfTrack",
+						"type": "meta"
+					}
+				],
+				[
+					{
+						"channel": 0,
+						"deltaTime": 0,
+						"noteNumber": 25,
+						"subtype": "noteOn",
+						"type": "channel",
+						"velocity": 80
+					},
+					{
+						"channel": 0,
+						"deltaTime": 100,
+						"noteNumber": 25,
+						"subtype": "noteOff",
+						"type": "channel",
+						"velocity": 80
+					},
+					{
+						"channel": 0,
+						"deltaTime": 0,
+						"noteNumber": 28,
+						"subtype": "noteOn",
+						"type": "channel",
+						"velocity": 80
+					},
+					{
+						"channel": 0,
+						"deltaTime": 100,
+						"noteNumber": 28,
+						"subtype": "noteOff",
+						"type": "channel",
+						"velocity": 80
+					},
+					{
+						"deltaTime": 0,
+						"subtype": "endOfTrack",
+						"type": "meta"
+					}
+				],
+				[
+					{
+						"channel": 1,
+						"deltaTime": 0,
+						"noteNumber": 30,
+						"subtype": "noteOn",
+						"type": "channel",
+						"velocity": 80
+					},
+					{
+						"channel": 1,
+						"deltaTime": 100,
+						"noteNumber": 30,
+						"subtype": "noteOff",
+						"type": "channel",
+						"velocity": 80
+					},
+					{
+						"channel": 1,
+						"deltaTime": 0,
+						"noteNumber": 33,
+						"subtype": "noteOn",
+						"type": "channel",
+						"velocity": 80
+					},
+					{
+						"channel": 1,
+						"deltaTime": 100,
+						"noteNumber": 33,
+						"subtype": "noteOff",
+						"type": "channel",
+						"velocity": 80
+					},
+					{
+						"deltaTime": 0,
+						"subtype": "endOfTrack",
+						"type": "meta"
+					}
+				]
+			]
+		},
+		"text": "should properly convert a multi-channel track with option defaults"
+	},
+	{
+		"input": {
+			"channels": [
+				{
+					"notes": [20, 22, 24, 26],
+					"velocities": [50, 100]
+				}
+			],
+			"options": {
+				"tempo": "120",
+				"pulsePerQuarter": "480",
+				"pulsePerNote": "100",
+				"velocity": "80"
+			}
+		},
+		"output": {
+			"header": {
+				"formatType": 1,
+				"ticksPerQuarter": 480,
+				"trackCount": 2
+			},
+			"tracks": [
+				[
+					{
+						"deltaTime": 0,
+						"microsecondsPerBeat": 500000,
+						"subtype": "setTempo",
+						"type": "meta"
+					},
+					{
+						"deltaTime": 0,
+						"subtype": "endOfTrack",
+						"type": "meta"
+					}
+				],
+				[
+					{
+						"channel": 0,
+						"deltaTime": 0,
+						"noteNumber": 20,
+						"subtype": "noteOn",
+						"type": "channel",
+						"velocity": 50
+					},
+					{
+						"channel": 0,
+						"deltaTime": 100,
+						"noteNumber": 20,
+						"subtype": "noteOff",
+						"type": "channel",
+						"velocity": 50
+					},
+					{
+						"channel": 0,
+						"deltaTime": 0,
+						"noteNumber": 22,
+						"subtype": "noteOn",
+						"type": "channel",
+						"velocity": 100
+					},
+					{
+						"channel": 0,
+						"deltaTime": 100,
+						"noteNumber": 22,
+						"subtype": "noteOff",
+						"type": "channel",
+						"velocity": 100
+					},
+					{
+						"channel": 0,
+						"deltaTime": 0,
+						"noteNumber": 24,
+						"subtype": "noteOn",
+						"type": "channel",
+						"velocity": 50
+					},
+					{
+						"channel": 0,
+						"deltaTime": 100,
+						"noteNumber": 24,
+						"subtype": "noteOff",
+						"type": "channel",
+						"velocity": 50
+					},
+					{
+						"channel": 0,
+						"deltaTime": 0,
+						"noteNumber": 26,
+						"subtype": "noteOn",
+						"type": "channel",
+						"velocity": 100
+					},
+					{
+						"channel": 0,
+						"deltaTime": 100,
+						"noteNumber": 26,
+						"subtype": "noteOff",
+						"type": "channel",
+						"velocity": 100
+					},
+					{
+						"deltaTime": 0,
+						"subtype": "endOfTrack",
+						"type": "meta"
+					}
+				]
+			]
+		},
+		"text": "should use velocity in channel and cycle it"
+	},
+	{
+		"input": {
+			"channels": [
+				{
+					"durations": [120, 240],
+					"notes": [20, 22, 24, 26]
+				}
+			],
+			"options": {
+				"tempo": "120",
+				"pulsePerQuarter": "480",
+				"pulsePerNote": "100",
+				"velocity": "80"
+			}
+		},
+		"output": {
+			"header": {
+				"formatType": 1,
+				"ticksPerQuarter": 480,
+				"trackCount": 2
+			},
+			"tracks": [
+				[
+					{
+						"deltaTime": 0,
+						"microsecondsPerBeat": 500000,
+						"subtype": "setTempo",
+						"type": "meta"
+					},
+					{
+						"deltaTime": 0,
+						"subtype": "endOfTrack",
+						"type": "meta"
+					}
+				],
+				[
+					{
+						"channel": 0,
+						"deltaTime": 0,
+						"noteNumber": 20,
+						"subtype": "noteOn",
+						"type": "channel",
+						"velocity": 80
+					},
+					{
+						"channel": 0,
+						"deltaTime": 120,
+						"noteNumber": 20,
+						"subtype": "noteOff",
+						"type": "channel",
+						"velocity": 80
+					},
+					{
+						"channel": 0,
+						"deltaTime": 0,
+						"noteNumber": 22,
+						"subtype": "noteOn",
+						"type": "channel",
+						"velocity": 80
+					},
+					{
+						"channel": 0,
+						"deltaTime": 240,
+						"noteNumber": 22,
+						"subtype": "noteOff",
+						"type": "channel",
+						"velocity": 80
+					},
+					{
+						"channel": 0,
+						"deltaTime": 0,
+						"noteNumber": 24,
+						"subtype": "noteOn",
+						"type": "channel",
+						"velocity": 80
+					},
+					{
+						"channel": 0,
+						"deltaTime": 120,
+						"noteNumber": 24,
+						"subtype": "noteOff",
+						"type": "channel",
+						"velocity": 80
+					},
+					{
+						"channel": 0,
+						"deltaTime": 0,
+						"noteNumber": 26,
+						"subtype": "noteOn",
+						"type": "channel",
+						"velocity": 80
+					},
+					{
+						"channel": 0,
+						"deltaTime": 240,
+						"noteNumber": 26,
+						"subtype": "noteOff",
+						"type": "channel",
+						"velocity": 80
+					},
+					{
+						"deltaTime": 0,
+						"subtype": "endOfTrack",
+						"type": "meta"
+					}
+				]
+			]
+		},
+		"text": "should use durations in channel and cycle it"
+	}
+]

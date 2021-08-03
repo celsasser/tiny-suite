@@ -1,0 +1,32 @@
+[
+	{
+		"argv": ["node", "index.js", "--inputFile=./test/integration/cli/input1.txt"],
+		"output": [
+			{
+				"notes": [[50], [60, 62, 64]]
+			}
+		],
+		"text": "input1.txt: should render proper output for a simple specification"
+	},
+	{
+		"argv": ["node", "index.js", "--inputFile=./test/integration/cli/input2.txt"],
+		"options": ["only"],
+		"output": [
+			{
+				"notes": [[50], [60], [50], [60]],
+				"velocities": [70, 100, 70, 60]
+			}
+		],
+		"text": "input2.txt: should properly apply velocity cycling"
+	},
+	{
+		"argv": ["node", "index.js", "--inputFile=./test/integration/cli/input3.txt"],
+		"output": [
+			{
+				"notes": [[50], [60]],
+				"velocities": [null, 10]
+			}
+		],
+		"text": "input3.txt: todo"
+	}
+]

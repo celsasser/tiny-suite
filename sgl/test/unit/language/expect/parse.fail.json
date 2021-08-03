@@ -1,0 +1,32 @@
+[
+	{
+		"expected": "attempt to parse + 1x failed. failure point = x",
+		"input": "+ 1x",
+		"title": "should fail on invalid operand"
+	},
+	{
+		"expected": "attempt to parse 1 2 failed. failure point = 2",
+		"input": "1 2",
+		"title": "should fail on invalid operand sequence"
+	},
+	{
+		"expected": "attempt to parse [1 failed. failure point = [1",
+		"input": "[1",
+		"title": "should fail on unterminated array operand"
+	},
+	{
+		"expected": "attempt to parse 1] failed. failure point = ]",
+		"input": "1]",
+		"title": "should fail on dangling array operand"
+	},
+	{
+		"expected": "attempt to parse ~ 1 failed. failure point = ~ 1",
+		"input": "~ 1",
+		"title": "should fail if on unknown operator"
+	},
+	{
+		"expected": "attempt to parse + failed. failure point = ",
+		"input": "+",
+		"title": "should fail with dangling operator"
+	}
+]
