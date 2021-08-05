@@ -1,43 +1,40 @@
 {
 	"author": "curt.elsasser@gmail.com",
 	"dependencies": {
-		"commander": "8.0.0",
+		"commander": "8.1.0",
 		"fs-extra": "10.0.0",
 		"get-stdin": "8.0.0"
 	},
 	"description": "Tiny's core module. He's a working man.",
 	"devDependencies": {
 		"@types/fs-extra": "9.0.11",
-		"@types/jest": "26.0.23",
-		"@types/node": "14.14.31",
-		"@typescript-eslint/eslint-plugin": "4.25.0",
-		"@typescript-eslint/parser": "4.25.0",
-		"eslint": "7.27.0",
-		"jest": "27.0.3",
-		"jest-junit": "12.1.0",
-		"prettier": "2.3.0",
-		"ts-jest": "27.0.1",
-		"typescript": "4.3.2"
+		"@types/jest": "26.0.24",
+		"@types/node": "14.17.7",
+		"@typescript-eslint/eslint-plugin": "4.29.0",
+		"@typescript-eslint/parser": "4.29.0",
+		"eslint": "7.32.0",
+		"jest": "27.0.6",
+		"jest-junit": "12.2.0",
+		"prettier": "2.3.2",
+		"ts-jest": "27.0.4",
+		"typescript": "4.3.5"
 	},
 	"engines": {
 		"node": ">=14.0.0"
 	},
 	"license": "ISC",
 	"main": "dist/src/index.js",
-	"name": "tiny-core-module",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/celsasser/tiny-core-module.git"
-	},
+	"name": "core",
 	"scripts": {
-		"analyze": "npm run format && npm run lint:fix && npm run test",
-		"build": "$(npm bin)/tsc -p tsconfig.json",
-		"coverage": "jest --coverage ./test/unit",
-		"format": "$(npm bin)/prettier --write './*.(js|json)'  './(src|test)/**/*.(js|json|ts)'",
-		"lint": "$(npm bin)/eslint .",
-		"lint:fix": "$(npm bin)/eslint --fix .",
-		"rebuild": "rm -rf ./dist; rm -f ./.buildcache; npm run build",
-		"test": "$(npm bin)/jest ./test/unit"
+		"analyze": "yarn run format && yarn run lint:fix && yarn run test",
+		"build": "npx tsc -p tsconfig.json",
+		"clean": "rm -rf *.log ./dist ./.buildcache",
+		"coverage": "yarn run test -- --coverage",
+		"format": "npx prettier --write './*.(js|json)' './(src|test)/**/*.(js|json|ts)'",
+		"lint": "npx eslint .",
+		"lint:fix": "yarn run lint -- --fix",
+		"rebuild": "rm -rf ./dist; rm -f ./.buildcache; yarn run build",
+		"test": "npx jest ./test/unit"
 	},
 	"types": "dist/src/index.d.ts",
 	"version": "0.0.1"

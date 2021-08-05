@@ -24,28 +24,23 @@
 		"noise"
 	],
 	"license": "ISC",
-	"main": "index.js",
 	"name": "tiny-midi-suite",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/celsasser/tiny-midi-suite.git"
-	},
+	"private": true,
+	"repository": "https://github.com/celsasser/tiny-midi-suite.git",
 	"scripts": {
-		"_prettier": "$(npm bin)/prettier --write './*.(js|json)'  './(src|test)/**/*.(js|json|ts)'",
-		"analyze": "for D in 'core-module audio-crow midi-gts midi-sgl midi-stm'; do pushd ${D}; npm run analyze; popd; done",
-		"build": "for D in 'core-module audio-crow midi-gts midi-sgl midi-stm'; do pushd ${D}; $(npm bin)/tsc run build; popd; done",
-		"commit": "for D in 'core-module audio-crow midi-gts midi-sgl midi-stm'; do pushd ${D}; git add .; git status; printf Notes: ; read; git commit -m '${REPLY}'; popd; done",
-		"coverage": "for D in 'core-module audio-crow midi-gts midi-sgl midi-stm'; do pushd ${D}; jest --coverage ./test/unit; popd; done",
-		"format": "for D in 'core-module audio-crow midi-gts midi-sgl midi-stm'; do pushd ${D}; npm run _prettier; popd; done",
-		"lint": "for D in 'core-module audio-crow midi-gts midi-sgl midi-stm'; do pushd ${D}; $(npm bin)/eslint .; popd; done",
-		"lint:fix": "for D in 'core-module audio-crow midi-gts midi-sgl midi-stm'; do pushd ${D}; $(npm bin)/eslint .; popd; done",
-		"make": "for D in 'core-module audio-crow midi-gts midi-sgl midi-stm'; do pushd ${D}; npm run rebuild; npm run analyze .; popd; done",
-		"push": "for D in 'core-module audio-crow midi-gts midi-sgl midi-stm'; do pushd ${D}; git push origin; popd; done",
-		"rebuild": "for D in 'core-module audio-crow midi-gts midi-sgl midi-stm'; do pushd ${D}; rm -rf ./dist; rm -f ./.buildcache; npm run build; popd; done",
-		"test": "for D in 'core-module audio-crow midi-gts midi-sgl midi-stm'; do pushd ${D}; \"$(npm bin)/jest ./test/unit\"; popd; done"
+		"analyze": "./execute.sh 'yarn run analyze'",
+		"build": "./execute.sh 'yarn run build'",
+		"clean": "./execute.sh 'yarn run clean'; rm -rf *.log; git prune",
+		"coverage": "./execute.sh 'yarn run coverage'",
+		"format": "./execute.sh 'yarn run format'; ./execute.sh 'npx prettier --write \"./*.(js|json)\"'",
+		"lint": "./execute.sh 'yarn run lint'",
+		"lint:fix": "./execute.sh 'yarn run lint:fix'",
+		"postinstall": "./execute.sh 'yarn install'",
+		"rebuild": "yarn run clean && yarn run build",
+		"test": "./execute.sh 'yarn run test'"
 	},
 	"version": "0.0.1",
 	"workspaces": [
-		"./core-module"
+		"tiny-core-module"
 	]
 }

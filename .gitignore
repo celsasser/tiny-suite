@@ -4,18 +4,17 @@
 **/*~
 **/*.tmp
 **/*.zip
-**/log
+**/*.log
 
 # eliminate ID
 **/.idea
 
-# npm modules will be built dynamically
-**/node_modules
-**/package-lock.json
-
 # build and test stuff that we don't want to keep in VCS
+**/*.lock
 **/coverage
 **/dist
 **/ignore
+**/node_modules
+**/package-lock.json
 **/reports
 **/sandbox

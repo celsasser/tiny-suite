@@ -30,7 +30,7 @@ The grammar is a lot like ini files which used to (and may still be used) as con
 * *NumericArray* => `(\[NumericValue, ...\]|ValueServer)`
 * *Option* => `(cycle|reuse)`
 * *Range* => `\[number|symbol - number|symbol\]`
-* *Reserved* => _See core's common_ [symbols](https://github.com/celsasser/tiny-core-module/tree/master/res/symbols)
+* *Reserved* => _See core's common_ [symbols](https://github.com/celsasser/tiny-midi-suite.git/core/tree/master/res/symbols)
 * *String* => (any combination of printable characters)
 * *Symbol* => `([a-zA-Z$_-][0-9a-zA-Z$_-]*|Reserved)`
 
