@@ -3,7 +3,7 @@
  */
 
 import * as _ from 'lodash';
-import { directoryToDescribeTitle, getNoteNameSymbols } from 'tiny-core-module';
+import { directoryToDescribeTitle, getNoteNameSymbols } from '@tiny/core';
 import { _propertyValueToServer } from '../../../src/parse/build';
 import { FunctionName, TinySymbolTable } from '../../../src/types';
 import * as propertyValueToServerTests from './expect/propertyValueToServer.json';

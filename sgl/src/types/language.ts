@@ -2,7 +2,7 @@
  * @license MIT (see project's LICENSE file)
  */
 
-import { SymbolMap, SymbolTable } from 'tiny-core-module';
+import { SymbolMap, SymbolTable } from '@tiny/core';
 
 export enum TinyOperator {
 	/**

@@ -24,15 +24,15 @@
 	},
 	"license": "ISC",
 	"main": "dist/src/index.js",
-	"name": "core",
+	"name": "@tiny/core",
 	"scripts": {
 		"analyze": "yarn run format && yarn run lint:fix && yarn run test",
 		"build": "npx tsc -p tsconfig.json",
 		"clean": "rm -rf *.log ./dist ./.buildcache",
-		"coverage": "yarn run test -- --coverage",
+		"coverage": "yarn run test --coverage",
 		"format": "npx prettier --write './*.(js|json)' './(src|test)/**/*.(js|json|ts)'",
 		"lint": "npx eslint .",
-		"lint:fix": "yarn run lint -- --fix",
+		"lint:fix": "yarn run lint  --fix",
 		"rebuild": "rm -rf ./dist; rm -f ./.buildcache; yarn run build",
 		"test": "npx jest ./test/unit"
 	},

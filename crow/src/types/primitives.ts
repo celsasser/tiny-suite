@@ -2,7 +2,7 @@
  * @license MIT (see project's LICENSE file)
  */
 
-import { SymbolTable } from 'tiny-core-module';
+import { SymbolTable } from '@tiny/core';
 
 export enum Bearing {
 	North = 'north',

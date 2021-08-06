@@ -1,4 +1,4 @@
-import { IChannel, PolyphonicArray, readFile, readStdin } from 'tiny-core-module';
+import { IChannel, PolyphonicArray, readFile, readStdin } from '@tiny/core';
 import { isChannelArray, isPolyphonicArray } from './schema';
 import { CliOptions } from './types';
 

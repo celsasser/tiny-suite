@@ -2,7 +2,7 @@
  * @license MIT (see project's LICENSE file)
  */
 
-import { SymbolTable } from 'tiny-core-module';
+import { SymbolTable } from '@tiny/core';
 import { Edge, Vertex } from '../graph';
 
 export type EdgeMap = { [name: string]: Edge };

@@ -1,6 +1,6 @@
 import { MidiIoSong, writeMidiToBuffer, writeMidiToFile } from 'midi-file-io';
 import { CliOptions } from './types';
-import { writeStdout } from 'tiny-core-module';
+import { writeStdout } from '@tiny/core';
 
 export async function writeOutput(
 	song: Readonly<MidiIoSong>,

@@ -5,7 +5,7 @@
  */
 
 import * as _ from 'lodash';
-import { randomIntegerFromRange, INumericRange } from 'tiny-core-module';
+import { randomIntegerFromRange, INumericRange } from '@tiny/core';
 import { randomizeElements } from './core';
 import { FunctionName, FunctionOption, NumbersServer } from './types';
 

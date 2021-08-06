@@ -2,7 +2,7 @@
  * @license MIT (see project's LICENSE file)
  */
 
-import { directoryToDescribeTitle, filterTests, ITest } from 'tiny-core-module';
+import { directoryToDescribeTitle, filterTests, ITest } from '@tiny/core';
 import { run } from '../../src/cli';
 import * as output from '../../src/output';
 import * as tests from './cli/tests.json';

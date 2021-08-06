@@ -1,4 +1,4 @@
-import { IChannel, MonophonicArray, PolyphonicArray } from 'tiny-core-module';
+import { IChannel, MonophonicArray, PolyphonicArray } from '@tiny/core';
 
 export function createTestMonophonicArray(
 	array = require('../res/monophonicArray.json')

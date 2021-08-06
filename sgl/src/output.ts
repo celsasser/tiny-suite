@@ -1,7 +1,7 @@
 /**
  * @license MIT (see project's LICENSE file)
  */
-import { writeJsonToPath, writeStdout } from 'tiny-core-module';
+import { writeJsonToPath, writeStdout } from '@tiny/core';
 import { CliOptions, TinyEvaluateSequence } from './types';
 
 /**

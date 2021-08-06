@@ -3,7 +3,7 @@
  */
 
 import * as _ from 'lodash';
-import { SymbolMap } from 'tiny-core-module';
+import { SymbolMap } from '@tiny/core';
 import { TinyInstrument, TinyInstrumentString } from '../types';
 
 /**

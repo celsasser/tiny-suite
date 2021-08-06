@@ -1,8 +1,8 @@
 {
 	"author": "curt.elsasser@gmail.com",
 	"dependencies": {
-		"lodash": "4.17.21",
-		"tiny-core-module": "0.0.1"
+		"@tiny/core": "0.0.1",
+		"lodash": "4.17.21"
 	},
 	"description": "Tiny Sequence Generator. See README.md",
 	"devDependencies": {
@@ -23,15 +23,15 @@
 	},
 	"license": "ISC",
 	"main": "dist/src/index.js",
-	"name": "tiny-midi-sgl",
+	"name": "@tiny/sgl",
 	"scripts": {
 		"analyze": "yarn run format && yarn run lint:fix && yarn run test",
 		"build": "npx tsc -p tsconfig.json && chmod u+x dist/src/index.js",
 		"clean": "rm -rf *.log ./dist ./.buildcache",
-		"coverage": "yarn run test -- --coverage",
+		"coverage": "yarn run test --coverage",
 		"format": "npx prettier --write './*.(js|json)' './(src|test)/**/*.(js|json|ts)'",
 		"lint": "npx eslint .",
-		"lint:fix": "yarn run lint -- --fix",
+		"lint:fix": "yarn run lint  --fix",
 		"rebuild": "rm -rf ./dist; rm -f ./.buildcache; yarn run build",
 		"test": "npx jest ./test/unit"
 	},

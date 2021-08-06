@@ -1,4 +1,4 @@
-import * as tinyCoreModule from 'tiny-core-module';
+import * as tinyCoreModule from '@tiny/core';
 import { channelsToMidiFormat } from './convert';
 import { getInput } from './input';
 import { writeOutput } from './output';

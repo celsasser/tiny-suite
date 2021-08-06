@@ -3,7 +3,7 @@
  */
 
 import * as _ from 'lodash';
-import { getNoteNameSymbols, ISymbolTableResource } from 'tiny-core-module';
+import { getNoteNameSymbols, ISymbolTableResource } from '@tiny/core';
 import { loadModuleJsonResource } from '../core/resource';
 import { TinyEvaluateSequence, TinySymbolMap, TinySymbolTable } from '../types';
 import { TinyMachine } from './evaluate';

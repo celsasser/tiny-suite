@@ -3,7 +3,7 @@
  */
 
 import * as _ from 'lodash';
-import { getNoteNameSymbols, ParseTextBuffer } from 'tiny-core-module';
+import { getNoteNameSymbols, ParseTextBuffer } from '@tiny/core';
 import {
 	EdgePropertyName,
 	IParsedInput,

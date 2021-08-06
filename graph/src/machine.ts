@@ -6,7 +6,7 @@
  */
 
 import * as _ from 'lodash';
-import { IChannel, TinyDefault } from 'tiny-core-module';
+import { IChannel, TinyDefault } from '@tiny/core';
 import { findChampionByInterface } from './core';
 import { appendArray } from './core/array';
 import { Edge, Vertex } from './graph';

@@ -41,6 +41,10 @@
 	},
 	"version": "0.0.1",
 	"workspaces": [
-		"tiny-core-module"
+		"core",
+		"crow",
+		"graph",
+		"midi",
+		"sgl"
 	]
 }

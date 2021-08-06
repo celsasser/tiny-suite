@@ -2,7 +2,7 @@
  * @license MIT (see project's LICENSE file)
  */
 
-import { ParseTextBuffer } from 'tiny-core-module';
+import { ParseTextBuffer } from '@tiny/core';
 import { ParseError, TinyOperator, TinyTokenSequence, TinyTokenType } from '../types';
 
 /**

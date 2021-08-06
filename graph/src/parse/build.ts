@@ -3,7 +3,7 @@
  */
 
 import * as _ from 'lodash';
-import { INumericRange, ParseTextBuffer } from 'tiny-core-module';
+import { INumericRange, ParseTextBuffer } from '@tiny/core';
 import { stringToInteger } from '../core';
 import { Edge, Graph, Vertex } from '../graph';
 import {

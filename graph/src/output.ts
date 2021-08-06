@@ -2,7 +2,7 @@
  * @license MIT (see project's LICENSE file)
  */
 
-import { IChannel, writeJsonToPath, writeStdout } from 'tiny-core-module';
+import { IChannel, writeJsonToPath, writeStdout } from '@tiny/core';
 import { CliOptions } from './types';
 
 /**

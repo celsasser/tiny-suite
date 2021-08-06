@@ -2,7 +2,7 @@
  * @license MIT (see project's LICENSE file)
  */
 
-import * as tinyCoreModule from 'tiny-core-module';
+import * as tinyCoreModule from '@tiny/core';
 import { description, version } from '../package.json';
 
 import { readInput } from './input';

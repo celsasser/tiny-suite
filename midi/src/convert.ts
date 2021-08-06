@@ -8,7 +8,7 @@ import {
 	MidiIoTrack,
 } from 'midi-file-io';
 import { CliOptions, MidiDeltaEvent, MidiOffsetEvent } from './types';
-import { IChannel } from 'tiny-core-module';
+import { IChannel } from '@tiny/core';
 
 /***********************
  * Public Interface

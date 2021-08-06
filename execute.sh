@@ -4,10 +4,6 @@
 #################################################################
 set -x
 
-ROOT_DIRECTORY=`dirname ${0}`
-NODE_MODULES_BIN=${ROOT_DIRECTORY}/node_modules/.bin
-# tsc=${NODE_MODULES_BIN}/tsc
-
 if [[ -z "${1}" ]]
 then
 	echo "error: missing command param";

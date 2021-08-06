@@ -3,7 +3,7 @@
  */
 
 import { randomizeElements } from '../../../src/core';
-import { directoryToDescribeTitle } from 'tiny-core-module';
+import { directoryToDescribeTitle } from '@tiny/core';
 
 describe(directoryToDescribeTitle(__dirname, 'random'), function () {
 	describe('randomizeElements', function () {
