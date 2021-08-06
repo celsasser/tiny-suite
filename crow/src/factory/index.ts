@@ -3,4 +3,3 @@
  */
 
 export * from './model';
-export * from './vocabulary';

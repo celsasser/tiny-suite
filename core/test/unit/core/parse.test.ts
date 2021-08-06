@@ -2,7 +2,7 @@
  * @license MIT (see project's LICENSE file)
  */
 
-import { stringToBoolean } from '../../../src/core/parse';
+import { stringToBoolean } from '../../../src/parse/primitives';
 import { directoryToDescribeTitle } from '../../utils';
 
 describe(directoryToDescribeTitle(__dirname, 'parse'), function () {
