@@ -3,5 +3,5 @@
  */
 
 export * from './array';
-export * from '../parse/primitives';
+export * from './functional';
 export * from './random';

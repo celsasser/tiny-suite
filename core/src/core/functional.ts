@@ -18,6 +18,7 @@ export function doUntil<T>(
 	do {
 		result = process(result, iteration);
 	} while (predicate(++iteration));
+	return result;
 }
 
 /**

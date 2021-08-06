@@ -14,7 +14,9 @@
 		"typescript": "4.3.5"
 	},
 	"engines": {
-		"node": ">=14.0.0"
+		"node": ">=14.0.0",
+		"npm": "use yarn",
+		"yarn": ">= 1.22.0"
 	},
 	"keywords": [
 		"tiny",
@@ -30,7 +32,8 @@
 	"scripts": {
 		"analyze": "./execute.sh 'yarn run analyze'",
 		"build": "./execute.sh 'yarn run build'",
-		"clean": "./execute.sh 'yarn run clean'; rm -rf *.lock *.log ./node_modules; git prune",
+		"clean": "./execute.sh 'yarn run clean'; rm *.log",
+		"clean:deep": "./execute.sh 'yarn run clean:deep'; rm -rf *.lock *.log ./node_modules; git prune",
 		"coverage": "./execute.sh 'yarn run coverage'",
 		"format": "./execute.sh 'yarn run format'; ./execute.sh 'npx prettier --write \"./*.(js|json)\"'",
 		"lint": "./execute.sh 'yarn run lint'",
