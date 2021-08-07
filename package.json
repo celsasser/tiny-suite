@@ -32,7 +32,7 @@
 	"scripts": {
 		"analyze": "./execute.sh 'yarn run analyze'",
 		"build": "./execute.sh 'yarn run build'",
-		"clean": "./execute.sh 'yarn run clean'; rm *.log",
+		"clean": "./execute.sh 'yarn run clean'; rm -f *.log",
 		"clean:deep": "./execute.sh 'yarn run clean:deep'; rm -rf *.lock *.log ./node_modules; git prune",
 		"coverage": "./execute.sh 'yarn run coverage'",
 		"format": "./execute.sh 'yarn run format'; ./execute.sh 'npx prettier --write \"./*.(js|json)\"'",

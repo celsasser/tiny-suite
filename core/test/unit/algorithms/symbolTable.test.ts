@@ -2,7 +2,7 @@
  * @license MIT (see project's LICENSE file)
  */
 
-import { SymbolTable } from '../../../src';
+import { SymbolTable } from '../../../index';
 import { RuntimeError, UnknownSymbolError } from '../../../src/types';
 
 describe('algorithms', function () {

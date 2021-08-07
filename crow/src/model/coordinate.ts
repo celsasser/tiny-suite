@@ -2,7 +2,7 @@
  * @license MIT (see project's LICENSE file)
  */
 
-import { doUntil, stringToInteger } from '@tiny/core/src';
+import { doUntil, stringToInteger } from '@tiny/core';
 import { ICoordinate, ISize } from '../types';
 
 const VALID_COLUMN_REGEX = /^[A-Z]+$/i;

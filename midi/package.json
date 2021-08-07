@@ -22,11 +22,11 @@
 		"node": ">=14.0.0"
 	},
 	"license": "ISC",
-	"main": "dist/src/index.js",
+	"main": "dist/index.js",
 	"name": "@tiny/stm",
 	"scripts": {
 		"analyze": "yarn run format && yarn run lint:fix && yarn run test",
-		"build": "npx tsc -p tsconfig.json && chmod u+x dist/src/index.js",
+		"build": "npx tsc -p tsconfig.json && chmod u+x dist/index.js",
 		"clean": "rm -rf ./.buildcache *.log ./dist",
 		"clean:deep": "yarn run clean; rm -rf ./node_modules",
 		"coverage": "yarn run test --coverage",

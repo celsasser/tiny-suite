@@ -2,7 +2,6 @@
  * @license MIT (see project's LICENSE file)
  */
 
-import { trimEnd } from 'lodash';
 import { trimString } from '@tiny/core';
 import {
 	IMatrix,
@@ -57,6 +56,7 @@ export class Section implements ISection {
 }
 
 export class Song implements ISong {
+	// @ts-expect-error: not implemented yet
 	private _description?: string;
 	public sections: ISection[];
 	private _name?: string;

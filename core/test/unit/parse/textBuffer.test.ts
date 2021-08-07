@@ -2,7 +2,7 @@
  * @license MIT (see project's LICENSE file)
  */
 
-import { ParseTextBuffer } from '../../../src';
+import { ParseTextBuffer } from '../../../index';
 
 describe('ParseTextBuffer', function () {
 	describe('constructor', function () {

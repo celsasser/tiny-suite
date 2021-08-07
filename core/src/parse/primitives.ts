@@ -34,3 +34,16 @@ export function stringToInteger(value: string): number {
 	}
 	return converted;
 }
+
+/**
+ * Returns a non empty string or undefined. Uses JS's trim to trim the edges
+ * @param value
+ * @returns
+ */
+export function trimString(value?: string): string | undefined {
+	if (value) {
+		value = value.trim();
+		return value.length > 0 ? value : undefined;
+	}
+	undefined;
+}

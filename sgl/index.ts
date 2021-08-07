@@ -4,6 +4,6 @@
  * @license MIT (see project's LICENSE file)
  */
 
-import { run } from './cli';
+import { run } from './src/cli';
 
 run();

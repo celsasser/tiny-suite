@@ -2,7 +2,7 @@
  * @license MIT (see project's LICENSE file)
  */
 
-import { readFile, readStdin } from '@tiny/core/src';
+import { readFile, readStdin } from '@tiny/core';
 import { CliOptions } from './types';
 
 export async function readInput(options: Readonly<CliOptions>): Promise<string> {

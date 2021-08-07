@@ -5,11 +5,13 @@
 		"declaration": true,
 		"incremental": true,
 		"module": "commonjs",
+		"noImplicitThis": true,
+		"noUnusedLocals": true,
 		"outDir": "dist",
 		"pretty": true,
 		"resolveJsonModule": true,
 		"strict": true,
 		"target": "ES2020"
 	},
-	"include": ["src/**/*", "res/**/*.json"]
+	"include": ["index.ts", "src/**/*", "res/**/*.json"]
 }
