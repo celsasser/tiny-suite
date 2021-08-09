@@ -57,7 +57,7 @@ describe(directoryToDescribeTitle(__dirname, 'cell'), function () {
 
 	describe('coordinateToId', function () {
 		it('should properly translate a coordinate to an id', function () {
-			expect(coordinateToId({ x: 0, y: 0 })).toEqual('$A0');
+			expect(coordinateToId({ x: 0, y: 0 })).toEqual('$A1');
 		});
 	});
 });

@@ -13,5 +13,5 @@
 		"strict": true,
 		"target": "ES2020"
 	},
-	"include": ["index.ts", "src/**/*", "res/**/*.json"]
+	"include": ["index.ts", "package.json", "src/**/*", "res/**/*.json"]
 }

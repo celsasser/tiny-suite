@@ -1,6 +1,7 @@
 /**
  * @license MIT (see project's LICENSE file)
  */
+
 import { ParseTextBuffer } from '@tiny/core';
 import { IParsedInput } from './types';
 

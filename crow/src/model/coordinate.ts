@@ -34,23 +34,22 @@ export function columnCodeToIndex(code: string): number {
 	if (VALID_COLUMN_REGEX.test(code) === false) {
 		throw new Error(`unsupported column characters in "${code}"`);
 	}
-	return (
-		doUntil(
-			(iteration: number): boolean => iteration < code.length,
-			(accumulator: number, iteration: number): number => {
-				// we add 1 so that 'A' behaves like 1 and not 0. We will correct for it.
-				const placeValue =
-					1 +
-					code
-						.charAt(code.length - iteration - 1)
-						.toUpperCase()
-						.charCodeAt(0) -
-					'A'.charCodeAt(0);
-				return accumulator + Math.pow(26, iteration) * placeValue;
-			},
-			0
-		) - 1
+	const result = doUntil(
+		(iteration: number): boolean => iteration < code.length,
+		(accumulator: number, iteration: number): number => {
+			const characterCode = code
+				.charAt(code.length - iteration - 1)
+				.toUpperCase()
+				.charCodeAt(0);
+			const delta = characterCode - 'A'.charCodeAt(0);
+			// we add 1 to `delta` so that 'A' behaves like 1 and not 0.
+			// We will correct for it.
+			return accumulator + Math.pow(26, iteration) * (delta + 1);
+		},
+		0
 	);
+	// here we are treating for our adding 1 to the 26^0 position.
+	return result - 1;
 }
 
 /**

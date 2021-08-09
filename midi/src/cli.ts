@@ -1,3 +1,7 @@
+/**
+ * @license MIT (see project's LICENSE file)
+ */
+
 import * as tinyCoreModule from '@tiny/core';
 import { channelsToMidiFormat } from './convert';
 import { getInput } from './input';
@@ -7,9 +11,8 @@ import { description, version } from '../package.json';
 
 /**
  * The orchestrator. He works with our support cast to fully process this request.
- * And he manages the exit code and reporting if any is required
  */
-export async function cli({
+export async function run({
 	argv = process.argv,
 }: {
 	argv?: string[];

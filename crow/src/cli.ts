@@ -35,7 +35,8 @@ function createSpecification(): tinyCoreModule.Command {
 		.version(version)
 		.description(description)
 		.option(`-if --${CliOptionNames.InputFile} <path>`, 'Input file')
-		.option(`-of --${CliOptionNames.OutputFile} <path>`, 'Output file');
+		.option(`-of --${CliOptionNames.OutputFile} <path>`, 'Output file')
+		.option(`-sv --${CliOptionNames.Server} <path>`, 'Run as a server');
 }
 
 async function callback(options: CliOptions): Promise<void> {

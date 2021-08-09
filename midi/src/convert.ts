@@ -1,3 +1,7 @@
+/**
+ * @license MIT (see project's LICENSE file)
+ */
+
 import {
 	MidiFileType,
 	MidiIoEvent,

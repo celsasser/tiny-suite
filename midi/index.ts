@@ -1,5 +1,9 @@
 #!/usr/bin/env node
 
-import { cli } from './src/cli';
+/**
+ * @license MIT (see project's LICENSE file)
+ */
 
-cli();
+import { run } from './src/cli';
+
+run();

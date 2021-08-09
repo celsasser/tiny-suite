@@ -3,12 +3,9 @@
  */
 
 export enum CliOptionNames {
-	PulsePerNote = 'pulsePerNote',
-	PulsePerQuarter = 'pulsePerQuarter',
-	Tempo = 'tempo',
-	Velocity = 'velocity',
 	InputFile = 'inputFile',
 	OutputFile = 'outputFile',
+	Server = 'server',
 }
 
 export type CliOptions = { [key in CliOptionNames]: string };
