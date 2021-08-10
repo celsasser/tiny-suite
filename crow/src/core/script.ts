@@ -20,7 +20,7 @@ const coreApiMap: Readonly<StringKeyedObject> = _getCoreApi();
  */
 export function runScript(
 	script: string,
-	dynamicProperties: StringKeyedObject = {}
+	dynamicProperties: Readonly<StringKeyedObject> = {}
 ): any {
 	try {
 		const context = _buildContext(dynamicProperties);
@@ -36,19 +36,20 @@ export function runScript(
 /**
  * Builds the context in which script will run
  */
-function _buildContext(dynamicProperties: StringKeyedObject): vm.Context {
+function _buildContext(dynamicProperties: Readonly<StringKeyedObject>): vm.Context {
 	const sandbox = {
 		...coreApiMap,
 		...dynamicProperties,
 	};
-	return vm.createContext(sandbox);
+	const proxy = _proxySandbox(sandbox);
+	return vm.createContext(proxy);
 }
 
 /**
  * Just the core objects. We will fold the more dynamic properties in
  * as needed
  */
-export function _getCoreApi(): Readonly<StringKeyedObject> {
+function _getCoreApi(): StringKeyedObject {
 	const map = {
 		...getNoteIntervalSymbols().values,
 		...getNoteNameSymbols().values,
@@ -61,4 +62,15 @@ export function _getCoreApi(): Readonly<StringKeyedObject> {
 		map
 	);
 	return map;
+}
+
+function _proxySandbox(sandbox: Readonly<StringKeyedObject>): StringKeyedObject {
+	return new Proxy<StringKeyedObject>(sandbox, {
+		get: (target: StringKeyedObject, property: string): any => {
+			if (!target.hasOwnProperty(property)) {
+				throw new Error(`unknown symbol "${property}"`);
+			}
+			return target[property];
+		},
+	});
 }
