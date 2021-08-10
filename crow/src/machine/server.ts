@@ -2,11 +2,11 @@
  * @license MIT (see project's LICENSE file)
  */
 
-import { IMatrix, IState } from './types';
+import { IMatrix, IState } from '../types';
 
 /**
- * I want to be able to configure and run the machine from a browser.
- * We will worry about that later.
+ * todo: I want to be able to configure and run the machine from a browser.
+ *  We will worry about that later.
  */
 export class Machine {
 	// @ts-expect-error: we'll get to it

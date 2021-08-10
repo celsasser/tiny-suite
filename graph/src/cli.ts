@@ -38,7 +38,7 @@ function createSpecification(): tinyCoreModule.Command {
 		.option(`-of --${CliOptionNames.OutputFile} <path>`, 'Output file');
 }
 
-async function callback(options: CliOptions): Promise<void> {
+async function callback(options: Readonly<CliOptions>): Promise<void> {
 	const input = await readInput(options);
 	const parsed = parseInput(input);
 	const machine = new Machine(parsed);

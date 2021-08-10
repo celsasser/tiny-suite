@@ -44,7 +44,10 @@ function createSpecification(): tinyCoreModule.Command {
 		.argument('[specification]');
 }
 
-async function callback(options: CliOptions, args: ReadonlyArray<string>): Promise<void> {
+async function callback(
+	options: Readonly<CliOptions>,
+	args: ReadonlyArray<string>
+): Promise<void> {
 	const input = await readInput(options, args);
 	const parsed = parseInput(input);
 	const evaluated = generateTinySequence(parsed.sequences[0], parsed.symbols);

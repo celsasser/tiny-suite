@@ -6,9 +6,9 @@ import * as tinyCoreModule from '@tiny/core';
 import { description, version } from '../package.json';
 
 import { readInput } from './input';
-import { Machine } from './machine';
-import { writeOutput } from './output';
-import { parseInput } from './parse';
+import { StaticMachine } from './machine';
+import { writeStaticOutput } from './output';
+import { parseStaticInput } from './parse';
 import { CliOptionNames, CliOptions } from './types';
 
 /**
@@ -39,10 +39,28 @@ function createSpecification(): tinyCoreModule.Command {
 		.option(`-sv --${CliOptionNames.Server} <path>`, 'Run as a server');
 }
 
-async function callback(options: CliOptions): Promise<void> {
+async function callback(
+	options: Readonly<CliOptions>,
+	args: ReadonlyArray<string>
+): Promise<void> {
+	if (options.server) {
+		await processServerRequest(options);
+	} else {
+		await processStaticRequest(options, args);
+	}
+}
+
+async function processServerRequest(options: Readonly<CliOptions>): Promise<void> {
+	throw new tinyCoreModule.NotImplemented();
+}
+
+async function processStaticRequest(
+	options: Readonly<CliOptions>,
+	args: ReadonlyArray<string>
+): Promise<void> {
 	const input = await readInput(options);
-	const parsed = parseInput(input);
-	const machine = new Machine(parsed);
+	const parsed = parseStaticInput(input);
+	const machine = new StaticMachine(parsed);
 	const output = machine.run();
-	await writeOutput(output, options);
+	await writeStaticOutput(output, options);
 }

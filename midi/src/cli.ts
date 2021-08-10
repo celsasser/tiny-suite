@@ -56,7 +56,7 @@ function createSpecification(): tinyCoreModule.Command {
 		);
 }
 
-async function callback(options: CliOptions): Promise<void> {
+async function callback(options: Readonly<CliOptions>): Promise<void> {
 	const channels = await getInput(options);
 	const song = channelsToMidiFormat(options, channels);
 	await writeOutput(song, options);
