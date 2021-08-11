@@ -2,10 +2,10 @@
  * @license MIT (see project's LICENSE file)
  */
 
+import { FormulaType } from './primitives';
 import {
 	Bearing,
 	ColumnBearing,
-	FormulaType,
 	ICoordinate,
 	IHashable,
 	IValueServer,

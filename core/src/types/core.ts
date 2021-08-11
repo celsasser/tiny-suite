@@ -25,4 +25,11 @@ export interface INumericRange {
 	max: number;
 }
 
+/**
+ * For all objects to which randomness may be applied
+ */
+export interface IWeighted {
+	weight: number;
+}
+
 export type StringKeyedObject = { [property: string]: any };

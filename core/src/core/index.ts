@@ -5,3 +5,4 @@
 export * from './array';
 export * from './functional';
 export * from './random';
+export * from './score';

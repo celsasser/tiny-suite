@@ -22,10 +22,3 @@ export interface IProjectProperties {
 	 */
 	steps?: number;
 }
-
-/**
- * For all objects to which randomness may be applied
- */
-export interface IWeighted {
-	weight: number;
-}

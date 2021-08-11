@@ -2,7 +2,8 @@
  * @license MIT (see project's LICENSE file)
  */
 
-import { IWeighted, NumbersServer } from '../types';
+import { IWeighted } from '@tiny/core';
+import { NumbersServer } from '../types';
 import { Vertex } from './vertex';
 
 /**

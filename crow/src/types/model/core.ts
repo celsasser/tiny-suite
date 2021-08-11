@@ -2,6 +2,8 @@
  * @license MIT (see project's LICENSE file)
  */
 
+import { FormulaType } from './primitives';
+
 export enum Bearing {
 	/**
 	 * Top down
@@ -29,12 +31,6 @@ export enum Bearing {
 
 export type ColumnBearing = Bearing.South | Bearing.SouthEast | Bearing.SouthWest;
 export type RowBearing = Bearing.East | Bearing.NorthEast | Bearing.SouthEast;
-
-/**
- * Our cell values will always be string values that will be evaluated as JS.
- */
-export type FormulaType = string;
-export type KeyboardShortcutType = string[][];
 
 export interface ICoordinate {
 	/**

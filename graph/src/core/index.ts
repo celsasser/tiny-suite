@@ -3,5 +3,4 @@
  */
 
 export * from './parse';
-export * from './random';
 export * from './resource';

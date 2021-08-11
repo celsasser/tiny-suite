@@ -5,14 +5,18 @@
  */
 
 import * as _ from 'lodash';
-import { randomIntegerFromRange, INumericRange, randomizeElements } from '@tiny/core';
-import { FunctionName, FunctionOption, NumbersServer } from './types';
+import { randomizeElements, randomIntegerFromRange, INumericRange } from '@tiny/core';
+import { FunctionName, FunctionOption, IState, NumbersServer } from './types';
 
 /**
  * Serves the same value until the end of time
+ * @param state
  * @param value
  */
-export function createLiteralServer(value: number | number[]): NumbersServer {
+export function createLiteralServer(
+	state: Readonly<IState>,
+	value: number | number[]
+): NumbersServer {
 	const result = Array.isArray(value) ? value : [value];
 	return () => result;
 }
@@ -21,7 +25,10 @@ export function createLiteralServer(value: number | number[]): NumbersServer {
  * Cycles over and over through a list of from beginning to end
  * @param values
  */
-export function createCycleServer(values: ReadonlyArray<number[]>): NumbersServer {
+export function createCycleServer(
+	state: Readonly<IState>,
+	values: ReadonlyArray<number[]>
+): NumbersServer {
 	let index = 0;
 	return (): number[] => {
 		return values[index++ % values.length];
@@ -37,6 +44,7 @@ export function createCycleServer(values: ReadonlyArray<number[]>): NumbersServe
  * @param options
  */
 export function createNotServer(
+	state: Readonly<IState>,
 	exclude: ReadonlyArray<number>,
 	candidates: ReadonlyArray<number>,
 	options?: ReadonlyArray<FunctionOption>
@@ -55,6 +63,7 @@ export function createNotServer(
  * @param options
  */
 export function createRandomGroupingServer(
+	state: Readonly<IState>,
 	values: ReadonlyArray<number[]>,
 	icount: Readonly<INumericRange>,
 	weights?: ReadonlyArray<number>,
@@ -100,6 +109,7 @@ export function createRandomGroupingServer(
  * @param options
  */
 export function createRandomSelectionServer(
+	state: Readonly<IState>,
 	values: ReadonlyArray<number[]>,
 	weights?: ReadonlyArray<number>,
 	options?: ReadonlyArray<FunctionOption>
