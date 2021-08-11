@@ -11,7 +11,7 @@
  */
 export function stringToInteger(value: string): number {
 	const converted = parseInt(value);
-	if (converted === Number.NaN) {
+	if (Number.isNaN(converted)) {
 		throw new Error(`unable parse "${value}" as an integer`);
 	}
 	return converted;

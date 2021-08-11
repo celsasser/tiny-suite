@@ -3,7 +3,7 @@
  */
 
 export class NotImplemented extends Error {
-	constructor(message: string = 'not implemented') {
+	constructor(message = 'not implemented') {
 		super(message);
 	}
 }
@@ -15,7 +15,7 @@ export class RuntimeError extends Error {
 }
 
 export class UnexpectedError extends Error {
-	constructor(message: string = 'unexpected error') {
+	constructor(message = 'unexpected error') {
 		super(message);
 	}
 }

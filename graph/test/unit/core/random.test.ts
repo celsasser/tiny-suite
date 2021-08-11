@@ -2,8 +2,7 @@
  * @license MIT (see project's LICENSE file)
  */
 
-import { randomizeElements } from '../../../src/core';
-import { directoryToDescribeTitle } from '@tiny/core';
+import { directoryToDescribeTitle, randomizeElements } from '@tiny/core';
 
 describe(directoryToDescribeTitle(__dirname, 'random'), function () {
 	describe('randomizeElements', function () {

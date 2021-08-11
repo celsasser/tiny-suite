@@ -27,14 +27,14 @@
 	"scripts": {
 		"analyze": "yarn run format && yarn run lint:fix && yarn run test",
 		"build": "npx tsc -p tsconfig.json && chmod u+x dist/index.js",
-		"clean": "rm -rf ./.buildcache *.log ./dist",
-		"clean:deep": "yarn run clean; rm -rf ./node_modules",
+		"clean": "rm -rf './.buildcache' '*.log' './dist'",
+		"clean:deep": "yarn run clean; rm -rf './node_modules'",
 		"coverage": "yarn run test --coverage",
 		"format": "npx prettier --write './*.(js|json)' './(src|test)/**/*.(js|json|ts)'",
 		"lint": "npx eslint .",
 		"lint:fix": "yarn run lint --fix",
-		"rebuild": "rm -rf ./dist; rm -f ./.buildcache; yarn run build",
-		"test": "npx jest ./test/unit"
+		"rebuild": "rm -rf './dist'; rm -f './.buildcache'; yarn run build",
+		"test": "npx jest './test/unit'"
 	},
 	"version": "0.0.1"
 }
