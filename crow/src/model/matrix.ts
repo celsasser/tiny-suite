@@ -5,7 +5,7 @@
 import * as assert from 'assert';
 import * as _ from 'lodash';
 import { createCell } from '../factory';
-import { Bearing, ICell, ICoordinate, IMatrix, ISize } from '../types';
+import { Bearing, ICell, ICoordinate, IMatrix, ISize, MatrixGrid } from '../types';
 import { coordinateFromId, isCoordinateWithinSize } from './coordinate';
 
 /**
@@ -19,7 +19,7 @@ export class Matrix implements IMatrix {
 	 */
 	private readonly _grid: Array<ICell[]>;
 
-	constructor(grid: ICell[][]) {
+	constructor(grid: MatrixGrid) {
 		this._grid = grid;
 	}
 
@@ -28,7 +28,7 @@ export class Matrix implements IMatrix {
 	 */
 	public clone(): Matrix {
 		const size = this.size;
-		const grid: ICell[][] = new Array(size.width);
+		const grid: MatrixGrid = new Array(size.width);
 		for (let icolumn = 0; icolumn < grid.length; icolumn++) {
 			grid[icolumn] = this._grid[icolumn].map((cell) => cell.clone());
 		}

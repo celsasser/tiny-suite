@@ -1,10 +1,26 @@
 /**
+ * Date: 12/8/19
+ * Time: 2:03 AM
  * @license MIT (see project's LICENSE file)
  */
 
-import * as assert from 'assert';
-import { ICoordinate, IMatrix, IState } from './types';
+import {
+	getNoteIntervalSymbols,
+	getNoteNameSymbols,
+	StringKeyedObject,
+} from '@tiny/core';
+import { ICoordinate, IMatrix, IState } from '../types';
 
+const coreApiMap: Readonly<StringKeyedObject> = _createCoreApi();
+
+/**
+ * Creates a general state that will be valid as long as nothing
+ * within the matrix is changed
+ * @param matrix
+ * @param coordinate
+ * @param iteration
+ * @throws {Error}
+ */
 export function createState(
 	matrix: Readonly<IMatrix>,
 	coordinate: Readonly<ICoordinate>,
@@ -14,24 +30,22 @@ export function createState(
 		column: coordinate.x,
 		iteration,
 		row: coordinate.y,
+		...coreApiMap,
 	};
 	_addMatrixState(state, matrix);
 	return state;
 }
 
 /**
- * Updates the state for an iteration. Meaning `iteration` must be the same
- * as `state.iteration`. The state will mostly be the same.
+ * Updates the state in which nothing in the matrix has changed.
  * @param state
  * @param coordinate
- * @param iteration
+ * @throws {Error}
  */
 export function modifyState(
 	state: Readonly<IState>,
-	coordinate: Readonly<ICoordinate>,
-	iteration: number
+	coordinate: Readonly<ICoordinate>
 ): IState {
-	assert.strictEqual(iteration, state.iteration);
 	return {
 		...state,
 		column: coordinate.x,
@@ -39,6 +53,9 @@ export function modifyState(
 	};
 }
 
+/***********************
+ * Private Interface
+ **********************/
 function _addMatrixState(state: IState, matrix: Readonly<IMatrix>): void {
 	const size = matrix.size;
 	for (let x = 0; x < size.width; x++) {
@@ -57,4 +74,23 @@ function _addMatrixState(state: IState, matrix: Readonly<IMatrix>): void {
 			}
 		}
 	}
+}
+
+/**
+ * Just the core objects We build it separately so that we
+ * may perform the operation once (these guys are all immutable).
+ */
+function _createCoreApi(): StringKeyedObject {
+	const map = {
+		...getNoteIntervalSymbols().values,
+		...getNoteNameSymbols().values,
+	};
+	Object.getOwnPropertyNames(Math).reduce<StringKeyedObject>(
+		(accumulator, key): StringKeyedObject => {
+			accumulator[key] = (Math as StringKeyedObject)[key];
+			return accumulator;
+		},
+		map
+	);
+	return map;
 }

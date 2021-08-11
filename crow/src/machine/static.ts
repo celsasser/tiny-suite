@@ -2,7 +2,7 @@
  * @license MIT (see project's LICENSE file)
  */
 
-import { IChannel } from '@tiny/core';
+import { IChannel, NotImplemented } from '@tiny/core';
 import { IStaticInput } from '../types';
 
 /**
@@ -20,7 +20,9 @@ export class StaticMachine {
 		this._input = input;
 	}
 
-	public run(): IChannel[] {}
+	public run(): IChannel[] {
+		throw new NotImplemented();
+	}
 
 	/***********************
 	 * Private Interface

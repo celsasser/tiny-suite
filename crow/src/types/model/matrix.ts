@@ -5,6 +5,8 @@
 import { Bearing, ICoordinate, ISize, KeyboardShortcutType } from './core';
 import { ICell, IColumnHeadingCell, IRowHeadingCell } from './cell';
 
+export type MatrixGrid = ICell[][];
+
 /**
  * Combination of a row heading and a column heading. We give it a name and a
  * keyboard shortcut so that the heading may be changed independently of the matrix

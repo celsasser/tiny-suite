@@ -5,4 +5,3 @@
 export * from './cli';
 export * from './input';
 export * from './model';
-export * from './vocabulary';

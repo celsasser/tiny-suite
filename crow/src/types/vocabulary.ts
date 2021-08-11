@@ -4,55 +4,25 @@
  * Our language's vocabulary
  */
 
+/**
+ * We add all functions and special constants to our state but we are
+ * not going to include them here. In fact, I'm not sure there is value
+ * in this guy since we are not going to be parsing like we do in 'tiny.graph'
+ */
 export enum FunctionName {
-	/**
-	 * Inherited from `Math`
-	 */
-	Abs = 'abs',
-	Acos = 'acos',
-	Acosh = 'acosh',
-	Asin = 'asin',
-	Asinh = 'asinh',
-	Atan = 'atan',
-	Atanh = 'atanh',
-	Atan2 = 'atan2',
-	Ceil = 'ceil',
-	Cbrt = 'cbrt',
-	Expm1 = 'expm1',
-	Clz32 = 'clz32',
-	Cos = 'cos',
-	Cosh = 'cosh',
-	Exp = 'exp',
-	Floor = 'floor',
-	Fround = 'fround',
-	Hypot = 'hypot',
-	Imul = 'imul',
-	Log = 'log',
-	Log1p = 'log1p',
-	Log2 = 'log2',
-	Log10 = 'log10',
-	Max = 'max',
-	Min = 'min',
-	Pow = 'pow',
-	Round = 'round',
-	Sign = 'sign',
-	Sin = 'sin',
-	Sinh = 'sinh',
-	Sqrt = 'sqrt',
-	Tan = 'tan',
-	Tanh = 'tanh',
-	Trunc = 'trunc',
-	E = 'E',
-	LN10 = 'LN10',
-	LN2 = 'LN2',
-	LOG10E = 'LOG10E',
-	LOG2E = 'LOG2E',
-	PI = 'PI',
-	SQRT1_2 = 'SQRT1_2',
-	SQRT2 = 'SQRT2',
 	/**
 	 * Our homegrown functions
 	 */
 	Cycle = 'cycle',
 	Random = 'random',
+	/**
+	 * Randomly builds groups of values from a selection or range of values
+	 */
+	RandomGrouping = 'randomGrouping',
+	/**
+	 * Random either works with values of his creation or values with
+	 * which he is given. And within those states makes random chords
+	 * guided by the arguments of the method.
+	 */
+	RandomSelection = 'randomSelection',
 }
