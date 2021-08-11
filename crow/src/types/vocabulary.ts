@@ -26,3 +26,26 @@ export enum FunctionName {
 	 */
 	RandomSelection = 'randomSelection',
 }
+
+export enum FunctionOption {
+	/**
+	 * Repeat the same sequence once generated
+	 */
+	Cycle = 'cycle',
+	/**
+	 * Re-use values before all or exhausted
+	 */
+	Reuse = 'reuse',
+}
+
+export enum MatrixColumnPropertyName {
+	NoteOffset = 'noteOffset',
+	PanOffset = 'panOffset',
+	VelocityOffset = 'velocityOffset',
+}
+
+export enum MatrixRowPropertyName {
+	NoteOffset = MatrixColumnPropertyName.NoteOffset,
+	PanOffset = MatrixColumnPropertyName.PanOffset,
+	VelocityOffset = MatrixColumnPropertyName.VelocityOffset,
+}

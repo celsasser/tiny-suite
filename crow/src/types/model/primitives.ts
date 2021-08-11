@@ -10,9 +10,11 @@ import { IState } from './state';
 export type FormulaType = string;
 export type KeyboardShortcutType = string[][];
 /**
- * This is how they are typed locally.
+ * This is how they are typed locally. The state will be included by us.
+ * The rest of the args are defined by the function itself.
  */
-export type StateFunctionServer = (
+export type NumbersServerType = (
 	state: Readonly<IState>,
 	...args: any
-) => number | number[];
+) => NumbersServerResultType;
+export type NumbersServerResultType = number[];
