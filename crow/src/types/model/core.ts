@@ -2,8 +2,11 @@
  * @license MIT (see project's LICENSE file)
  */
 
-import { FormulaType } from './primitives';
+import { IState } from './state';
 
+/***********************
+ * Creating basic types
+ **********************/
 export enum Bearing {
 	/**
 	 * Top down
@@ -29,9 +32,31 @@ export enum Bearing {
 	SouthWest = 'southWest',
 }
 
+/***********************
+ * Type definitions
+ **********************/
 export type ColumnBearing = Bearing.South | Bearing.SouthEast | Bearing.SouthWest;
 export type RowBearing = Bearing.East | Bearing.NorthEast | Bearing.SouthEast;
 
+/**
+ * Our cell values will always be string values that will be evaluated as JS.
+ */
+export type FormulaType = string;
+export type KeyboardShortcutType = string[][];
+/**
+ * This is how they are typed locally. The state will be included by us.
+ * The rest of the args are defined by the function itself.
+ */
+export type NumbersServerType = (
+	state: Readonly<IState>,
+	...args: any
+) => NumbersServerResultType;
+
+export type NumbersServerResultType = number[];
+
+/***********************
+ * Interfaces
+ **********************/
 export interface ICoordinate {
 	/**
 	 * Column coordinate

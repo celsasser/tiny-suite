@@ -6,8 +6,10 @@
 **/*.zip
 **/*.log
 
-# eliminate ID
-**/.idea
+# eliminate parts we don't want picked up in webstorm
+**/.idea/workspace.xml
+**/.idea/jsLibraryMappings.xml
+
 
 # build and test stuff that we don't want to keep in VCS
 **/*.lock

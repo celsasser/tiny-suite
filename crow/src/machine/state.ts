@@ -9,7 +9,14 @@ import {
 	getNoteNameSymbols,
 	StringKeyedObject,
 } from '@tiny/core';
-import { ICoordinate, IMatrix, IState } from '../types';
+import {
+	cycleValueServer,
+	invertValueServer,
+	notValueServer,
+	randomGroupingServer,
+	randomSelectionServer,
+} from '../servers';
+import { FunctionName, ICoordinate, IMatrix, IState } from '../types';
 
 const coreApiMap: Readonly<StringKeyedObject> = _createCoreApi();
 
@@ -33,6 +40,7 @@ export function createState(
 		...coreApiMap,
 	};
 	_addMatrixState(state, matrix);
+	_addNumberServers(state);
 	return state;
 }
 
@@ -74,6 +82,15 @@ function _addMatrixState(state: IState, matrix: Readonly<IMatrix>): void {
 			}
 		}
 	}
+}
+
+function _addNumberServers(state: IState): void {
+	state[FunctionName.Cycle] = cycleValueServer.bind(null, state);
+	state[FunctionName.Invert] = invertValueServer.bind(null, state);
+	state[FunctionName.Not] = notValueServer.bind(null, state);
+	state[FunctionName.RandomGrouping] = randomGroupingServer.bind(null, state);
+	state[FunctionName.RandomSelection] = state[FunctionName.Random] =
+		randomSelectionServer.bind(null, state);
 }
 
 /**

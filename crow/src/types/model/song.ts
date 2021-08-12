@@ -2,8 +2,7 @@
  * @license MIT (see project's LICENSE file)
  */
 
-import { KeyboardShortcutType } from './primitives';
-import { ISize } from './core';
+import { ISize, KeyboardShortcutType } from './core';
 import { IMatrix, IMatrixHeading } from './matrix';
 
 export interface ISection {

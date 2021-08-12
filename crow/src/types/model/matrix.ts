@@ -2,8 +2,7 @@
  * @license MIT (see project's LICENSE file)
  */
 
-import { KeyboardShortcutType } from './primitives';
-import { Bearing, ICoordinate, ISize } from './core';
+import { Bearing, ICoordinate, ISize, KeyboardShortcutType } from './core';
 import { ICell, IColumnHeadingCell, IRowHeadingCell } from './cell';
 
 export type MatrixGrid = ICell[][];

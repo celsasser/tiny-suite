@@ -2,8 +2,15 @@
  * @license MIT (see project's LICENSE file)
  */
 
-import { Cell, ColumnHeadingCell, Matrix, MatrixHeading, RowHeadingCell } from '../model';
-import { Section, Song } from '../model/song';
+import {
+	Cell,
+	ColumnHeadingCell,
+	Matrix,
+	MatrixHeading,
+	RowHeadingCell,
+	Section,
+	Song,
+} from '../model';
 import {
 	Bearing,
 	ColumnBearing,

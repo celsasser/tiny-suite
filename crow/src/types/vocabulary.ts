@@ -11,9 +11,20 @@
  */
 export enum FunctionName {
 	/**
-	 * Our homegrown functions
+	 * Cycles values of sequence
 	 */
 	Cycle = 'cycle',
+	/**
+	 * Inverts the sequence around a pivot point
+	 */
+	Invert = 'invert',
+	/**
+	 * Finds all notes not in a set but that are within a range
+	 */
+	Not = 'not',
+	/**
+	 * Same as `RandomSelection`
+	 */
 	Random = 'random',
 	/**
 	 * Randomly builds groups of values from a selection or range of values
@@ -48,4 +59,8 @@ export enum MatrixRowPropertyName {
 	NoteOffset = MatrixColumnPropertyName.NoteOffset,
 	PanOffset = MatrixColumnPropertyName.PanOffset,
 	VelocityOffset = MatrixColumnPropertyName.VelocityOffset,
+}
+
+export enum ReservedIdentifier {
+	Project = 'project',
 }

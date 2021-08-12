@@ -1,7 +1,8 @@
 /**
  * @license MIT (see project's LICENSE file)
  */
-import { FormulaType } from './primitives';
+
+import { FormulaType, NumbersServerType } from './core';
 
 export interface IState {
 	column: number;
@@ -9,7 +10,11 @@ export interface IState {
 	row: number;
 
 	/**
-	 * Cell methods and possibly user defined variables will be stored as text.
+	 * A template for the following items:
+	 * - All cells: may come in the form of literals or formulas
+	 * - Our own number servers
+	 * - Math functions and constants
+	 * - and maybe user variables?
 	 */
-	[property: string]: number | number[] | FormulaType;
+	[property: string]: number | FormulaType | NumbersServerType | Function;
 }
