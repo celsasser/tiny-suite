@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/temp" />
+      <excludeFolder url="file://$MODULE_DIR$/.tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/graph/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/crow/coverage" />
+      <excludeFolder url="file://$MODULE_DIR$/core/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/midi/coverage" />
+      <excludeFolder url="file://$MODULE_DIR$/midi/dist" />
+      <excludePattern pattern="*-lock.json" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
