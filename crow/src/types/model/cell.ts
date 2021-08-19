@@ -4,12 +4,12 @@
 
 import {
 	Bearing,
-	ColumnBearing,
+	ColumnBearings,
 	FormulaType,
 	ICoordinate,
 	IHashable,
 	IValueServer,
-	RowBearing,
+	RowBearings,
 } from './core';
 
 export interface ICell extends IHashable, IValueServer {
@@ -26,10 +26,12 @@ export interface ICell extends IHashable, IValueServer {
 }
 
 /**
- * Either a row and a column heading. This is where formulas are managed
- * and from which matrix algorithmic manipulations are made.
+ * Describes a column or row heading cell. This is where formulas are
+ * managed and from which matrix algorithmic manipulations are made.
  */
-export interface IHeadingCell<Bearings extends Bearing> extends IHashable, IValueServer {
+export interface IHeadingCell<Bearings extends Bearing[]>
+	extends IHashable,
+		IValueServer {
 	/**
 	 * this is the excel like name/id.
 	 * column example: "$A"
@@ -37,13 +39,23 @@ export interface IHeadingCell<Bearings extends Bearing> extends IHashable, IValu
 	 */
 	readonly id: string;
 	readonly offset: number;
-	bearings: Bearings[];
+	/**
+	 * I am thinking we begin by treating these guys as offsets.
+	 * Another possibility is to leave it to the cell. But then
+	 * we will have to be aware of how we process our cells. I mean,
+	 * we already do, but the bearings add more processing. This may
+	 * be an argument against it and treating all heading operations as
+	 * `offset` values.
+	 */
 	noteFormula?: FormulaType;
+	noteBearings?: Bearings;
 	panFormula?: FormulaType;
+	panBearings?: Bearings;
 	velocityFormula?: FormulaType;
+	velocityBearings?: Bearings;
 
 	clone(offset?: number): IHeadingCell<Bearings>;
 }
 
-export type IColumnHeadingCell = IHeadingCell<ColumnBearing>;
-export type IRowHeadingCell = IHeadingCell<RowBearing>;
+export type IColumnHeadingCell = IHeadingCell<ColumnBearings>;
+export type IRowHeadingCell = IHeadingCell<RowBearings>;

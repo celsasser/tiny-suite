@@ -4,22 +4,22 @@
 import { Cell, ColumnHeadingCell, RowHeadingCell } from '../../src/model';
 import {
 	Bearing,
-	ColumnBearing,
+	ColumnBearings,
 	ICell,
 	IColumnHeadingCell,
 	ICoordinate,
 	IRowHeadingCell,
-	RowBearing,
+	RowBearings,
 } from '../../src/types';
 
 export const defaults: {
 	cellColumnBearings: Bearing[];
 	cellRowBearings: Bearing[];
-	headingColumnBearings: ColumnBearing[];
-	headingRowBearings: RowBearing[];
+	headingColumnBearings: ColumnBearings[];
+	headingRowBearings: RowBearings[];
 } = {
 	cellColumnBearings: [Bearing.South],
-	cellRowBearings: [Bearing.South],
+	cellRowBearings: [Bearing.East],
 	headingColumnBearings: [Bearing.South],
 	headingRowBearings: [Bearing.East],
 };
@@ -32,7 +32,10 @@ export function createTestCell(coordinate: Readonly<ICoordinate>): ICell {
 	return value;
 }
 
-export function createTestColumnHeadingCell(offset: number): IColumnHeadingCell {
+export function createTestColumnHeadingCell(
+	offset: number,
+	bearings?: Bearing
+): IColumnHeadingCell {
 	const value = new ColumnHeadingCell(offset, defaults.headingColumnBearings);
 	value.noteFormula = `${offset}*1`;
 	value.panFormula = `${offset}+1`;

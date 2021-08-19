@@ -13,7 +13,7 @@ import {
 } from '../model';
 import {
 	Bearing,
-	ColumnBearing,
+	ColumnBearings,
 	FormulaType,
 	ICell,
 	IColumnHeadingCell,
@@ -24,19 +24,19 @@ import {
 	ISection,
 	ISize,
 	ISong,
-	RowBearing,
+	RowBearings,
 } from '../types';
 
 /**
  * We may want for our headings to have separate formula defaults
  */
 const defaults: Readonly<{
-	columnBearings: ReadonlyArray<ColumnBearing>;
+	columnBearings: ReadonlyArray<ColumnBearings>;
 	columnNoteFormula?: FormulaType;
 	columnPanFormula?: FormulaType;
 	columnVelocityFormula?: FormulaType;
 	matrixSize: Readonly<ISize>;
-	rowBearings: ReadonlyArray<RowBearing>;
+	rowBearings: ReadonlyArray<RowBearings>;
 	rowNoteFormula?: FormulaType;
 	rowPanFormula?: FormulaType;
 	rowVelocityFormula?: FormulaType;

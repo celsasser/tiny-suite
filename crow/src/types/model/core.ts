@@ -35,8 +35,8 @@ export enum Bearing {
 /***********************
  * Type definitions
  **********************/
-export type ColumnBearing = Bearing.South | Bearing.SouthEast | Bearing.SouthWest;
-export type RowBearing = Bearing.East | Bearing.NorthEast | Bearing.SouthEast;
+export type ColumnBearings = [Bearing.South, Bearing.SouthEast, Bearing.SouthWest];
+export type RowBearings = [Bearing.East, Bearing.NorthEast, Bearing.SouthEast];
 
 /**
  * Our cell values will always be string values that will be evaluated as JS.
