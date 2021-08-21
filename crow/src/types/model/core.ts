@@ -35,8 +35,26 @@ export enum Bearing {
 /***********************
  * Type definitions
  **********************/
-export type ColumnBearings = [Bearing.South, Bearing.SouthEast, Bearing.SouthWest];
-export type RowBearings = [Bearing.East, Bearing.NorthEast, Bearing.SouthEast];
+export type ColumnBearingType = ReadonlyArray<Bearing>;
+export type RowBearingType = ReadonlyArray<Bearing>;
+
+/**
+ * I want these to be either treated as an array treated as an enum with some
+ * TS mechanism for dealing with it. But I cant find a way. I attempted
+ * `export type ColumnBearings = [Bearing.South, Bearing.SouthEast, Bearing.SouthWest];`
+ * but then the type is a combination of all of those values. I am going to simplify
+ * and worry about it later or not at at all.
+ */
+export const ColumnBearingValues: ColumnBearingType = [
+	Bearing.South,
+	Bearing.SouthEast,
+	Bearing.SouthWest,
+];
+export const RowBearingValues: RowBearingType = [
+	Bearing.East,
+	Bearing.NorthEast,
+	Bearing.SouthEast,
+];
 
 /**
  * Our cell values will always be string values that will be evaluated as JS.

@@ -5,20 +5,20 @@
 import { Cell, ColumnHeadingCell, RowHeadingCell } from '../../../src/model';
 import {
 	Bearing,
-	ColumnBearings,
+	ColumnBearingType,
 	FormulaType,
 	ICoordinate,
-	RowBearings,
+	RowBearingType,
 } from '../../../src/types';
 
 describe('cell', function () {
 	const defaults: Readonly<{
-		columnBearings: ColumnBearings[];
+		columnBearings: ColumnBearingType[];
 		coordinate: Readonly<ICoordinate>;
 		offset: number;
 		noteFormula: FormulaType;
 		panFormula: FormulaType;
-		rowBearings: RowBearings[];
+		rowBearings: RowBearingType[];
 		velocityFormula: FormulaType;
 	}> = {
 		columnBearings: [Bearing.South],

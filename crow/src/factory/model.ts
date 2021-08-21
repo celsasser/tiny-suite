@@ -13,7 +13,7 @@ import {
 } from '../model';
 import {
 	Bearing,
-	ColumnBearings,
+	ColumnBearingType,
 	FormulaType,
 	ICell,
 	IColumnHeadingCell,
@@ -24,19 +24,19 @@ import {
 	ISection,
 	ISize,
 	ISong,
-	RowBearings,
+	RowBearingType,
 } from '../types';
 
 /**
  * We may want for our headings to have separate formula defaults
  */
 const defaults: Readonly<{
-	columnBearings: ReadonlyArray<ColumnBearings>;
+	columnBearings: ColumnBearingType;
 	columnNoteFormula?: FormulaType;
 	columnPanFormula?: FormulaType;
 	columnVelocityFormula?: FormulaType;
 	matrixSize: Readonly<ISize>;
-	rowBearings: ReadonlyArray<RowBearings>;
+	rowBearings: RowBearingType;
 	rowNoteFormula?: FormulaType;
 	rowPanFormula?: FormulaType;
 	rowVelocityFormula?: FormulaType;
@@ -47,46 +47,57 @@ const defaults: Readonly<{
 };
 
 export function createCell(coordinate: Readonly<ICoordinate>): ICell {
-	const cell = new Cell(coordinate);
-	cell.noteFormula = defaults.columnNoteFormula;
-	cell.panFormula = defaults.columnPanFormula;
-	cell.velocityFormula = defaults.columnVelocityFormula;
-	return cell;
+	return new Cell({
+		coordinate,
+		noteFormula: defaults.columnNoteFormula,
+		panFormula: defaults.columnPanFormula,
+		velocityFormula: defaults.columnVelocityFormula,
+	});
 }
 
 export function createColumnHeadingCell(offset: number): IColumnHeadingCell {
-	const cell = new ColumnHeadingCell(offset, defaults.columnBearings.slice());
-	cell.noteFormula = defaults.columnNoteFormula;
-	cell.panFormula = defaults.columnPanFormula;
-	cell.velocityFormula = defaults.columnVelocityFormula;
-	return cell;
+	return new ColumnHeadingCell({
+		noteBearings: defaults.columnBearings.slice(),
+		noteFormula: defaults.columnNoteFormula,
+		offset,
+		panBearings: defaults.columnBearings.slice(),
+		panFormula: defaults.columnNoteFormula,
+		velocityBearings: defaults.columnBearings.slice(),
+		velocityFormula: defaults.columnVelocityFormula,
+	});
 }
 
-export function createHeading(
+export function createMatrixHeading(
 	size: Readonly<ISize> = defaults.matrixSize
 ): IMatrixHeading {
 	const heading = new MatrixHeading([], []);
+	// a crafty way of getting him to do the work of allocating columns, rows and cells
 	heading.size = size;
 	return heading;
 }
 
 export function createMatrix(size: ISize = defaults.matrixSize): IMatrix {
 	const matrix = new Matrix([]);
+	// a crafty way of getting him to do the work of allocating columns, rows and cells
 	matrix.size = size;
 	return matrix;
 }
 
 export function createRowHeadingCell(offset: number): IRowHeadingCell {
-	const cell = new RowHeadingCell(offset, defaults.rowBearings.slice());
-	cell.noteFormula = defaults.rowNoteFormula;
-	cell.panFormula = defaults.rowPanFormula;
-	cell.velocityFormula = defaults.rowVelocityFormula;
-	return cell;
+	return new RowHeadingCell({
+		noteBearings: defaults.rowBearings.slice(),
+		noteFormula: defaults.rowNoteFormula,
+		offset,
+		panBearings: defaults.rowBearings.slice(),
+		panFormula: defaults.rowNoteFormula,
+		velocityBearings: defaults.rowBearings.slice(),
+		velocityFormula: defaults.rowVelocityFormula,
+	});
 }
 
 export function createSection(size: Readonly<ISize> = defaults.matrixSize): ISection {
 	const matrix = createMatrix(size);
-	const heading = createHeading(size);
+	const heading = createMatrixHeading(size);
 	return new Section({
 		headings: [heading],
 		matrix,

@@ -4,19 +4,19 @@
 import { Cell, ColumnHeadingCell, RowHeadingCell } from '../../src/model';
 import {
 	Bearing,
-	ColumnBearings,
+	ColumnBearingType,
 	ICell,
 	IColumnHeadingCell,
 	ICoordinate,
 	IRowHeadingCell,
-	RowBearings,
+	RowBearingType,
 } from '../../src/types';
 
 export const defaults: {
 	cellColumnBearings: Bearing[];
 	cellRowBearings: Bearing[];
-	headingColumnBearings: ColumnBearings[];
-	headingRowBearings: RowBearings[];
+	headingColumnBearings: ColumnBearingType;
+	headingRowBearings: RowBearingType;
 } = {
 	cellColumnBearings: [Bearing.South],
 	cellRowBearings: [Bearing.East],
@@ -25,28 +25,40 @@ export const defaults: {
 };
 
 export function createTestCell(coordinate: Readonly<ICoordinate>): ICell {
-	const value = new Cell(coordinate);
-	value.noteFormula = `${coordinate.x}*${coordinate.y}`;
-	value.panFormula = `${coordinate.x}+${coordinate.y}`;
-	value.velocityFormula = `${coordinate.x}-${coordinate.y}`;
-	return value;
+	return new Cell({
+		coordinate,
+		noteFormula: `${coordinate.x}*${coordinate.y}`,
+		panFormula: `${coordinate.x}+${coordinate.y}`,
+		velocityFormula: `${coordinate.x}-${coordinate.y}`,
+	});
 }
 
 export function createTestColumnHeadingCell(
 	offset: number,
-	bearings?: Bearing
+	bearings?: ColumnBearingType
 ): IColumnHeadingCell {
-	const value = new ColumnHeadingCell(offset, defaults.headingColumnBearings);
-	value.noteFormula = `${offset}*1`;
-	value.panFormula = `${offset}+1`;
-	value.velocityFormula = `${offset}-1}`;
-	return value;
+	return new ColumnHeadingCell({
+		offset,
+		noteBearings: bearings,
+		noteFormula: `${offset}*1`,
+		panBearings: bearings,
+		panFormula: `64 - ${offset}`,
+		velocityBearings: bearings,
+		velocityFormula: `${offset}-1`,
+	});
 }
 
-export function createTestRowHeadingCell(offset: number): IRowHeadingCell {
-	const value = new RowHeadingCell(offset, defaults.headingRowBearings);
-	value.noteFormula = `${offset}*1`;
-	value.panFormula = `${offset}+1`;
-	value.velocityFormula = `${offset}-1}`;
-	return value;
+export function createTestRowHeadingCell(
+	offset: number,
+	bearings?: RowBearingType
+): IRowHeadingCell {
+	return new RowHeadingCell({
+		offset,
+		noteBearings: bearings,
+		noteFormula: `${offset}*1`,
+		panBearings: bearings,
+		panFormula: `64 - ${offset}`,
+		velocityBearings: bearings,
+		velocityFormula: `${offset}-1}`,
+	});
 }

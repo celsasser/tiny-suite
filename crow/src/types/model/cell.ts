@@ -3,13 +3,12 @@
  */
 
 import {
-	Bearing,
-	ColumnBearings,
+	ColumnBearingType,
 	FormulaType,
 	ICoordinate,
 	IHashable,
 	IValueServer,
-	RowBearings,
+	RowBearingType,
 } from './core';
 
 export interface ICell extends IHashable, IValueServer {
@@ -29,7 +28,7 @@ export interface ICell extends IHashable, IValueServer {
  * Describes a column or row heading cell. This is where formulas are
  * managed and from which matrix algorithmic manipulations are made.
  */
-export interface IHeadingCell<Bearings extends Bearing[]>
+export interface IHeadingCell<Bearings = ColumnBearingType | RowBearingType>
 	extends IHashable,
 		IValueServer {
 	/**
@@ -57,5 +56,5 @@ export interface IHeadingCell<Bearings extends Bearing[]>
 	clone(offset?: number): IHeadingCell<Bearings>;
 }
 
-export type IColumnHeadingCell = IHeadingCell<ColumnBearings>;
-export type IRowHeadingCell = IHeadingCell<RowBearings>;
+export type IColumnHeadingCell = IHeadingCell<ColumnBearingType>;
+export type IRowHeadingCell = IHeadingCell<RowBearingType>;

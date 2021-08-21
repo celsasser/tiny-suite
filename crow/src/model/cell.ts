@@ -4,19 +4,23 @@
 
 import {
 	Bearing,
-	ColumnBearings,
+	ColumnBearingType,
+	ColumnBearingValues,
 	FormulaType,
+	ICell,
+	ICoordinate,
 	IHeadingCell,
-	RowBearings,
+	RowBearingType,
+	RowBearingValues,
 } from '../types';
-import { columnIndexToCode, rowIndexToCode } from './coordinate';
-
+import { columnIndexToCode, coordinateToId, rowIndexToCode } from './coordinate';
+import { assertBearingsSupported } from './utils';
 
 /**
  * Just a type so that we may deconstruct our constructors with some order
  */
 export interface ICellProperties {
-	readonly offset: number;
+	readonly coordinate: Readonly<ICoordinate>;
 	noteFormula?: FormulaType;
 	panFormula?: FormulaType;
 	velocityFormula?: FormulaType;
@@ -25,52 +29,79 @@ export interface ICellProperties {
 /**
  * Just a type so that we may deconstruct our constructors with some order
  */
-export interface IHeadingCellProperties<Bearings extends Bearing[]> {
+export interface IHeadingCellProperties<
+	BearingType = ColumnBearingType | RowBearingType
+> {
 	readonly offset: number;
-	noteBearings?: Bearings;
+	noteBearings?: BearingType;
 	noteFormula?: FormulaType;
-	panBearings?: Bearings;
+	panBearings?: BearingType;
 	panFormula?: FormulaType;
-	velocityBearings?: Bearings;
+	velocityBearings?: BearingType;
 	velocityFormula?: FormulaType;
 }
 
-export class Cell {
-	public readonly offset: number;
+export class Cell implements ICell {
+	/**
+	 * Either use `coordinate`s `toString() method or `coordinateToId`
+	 */
+	public readonly coordinate: ICoordinate;
 	public noteFormula?: FormulaType;
 	public panFormula?: FormulaType;
 	public velocityFormula?: FormulaType;
 
 	public constructor(properties: Readonly<ICellProperties>) {
+		this.coordinate = properties.coordinate;
 		this.noteFormula = properties.noteFormula;
-		this.offset = properties.offset;
 		this.panFormula = properties.panFormula;
 		this.velocityFormula = properties.velocityFormula;
 	}
 
-	public clone(offset?: number): Cell {
-		return = new Cell({
-			offset: offset ?? this.offset,
+	public clone(coordinate?: ICoordinate): ICell {
+		return new Cell({
+			coordinate: coordinate ?? this.coordinate,
 			noteFormula: this.noteFormula,
 			panFormula: this.panFormula,
-			velocityFormula: this.velocityFormula
+			velocityFormula: this.velocityFormula,
 		});
 	}
 
-	public abstract get id(): string;
+	public get id(): string {
+		return coordinateToId(this.coordinate);
+	}
 }
 
-
-export class HeadingCell<Bearings extends Bearing[]> implements IHeadingCell<Bearings> {
+export class HeadingCell<BearingType = ColumnBearingType | RowBearingType>
+	implements IHeadingCell<BearingType>
+{
 	public readonly offset: number;
-	public noteBearings?: Bearings;
+	public noteBearings?: BearingType;
 	public noteFormula?: FormulaType;
-	public panBearings?: Bearings;
+	public panBearings?: BearingType;
 	public panFormula?: FormulaType;
-	public velocityBearings?: Bearings;
+	public velocityBearings?: BearingType;
 	public velocityFormula?: FormulaType;
 
-	public constructor(properties: IHeadingCellProperties<Bearings>) {
+	public constructor(
+		properties: IHeadingCellProperties<BearingType>,
+		bearingValues: ReadonlyArray<Bearing>
+	) {
+		// todo: I don't understand the issue with `noteBearings`, `panBearings` and `velocityBearings`
+		assertBearingsSupported(
+			'note',
+			bearingValues,
+			properties.noteBearings as unknown as ReadonlyArray<Bearing>
+		);
+		assertBearingsSupported(
+			'pan',
+			bearingValues,
+			properties.panBearings as unknown as ReadonlyArray<Bearing>
+		);
+		assertBearingsSupported(
+			'velocity',
+			bearingValues,
+			properties.velocityBearings as unknown as ReadonlyArray<Bearing>
+		);
 		this.noteBearings = properties.noteBearings;
 		this.noteFormula = properties.noteFormula;
 		this.offset = properties.offset;
@@ -80,15 +111,15 @@ export class HeadingCell<Bearings extends Bearing[]> implements IHeadingCell<Bea
 		this.velocityFormula = properties.velocityFormula;
 	}
 
-	public clone(offset?: number): IHeadingCell<Bearings> {
-		return = new (this.constructor as any)({
+	public clone(offset?: number): IHeadingCell<BearingType> {
+		return new (this.constructor as any)({
 			offset: offset ?? this.offset,
 			noteBearings: this.noteBearings,
 			noteFormula: this.noteFormula,
 			panBearings: this.panBearings,
 			panFormula: this.panFormula,
 			velocityBearings: this.velocityBearings,
-			velocityFormula: this.velocityFormula
+			velocityFormula: this.velocityFormula,
 		});
 	}
 
@@ -97,15 +128,20 @@ export class HeadingCell<Bearings extends Bearing[]> implements IHeadingCell<Bea
 	}
 }
 
-export class ColumnHeadingCell extends HeadingCell<ColumnBearings> {
+export class ColumnHeadingCell extends HeadingCell<ColumnBearingType> {
+	constructor(properties: IHeadingCellProperties<ColumnBearingType>) {
+		super(properties, ColumnBearingValues);
+	}
 	public get id(): string {
 		return `$${columnIndexToCode(this.offset)}`;
 	}
 }
 
-export class RowHeadingCell extends HeadingCell<RowBearings> {
+export class RowHeadingCell extends HeadingCell<RowBearingType> {
+	constructor(properties: IHeadingCellProperties<RowBearingType>) {
+		super(properties, RowBearingValues);
+	}
 	public get id(): string {
 		return `$${rowIndexToCode(this.offset)}`;
 	}
 }
-

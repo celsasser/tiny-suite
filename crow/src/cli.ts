@@ -36,7 +36,8 @@ function createSpecification(): tinyCoreModule.Command {
 		.description(description)
 		.option(`-if --${CliOptionNames.InputFile} <path>`, 'Input file')
 		.option(`-of --${CliOptionNames.OutputFile} <path>`, 'Output file')
-		.option(`-sv --${CliOptionNames.Server} <path>`, 'Run as a server');
+		.option(`-sv --${CliOptionNames.Server} <path>`, 'Run as a server')
+		.option(`-vr --${CliOptionNames.Rectangular}`, 'Verifies matrix column counts match');
 }
 
 async function callback(
