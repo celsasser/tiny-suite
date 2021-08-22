@@ -6,18 +6,16 @@
 
 import { StringKeyedObject } from '@tiny/core';
 import * as vm from 'vm';
+import { IState } from '../types';
 
 /**
  * Runs script in a context created by combining a core group of properties
  * with `dynamicProperties`
  * @throws {Error}
  */
-export function runScript(
-	script: string,
-	sandbox: Readonly<StringKeyedObject>
-): number | number[] {
+export function runScript(script: string, state: IState): number | number[] {
 	try {
-		const context = _buildContext(sandbox);
+		const context = _buildContext(state);
 		return vm.runInContext(script, context);
 	} catch (error) {
 		throw new Error(`attempt to process the matrix failed: ${error.message}`);

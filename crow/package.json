@@ -2,7 +2,8 @@
 	"author": "curt.elsasser@gmail.com",
 	"dependencies": {
 		"@tiny/core": "0.0.1",
-		"lodash": "4.17.21"
+		"lodash": "4.17.21",
+		"nanoid": "3.1.25"
 	},
 	"description": "I'd call it a musical spreadsheet but that will scare people. See README.md",
 	"devDependencies": {

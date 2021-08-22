@@ -2,7 +2,6 @@
  * @license MIT (see project's LICENSE file)
  */
 
-import { trimString } from '@tiny/core';
 import { createColumnHeadingCell, createRowHeadingCell } from '../factory';
 import {
 	IColumnHeadingCell,
@@ -13,14 +12,23 @@ import {
 } from '../types';
 
 export class MatrixHeading implements IMatrixHeading {
+	public readonly id: string;
 	public shortcut?: KeyboardShortcutType;
 	private _columns: IColumnHeadingCell[];
-	private _name?: string;
 	private _rows: IRowHeadingCell[];
 
-	constructor(columns: IColumnHeadingCell[], rows: IRowHeadingCell[]) {
+	constructor({
+		columns,
+		id,
+		rows,
+	}: {
+		columns: IColumnHeadingCell[];
+		id: string;
+		rows: IRowHeadingCell[];
+	}) {
 		this._columns = columns;
 		this._rows = rows;
+		this.id = id;
 	}
 
 	/***********************
@@ -30,13 +38,6 @@ export class MatrixHeading implements IMatrixHeading {
 		return this._columns;
 	}
 
-	public get name(): string | undefined {
-		return this._name;
-	}
-
-	public set name(value: string | undefined) {
-		this._name = trimString(value);
-	}
 	public get rows(): ReadonlyArray<IRowHeadingCell> {
 		return this._rows;
 	}

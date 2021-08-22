@@ -2,7 +2,7 @@
  * @license MIT (see project's LICENSE file)
  */
 
-import { IChannel, NotImplemented } from '@tiny/core';
+import { IChannel } from '@tiny/core';
 import { IStaticInput } from '../types';
 
 /**
@@ -21,10 +21,20 @@ export class StaticMachine {
 	}
 
 	public run(): IChannel[] {
-		throw new NotImplemented();
+		const matrix = this._processMatrix();
+		this._applyRowHeaders(matrix);
+		this._applyColumnHeaders(matrix);
+		return this._matrixToChannels(matrix);
 	}
 
 	/***********************
 	 * Private Interface
 	 **********************/
+	private _applyColumnHeaders(matrix: any): void {}
+
+	private _applyRowHeaders(matrix: any): void {}
+
+	private _matrixToChannels(matrix: any): IChannel[] {}
+
+	private _processMatrix(): any {}
 }

@@ -18,6 +18,10 @@ export interface IMatrixHeading {
 	 */
 	readonly columns: ReadonlyArray<IColumnHeadingCell>;
 	/**
+	 * Unique id of this heading
+	 */
+	readonly id: string;
+	/**
 	 * You may modify and replace row values but must use size to change
 	 * the dimensions
 	 */
@@ -29,9 +33,8 @@ export interface IMatrixHeading {
 	 */
 	size: ISize;
 	/**
-	 * Optional name should you want to create more than one heading for a section
+	 * Optional shortcut should we decide to make it graphical
 	 */
-	name?: string;
 	shortcut?: KeyboardShortcutType;
 }
 
@@ -53,7 +56,7 @@ export interface IMatrix {
 	/**
 	 * Gets a single cell by its full coordinate name: "$<A-Z><row+1>"
 	 */
-	getCellById(name: string): ICell;
+	getCellById(id: string): ICell;
 
 	/**
 	 * Gets a sequence of cells. It will always be from the left-most or top-most

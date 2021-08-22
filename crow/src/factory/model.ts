@@ -2,6 +2,7 @@
  * @license MIT (see project's LICENSE file)
  */
 
+import { nanoid } from 'nanoid';
 import {
 	Cell,
 	ColumnHeadingCell,
@@ -70,7 +71,11 @@ export function createColumnHeadingCell(offset: number): IColumnHeadingCell {
 export function createMatrixHeading(
 	size: Readonly<ISize> = defaults.matrixSize
 ): IMatrixHeading {
-	const heading = new MatrixHeading([], []);
+	const heading = new MatrixHeading({
+		columns: [],
+		id: nanoid(),
+		rows: [],
+	});
 	// a crafty way of getting him to do the work of allocating columns, rows and cells
 	heading.size = size;
 	return heading;
@@ -100,6 +105,7 @@ export function createSection(size: Readonly<ISize> = defaults.matrixSize): ISec
 	const heading = createMatrixHeading(size);
 	return new Section({
 		headings: [heading],
+		id: nanoid(),
 		matrix,
 		size,
 	});

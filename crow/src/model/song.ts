@@ -14,25 +14,28 @@ import {
 
 export class Section implements ISection {
 	public readonly headings: IMatrixHeading[];
+	public readonly id: string;
 	public readonly matrix: IMatrix;
 	/**
 	 * Optional key-chord that will activate the same section and make him crack rocks
 	 */
 	public shortcut?: KeyboardShortcutType;
-	public name?: string;
 	private _description?: string;
 	private _size: ISize;
 
 	constructor({
 		headings,
+		id,
 		matrix,
 		size,
 	}: {
 		headings: IMatrixHeading[];
+		id: string;
 		matrix: IMatrix;
 		size: ISize;
 	}) {
 		this.headings = headings;
+		this.id = id;
 		this.matrix = matrix;
 		this._size = size;
 	}
@@ -56,9 +59,8 @@ export class Section implements ISection {
 }
 
 export class Song implements ISong {
-	// @ts-expect-error: not implemented yet
+	public readonly sections: ISection[];
 	private _description?: string;
-	public sections: ISection[];
 	private _name?: string;
 
 	constructor(sections: ISection[]) {
@@ -68,6 +70,14 @@ export class Song implements ISong {
 	/***********************
 	 * Public Accessors
 	 **********************/
+	public get description(): string | undefined {
+		return this._description;
+	}
+
+	public set description(value: string | undefined) {
+		this._description = trimString(value);
+	}
+
 	public get name(): string | undefined {
 		return this._name;
 	}
