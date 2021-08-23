@@ -3,7 +3,7 @@
  */
 
 import * as _ from 'lodash';
-import { INumericRange, ParseTextBuffer } from '@tiny/core';
+import { INumericRange, MidiChannelType, ParseTextBuffer } from '@tiny/core';
 import { stringToInteger } from '../core';
 import { Edge, Graph, Vertex } from '../graph';
 import {
@@ -68,7 +68,7 @@ function _buildVertexMap(
 		): VertexMap => {
 			const params: VertexConstructorParams = {
 				channel: interimVertex.channel
-					? stringToInteger(interimVertex.channel)
+					? (stringToInteger(interimVertex.channel) as MidiChannelType)
 					: undefined,
 				name: interimVertex.name,
 				notes: interimVertex.notes

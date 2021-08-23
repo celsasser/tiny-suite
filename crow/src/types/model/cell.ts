@@ -2,6 +2,7 @@
  * @license MIT (see project's LICENSE file)
  */
 
+import { MidiChannelType } from '@tiny/core';
 import {
 	ColumnBearingType,
 	FormulaType,
@@ -57,4 +58,6 @@ export interface IHeadingCell<Bearings = ColumnBearingType | RowBearingType>
 }
 
 export type IColumnHeadingCell = IHeadingCell<ColumnBearingType>;
-export type IRowHeadingCell = IHeadingCell<RowBearingType>;
+export interface IRowHeadingCell extends IHeadingCell<RowBearingType> {
+	channel: MidiChannelType;
+}

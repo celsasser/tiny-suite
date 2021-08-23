@@ -2,6 +2,7 @@
  * @license MIT (see project's LICENSE file)
  */
 
+import { MidiChannelType } from '@tiny/core';
 import { Cardinality, NumbersServer } from '../types';
 
 /**
@@ -47,7 +48,7 @@ export class Vertex {
 		transition = Cardinality.Mono,
 		velocity,
 	}: {
-		channel?: number;
+		channel?: MidiChannelType;
 		name: string;
 		notes?: NumbersServer;
 		pan?: NumbersServer;
