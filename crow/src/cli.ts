@@ -5,10 +5,10 @@
 import * as tinyCoreModule from '@tiny/core';
 import { description, version } from '../package.json';
 
-import { readInput } from './input';
+import { readInputData } from './input';
 import { StaticMachine } from './machine';
 import { writeStaticOutput } from './output';
-import { parseStaticInput } from './parse';
+import { parseInputData, validateInputSpecification } from './parse';
 import { CliOptionNames, CliOptions } from './types';
 
 /**
@@ -35,8 +35,10 @@ function createSpecification(): tinyCoreModule.Command {
 		.version(version)
 		.description(description)
 		.option(`-if --${CliOptionNames.InputFile} <path>`, 'Input file')
+		.option(`-it --${CliOptionNames.Iterations} [value]`, 'Input file', '16')
 		.option(`-of --${CliOptionNames.OutputFile} <path>`, 'Output file')
-		.option(`-sv --${CliOptionNames.Server} <path>`, 'Run as a server')
+		.option(`-sv --${CliOptionNames.Server}`, 'Run as a server')
+		.option(`-sv --${CliOptionNames.Port} <port>`, 'Run as a server', '3200')
 		.option(`-vr --${CliOptionNames.Rectangular}`, 'Verifies matrix column counts match');
 }
 
@@ -59,9 +61,9 @@ async function processStaticRequest(
 	options: Readonly<CliOptions>,
 	args: ReadonlyArray<string>
 ): Promise<void> {
-	const input = await readInput(options);
-	const parsed = parseStaticInput(input);
-	const machine = new StaticMachine(parsed);
+	const input = parseInputData(await readInputData(options));
+	const { validInput, validOptions } = validateInputSpecification(input, options);
+	const machine = new StaticMachine(options, input);
 	const output = machine.run();
 	await writeStaticOutput(output, options);
 }

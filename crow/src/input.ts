@@ -2,10 +2,10 @@
  * @license MIT (see project's LICENSE file)
  */
 
-import { readFile } from '@tiny/core';
-import { CliOptions } from './types';
+import { readFile, readStdin } from '@tiny/core';
+import { CliOptions, IStaticInput } from './types';
 
-export async function readInput(
+export async function readInputData(
 	options: Readonly<CliOptions>,
 	args: ReadonlyArray<string> = []
 ): Promise<string> {
@@ -15,7 +15,7 @@ export async function readInput(
 		} else if (options.inputFile) {
 			return await readFile(options.inputFile);
 		} else {
-			return await readInput();
+			return await readStdin();
 		}
 	} catch (error) {
 		throw new Error(`attempt to read failed - ${error.message}`);

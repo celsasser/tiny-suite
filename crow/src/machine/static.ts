@@ -3,7 +3,7 @@
  */
 
 import { IChannel } from '@tiny/core';
-import { IStaticInput } from '../types';
+import { CliOptions, IStaticInput } from '../types';
 
 /**
  * todo: I want to be able to configure and run the machine from a browser.
@@ -12,12 +12,14 @@ import { IStaticInput } from '../types';
 export class StaticMachine {
 	// @ts-expect-error: we'll get to it
 	private _input: Readonly<IStaticInput>;
+	private _options: Readonly<CliOptions>;
 
 	/***********************
 	 * Public Interface
 	 **********************/
-	public constructor(input: Readonly<IStaticInput>) {
+	public constructor(options: Readonly<CliOptions>, input: Readonly<IStaticInput>) {
 		this._input = input;
+		this._options = options;
 	}
 
 	public run(): IChannel[] {
