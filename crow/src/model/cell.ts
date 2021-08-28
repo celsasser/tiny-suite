@@ -74,6 +74,7 @@ export class Cell implements ICell {
 export class HeadingCell<BearingType = ColumnBearingType | RowBearingType>
 	implements IHeadingCell<BearingType>
 {
+	public readonly channel?: number;
 	public readonly offset: number;
 	public noteBearings?: BearingType;
 	public noteFormula?: FormulaType;
@@ -86,7 +87,8 @@ export class HeadingCell<BearingType = ColumnBearingType | RowBearingType>
 		properties: IHeadingCellProperties<BearingType>,
 		bearingValues: ReadonlyArray<Bearing>
 	) {
-		// todo: I don't understand the issue with `noteBearings`, `panBearings` and `velocityBearings`
+		// todo: I don't understand the issue with `noteBearings`, `panBearings` and
+		// `velocityBearings`
 		assertBearingsSupported(
 			'note',
 			bearingValues,
@@ -129,18 +131,20 @@ export class HeadingCell<BearingType = ColumnBearingType | RowBearingType>
 }
 
 export class ColumnHeadingCell extends HeadingCell<ColumnBearingType> {
-	constructor(properties: IHeadingCellProperties<ColumnBearingType>) {
+	public constructor(properties: IHeadingCellProperties<ColumnBearingType>) {
 		super(properties, ColumnBearingValues);
 	}
+
 	public get id(): string {
 		return `$${columnIndexToCode(this.offset)}`;
 	}
 }
 
 export class RowHeadingCell extends HeadingCell<RowBearingType> {
-	constructor(properties: IHeadingCellProperties<RowBearingType>) {
+	public constructor(properties: IHeadingCellProperties<RowBearingType>) {
 		super(properties, RowBearingValues);
 	}
+
 	public get id(): string {
 		return `$${rowIndexToCode(this.offset)}`;
 	}

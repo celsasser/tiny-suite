@@ -63,7 +63,7 @@ async function processStaticRequest(
 ): Promise<void> {
 	const input = parseInputData(await readInputData(options));
 	const { validInput, validOptions } = validateInputSpecification(input, options);
-	const machine = new StaticMachine(options, input);
+	const machine = new StaticMachine(validInput, validOptions);
 	const output = machine.run();
 	await writeStaticOutput(output, options);
 }

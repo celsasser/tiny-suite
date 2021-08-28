@@ -13,15 +13,15 @@ export function validateInputSpecification(
 	input: Readonly<IStaticInput>,
 	options: Readonly<CliOptions>
 ): {
-	input: IStaticInput;
-	options: Record<CliOptions, any>;
+	validInput: Readonly<IStaticInput>;
+	validOptions: CliOptions;
 } {
 	return {
-		input,
-		options: {
+		validInput,
+		validOptions: {
 			...options,
 			iterations: Number(options.iterations),
-			server: Boolean(CliOptions.server ? true),
+			server: Boolean(CliOptions.server),
 			port: Number(options.port),
 		},
 	};

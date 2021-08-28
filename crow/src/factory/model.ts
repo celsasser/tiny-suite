@@ -88,11 +88,15 @@ export function createMatrix(size: ISize = defaults.matrixSize): IMatrix {
 	return matrix;
 }
 
-export function createRowHeadingCell(offset: number): IRowHeadingCell {
+export function createRowHeadingCell(
+	offset: number,
+	channel?: ChannelMidiType
+): IRowHeadingCell {
 	return new RowHeadingCell({
+		channel: offset,
 		noteBearings: defaults.rowBearings.slice(),
 		noteFormula: defaults.rowNoteFormula,
-		offset,
+		offset: channel ?? offset,
 		panBearings: defaults.rowBearings.slice(),
 		panFormula: defaults.rowNoteFormula,
 		velocityBearings: defaults.rowBearings.slice(),

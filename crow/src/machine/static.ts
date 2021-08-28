@@ -17,7 +17,7 @@ export class StaticMachine {
 	/***********************
 	 * Public Interface
 	 **********************/
-	public constructor(options: Readonly<CliOptions>, input: Readonly<IStaticInput>) {
+	public constructor(input: Readonly<IStaticInput>, options: Readonly<CliOptions>) {
 		this._input = input;
 		this._options = options;
 	}
