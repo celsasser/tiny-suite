@@ -1,8 +1,8 @@
-# Tiny GTS (grammar to stream?)
+# Tiny Circles
 
 ## Draft
 
-It's a simple markup language for describing graphs and parameters for their execution
+It's a simple markup language for describing cycles velocity values per "circle" (or more accurately ellipses) .
 
 ## Language
 

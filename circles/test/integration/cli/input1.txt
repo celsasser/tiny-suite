@@ -1,0 +1,14 @@
+##################################
+# test a very basic specification
+##################################
+
+$collection1:
+notes = 50
+
+$collection2 :
+notes = [60, 62, 64]
+
+$collection1 -> $collection2:
+
+project:
+start = $collection1

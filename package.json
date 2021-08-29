@@ -44,6 +44,7 @@
 	},
 	"version": "0.0.1",
 	"workspaces": [
+		"circles",
 		"core",
 		"crow",
 		"graph",

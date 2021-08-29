@@ -12,7 +12,7 @@ then
 fi
 
 # these are in order of least to dependencies to some
-MODULES="core graph midi sgl";
+MODULES="core circles graph midi sgl";
 
 for module in ${MODULES}
 do
