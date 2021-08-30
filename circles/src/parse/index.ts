@@ -2,10 +2,12 @@
  * @license MIT (see project's LICENSE file)
  */
 
-import * as _ from 'lodash';
 import { ParseTextBuffer } from '@tiny/core';
+import * as _ from 'lodash';
 import {
 	CirclePropertyName,
+	CircleShape,
+	getAllVocabularyProperties,
 	ICircleProperties,
 	IParsedInput,
 	IProjectProperties,
@@ -19,7 +21,7 @@ import { validate } from './validate';
  * Picks the jumble apart and returns it or throws an error
  * @throws {Error}
  */
-export function parseInput(input: string): any {
+export function parseInput(input: string): IParsedInput {
 	const result: Partial<IParsedInput> = {
 		circles: [],
 	};
@@ -49,11 +51,18 @@ function _getCircle(buffer: ParseTextBuffer): ICircleProperties | undefined {
 	const matches = buffer.match(LexicalPatterns.CircleDeclaration);
 	if (matches) {
 		let propertyAssignment;
-		const properties: Partial<ICircleProperties> = { name: matches[0] };
+		const properties: Partial<ICircleProperties> = {
+			max: '127',
+			min: '0',
+			phase: '0',
+			name: matches[0],
+			shape: CircleShape.LowToHigh,
+		};
+		const supportedProperties = getAllVocabularyProperties(CirclePropertyName);
 		while ((propertyAssignment = _getPropertyAssignment(buffer))) {
-			// we really don't care if the user adds properties but our concern is that
-			// they may have misspelled a known property
-			if (Object.values<string>(CirclePropertyName).includes(propertyAssignment.name)) {
+			// we really don't care if the user adds properties but our concern is that they
+			// may have misspelled a known property
+			if (supportedProperties.includes(propertyAssignment.name)) {
 				// @ts-expect-error: he doesn't trust me (with good reason)
 				properties[propertyAssignment.name] = propertyAssignment.rvalue;
 			} else {
@@ -72,10 +81,9 @@ function _getProject(buffer: ParseTextBuffer): IProjectProperties | undefined {
 	if (matches) {
 		let propertyAssignment;
 		const properties: Partial<IProjectProperties> = {};
+		const supportedProperties = getAllVocabularyProperties(ProjectPropertyName);
 		while ((propertyAssignment = _getPropertyAssignment(buffer))) {
-			// we really don't care if the user adds properties but our concern is that
-			// they may have misspelled a known property
-			if (Object.values<string>(ProjectPropertyName).includes(propertyAssignment.name)) {
+			if (supportedProperties.includes(propertyAssignment.name)) {
 				// @ts-expect-error: he doesn't trust me (with good reason)
 				properties[propertyAssignment.name] = propertyAssignment.rvalue;
 			} else {
