@@ -8,6 +8,14 @@ export enum ReservedIdentifier {
 	Project = 'project',
 }
 
+/**
+ * todo: assign properties
+ */
+export enum CirclePropertyName {}
+
+/**
+ * todo: assign properties
+ */
 export enum ProjectPropertyName {
 	Name = 'name',
 	Start = 'start',

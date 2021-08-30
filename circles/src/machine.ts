@@ -20,7 +20,7 @@ export class Machine {
 	 * Public Interface
 	 **********************/
 	public run(): IChannel[] {
-		let steps = 0;
+		const steps = 0;
 		const channels: IChannel[] = [];
 		channels.forEach(this._cleanChannel.bind(this));
 		return channels;

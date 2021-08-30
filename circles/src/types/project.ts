@@ -2,10 +2,8 @@
  * @license MIT (see project's LICENSE file)
  */
 
-import { Database } from '../database';
-
 export interface IParsedInput {
-	database: Database;
+	circles: ICircleProperties[];
 	project: IProjectProperties;
 }
 
@@ -19,4 +17,8 @@ export interface IProjectProperties {
 	 * graph traversal
 	 */
 	steps?: number;
+}
+
+export interface ICircleProperties {
+	name: string;
 }
