@@ -2,6 +2,7 @@
  * @license MIT (see project's LICENSE file)
  */
 
+import * as _ from 'lodash';
 import { ParseTextBuffer } from '@tiny/core';
 import {
 	CirclePropertyName,
