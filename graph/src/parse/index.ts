@@ -3,7 +3,7 @@
  */
 
 import * as _ from 'lodash';
-import { getNoteNameSymbols, ParseTextBuffer } from '@tiny/core';
+import { getMidiNoteNameSymbols, ParseTextBuffer } from '@tiny/core';
 import {
 	EdgePropertyName,
 	IParsedInput,
@@ -34,7 +34,7 @@ export function parseInput(input: string): IParsedInput {
 	const buffer = new ParseTextBuffer(input);
 	const edges: InterimEdgeConstructorParamsArray = [];
 	const vertices: InterimVertexConstructorParamsMap = {};
-	const symbols = new TinySymbolTable({ symbols: getNoteNameSymbols().values });
+	const symbols = new TinySymbolTable({ symbols: getMidiNoteNameSymbols().values });
 
 	/**
 	 * Removes meaningless stuff and then checks on where we are

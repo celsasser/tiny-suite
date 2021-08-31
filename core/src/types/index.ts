@@ -7,4 +7,5 @@ export * from './cli';
 export * from './core';
 export * from './defaults';
 export * from './errors';
+export * from './midi';
 export * from './resource';

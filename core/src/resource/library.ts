@@ -7,10 +7,14 @@
 import { ISymbolTableResource } from '../types';
 import { loadModuleJsonResource } from './load';
 
-export function getNoteIntervalSymbols(): ISymbolTableResource<number> {
-	return loadModuleJsonResource('./res/symbols/intervals.json');
+export function getMidiDefaultSymbols(): ISymbolTableResource<any> {
+	return loadModuleJsonResource('./res/midi/symbols/defaults.json');
 }
 
-export function getNoteNameSymbols(): ISymbolTableResource<number> {
-	return loadModuleJsonResource('./res/symbols/noteNames.json');
+export function getMidiNoteIntervalSymbols(): ISymbolTableResource<number> {
+	return loadModuleJsonResource('./res/midi/symbols/intervals.json');
+}
+
+export function getMidiNoteNameSymbols(): ISymbolTableResource<number> {
+	return loadModuleJsonResource('./res/midi/symbols/noteNames.json');
 }

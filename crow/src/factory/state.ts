@@ -5,8 +5,8 @@
  */
 
 import {
-	getNoteIntervalSymbols,
-	getNoteNameSymbols,
+	getMidiNoteIntervalSymbols,
+	getMidiNoteNameSymbols,
 	StringKeyedObject,
 } from '@tiny/core';
 import {
@@ -99,8 +99,8 @@ function _addNumberServers(state: IState): void {
  */
 function _createCoreApi(): StringKeyedObject {
 	const map = {
-		...getNoteIntervalSymbols().values,
-		...getNoteNameSymbols().values,
+		...getMidiNoteIntervalSymbols().values,
+		...getMidiNoteNameSymbols().values,
 	};
 	Object.getOwnPropertyNames(Math).reduce<StringKeyedObject>(
 		(accumulator, key): StringKeyedObject => {

@@ -33,6 +33,7 @@ export async function run({
  * Builds a meta command description
  */
 function createSpecification(): tinyCoreModule.Command {
+	const midiDefaults = tinyCoreModule.getMidiDefaultSymbols().values;
 	return new tinyCoreModule.Command()
 		.version(version)
 		.description(description)
@@ -41,18 +42,18 @@ function createSpecification(): tinyCoreModule.Command {
 		.option(
 			`-ppn --${CliOptionNames.PulsePerNote} <value>`,
 			'Set the pulse-per-note',
-			'480'
+			midiDefaults.get('ppq')
 		)
 		.option(
 			`-ppq --${CliOptionNames.PulsePerQuarter} <value>`,
 			'Set the pulse-per-quarter',
-			'480'
+			midiDefaults.get('ppq')
 		)
 		.option(`-t --${CliOptionNames.Tempo} <value>`, 'Set the tempo', '120')
 		.option(
 			`-v --${CliOptionNames.Velocity} <value>`,
 			'Set the default note velocity',
-			'84'
+			midiDefaults.get('velocity')
 		);
 }
 

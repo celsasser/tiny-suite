@@ -1,0 +1,12 @@
+{
+	"description": "Default MIDI control values",
+	"symbols": {
+		"pan": 0,
+		"ppq": 480,
+		"timeSignature": {
+			"denominator": 4,
+			"numerator": 4
+		},
+		"velocity": 84
+	}
+}
