@@ -1,9 +1,9 @@
 {
 	"description": "Default MIDI control values",
-	"symbols": {
+	"values": {
 		"pan": 0,
 		"ppq": 480,
-		"timeSignature": {
+		"timesignature": {
 			"denominator": 4,
 			"numerator": 4
 		},

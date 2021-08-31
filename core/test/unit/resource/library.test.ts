@@ -12,8 +12,13 @@ import { directoryToDescribeTitle } from '../../utils';
 describe(directoryToDescribeTitle(__dirname, 'library.ts'), function () {
 	describe('getMidiNoteIntervalSymbols', function () {
 		it('should properly load our intervals definition', function () {
-			const result = getMidiDefaultSymbols();
-			expect(result).toEqual(require('../../../res/midi/symbols/defaults.json'));
+			expect(getMidiDefaultSymbols()).toEqual(
+				require('../../../res/midi/symbols/defaults.json')
+			);
+			// should only load once. We are lazy and checking this by hand
+			expect(getMidiDefaultSymbols()).toEqual(
+				require('../../../res/midi/symbols/defaults.json')
+			);
 		});
 	});
 

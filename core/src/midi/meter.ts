@@ -2,7 +2,10 @@
  * @license MIT (see project's LICENSE file)
  */
 
+import { getMidiDefaultSymbols } from '../resource';
 import { TimeSignature } from '../types';
+
+const midiDefaults = getMidiDefaultSymbols();
 
 /**
  * Takes an offset of any form and returns a MIDI pulse offset. Supports:
@@ -15,8 +18,8 @@ import { TimeSignature } from '../types';
  */
 export function midiOffsetToPulseCount(
 	offset: number | string,
-	timesignature: TimeSignature,
-	ppq: number
+	timesignature: TimeSignature = midiDefaults.values.timesignature,
+	ppq: number = midiDefaults.values.ppq
 ): number {
 	if (typeof offset === 'number') {
 		return offset;

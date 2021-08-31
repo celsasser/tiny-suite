@@ -28,6 +28,11 @@ describe(directoryToDescribeTitle(__dirname, 'meter.ts'), function () {
 				});
 			}
 		);
+
+		it(`should return use defaults if not specified`, function () {
+			const result = midiOffsetToPulseCount('1:1/4');
+			expect(result).toStrictEqual(600);
+		});
 	});
 
 	describe('timesignatureToPulsesPerBeat', function () {
