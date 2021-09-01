@@ -35,7 +35,7 @@ export function stringToBoolean(value: string): boolean {
 export function stringToInteger(value: string): number {
 	const converted = parseInt(value);
 	if (isNaN(converted)) {
-		throw new Error(`unable parse "${value}" as an integer value`);
+		throw new Error(`unable to parse "${value}" as an integer value`);
 	}
 	return converted;
 }
