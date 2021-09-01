@@ -4,6 +4,11 @@
  * Primitive parsing. Throws errors upon failure
  */
 
+export function isStringAnArray(value: string): boolean {
+	value = value.trim();
+	return value.startsWith('[') && value.endsWith(']');
+}
+
 /**
  * Parses and returns the integer or throws an error if parse fails
  * @param value
@@ -33,6 +38,19 @@ export function stringToInteger(value: string): number {
 		throw new Error(`unable parse "${value}" as an integer value`);
 	}
 	return converted;
+}
+
+/**
+ * Parses and returns the integers or throws an error if parse fails
+ * @param value
+ * @throws {Error}
+ */
+export function stringToIntegers(value: string): number[] {
+	if (!isStringAnArray((value = value.trim()))) {
+		throw new Error(`unable to parse "${value}" as an array of integers`);
+	}
+	const values = value.substring(1, value.length - 1);
+	return values.split(/\s*,\s*/).map(stringToInteger);
 }
 
 /**
