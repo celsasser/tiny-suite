@@ -6,6 +6,7 @@ import {
 	stringToBoolean,
 	stringToInteger,
 	stringToIntegers,
+	trimString,
 } from '../../../src/parse/primitives';
 import { directoryToDescribeTitle } from '../../utils';
 
@@ -78,6 +79,31 @@ describe(directoryToDescribeTitle(__dirname, 'primitives'), function () {
 			expect(stringToIntegers.bind(null, 'George')).toThrow(
 				'unable to parse "George" as an array of integers'
 			);
+		});
+	});
+
+	describe('trimString', function () {
+		[
+			{
+				expected: 'stuff',
+				input: 'stuff',
+			},
+			{
+				expected: 'stuff',
+				input: ' stuff ',
+			},
+			{
+				expected: undefined,
+				input: undefined,
+			},
+			{
+				expected: undefined,
+				input: ' ',
+			},
+		].forEach(({ expected, input }) => {
+			it(`${input} should parse to ${expected}`, function () {
+				expect(trimString(input)).toEqual(expected);
+			});
 		});
 	});
 });

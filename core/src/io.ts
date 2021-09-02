@@ -10,11 +10,6 @@ import * as getStdin from 'get-stdin';
 /***********************
  * Public Interface
  **********************/
-export async function readStdin(): Promise<string> {
-	const buffer = await getStdin();
-	return buffer.toString();
-}
-
 export async function readFile(path: string, encoding = 'utf-8'): Promise<string> {
 	return fs.readFile(path, { encoding });
 }
@@ -24,6 +19,11 @@ export async function readJsonFromPath(
 	options?: fs.ReadOptions
 ): Promise<any> {
 	return fs.readJson(path, options);
+}
+
+export async function readStdin(): Promise<string> {
+	const buffer = await getStdin();
+	return buffer.toString();
 }
 
 export async function writeJsonToPath<T = unknown>(

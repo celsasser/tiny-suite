@@ -41,7 +41,8 @@ export function stringToInteger<T extends number>(value: string): T {
 }
 
 /**
- * Parses and returns the integers or throws an error if parse fails
+ * Parses and returns the integers or throws an error if parse fails.
+ * Parameterized so that you may convert numbers to enums and friends.
  * @param value
  * @throws {Error}
  */
@@ -54,9 +55,9 @@ export function stringToIntegers<T extends number>(value: string): T[] {
 }
 
 /**
- * Returns a non empty string or undefined. Uses JS's trim to trim the edges
+ * Uses JS's trim to trim the edges and evaluates for existence of stuff in the middle
  * @param value
- * @returns
+ * @returns a non empty string or `undefined`
  */
 export function trimString(value?: string): string | undefined {
 	if (value) {
