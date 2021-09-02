@@ -9,6 +9,7 @@ export enum ReservedIdentifier {
 }
 
 export enum CirclePropertyName {
+	Channel = '*channel',
 	Description = '*description',
 	/**
 	 * Overall width
@@ -18,10 +19,21 @@ export enum CirclePropertyName {
 	Min = 'min',
 	Max = 'max',
 	Name = '*name',
+	Notes = 'notes',
+	/**
+	 * Optional `off` length of each note. Defaults to 0.
+	 * Note: should use `on` and `off` mutually exclusively
+	 */
+	Off = '*off',
+	/**
+	 * Optional `on` length of each note. Defaults to `diameter/divisions`
+	 * Note: should use `on` and `off` mutually exclusively
+	 */
+	On = '*on',
 	/**
 	 * Phase of shape
 	 */
-	Phase = 'phase',
+	Phase = '*phase',
 	/**
 	 * The flow
 	 */
@@ -29,14 +41,14 @@ export enum CirclePropertyName {
 }
 
 export enum ProjectPropertyName {
-	Name = 'name',
-	Steps = 'steps',
+	Name = '*name',
+	Steps = 'length',
 }
 
 export function getAllVocabularyProperties<T extends { [property: string]: string }>(
 	t: T
 ): ReadonlyArray<string> {
-	return Object.values(t);
+	return Object.values(t).map((v) => (v.startsWith('*') ? v.substr(1) : v));
 }
 
 export function getRequiredVocabularyProperties<T extends { [property: string]: string }>(

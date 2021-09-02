@@ -6,6 +6,6 @@
 				"notes": [[50], [60, 62, 64]]
 			}
 		],
-		"text": "input1.txt: should render proper output for a simple specification"
+		"text": "input1.txt: should properly render output for a simple specification"
 	}
 ]

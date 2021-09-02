@@ -18,9 +18,7 @@ export class LexicalPatterns {
 	/**
 	 * Either a symbol (assumed to represent a number) or a literal
 	 */
-	public static readonly NumericValue = new RegExp(
-		`(?:${LexicalPatterns.Number.source}|${LexicalPatterns.Symbol.source})`
-	);
+	public static readonly NumericValue = LexicalPatterns.Number;
 	/**
 	 * Array of numbers, symbols or both
 	 */
@@ -32,19 +30,6 @@ export class LexicalPatterns {
 	 */
 	private static readonly NumericValueOrNumericArray = new RegExp(
 		`(?:${LexicalPatterns.NumericValue.source}|${LexicalPatterns.NumericArray.source})`
-	);
-	private static readonly HybridArray = new RegExp(
-		`\\[\\s*${LexicalPatterns.NumericValueOrNumericArray.source}?\\s*(?:,\\s*${LexicalPatterns.NumericValueOrNumericArray.source}\\s*)*]`
-	);
-
-	/**
-	 * A numeric range in the form of [<from> - <to>]
-	 */
-	private static readonly NumericRange = new RegExp(
-		`\\[\\s*${LexicalPatterns.NumericValue.source}\\s*-\\s*${LexicalPatterns.NumericValue.source}\\s*]`
-	);
-	public static readonly NumericRangeGrouped = new RegExp(
-		`\\[\\s*(${LexicalPatterns.NumericValue.source})\\s*-\\s*(${LexicalPatterns.NumericValue.source})\\s*]`
 	);
 
 	/***********************

@@ -32,12 +32,12 @@ export function stringToBoolean(value: string): boolean {
  * @param value
  * @throws {Error}
  */
-export function stringToInteger(value: string): number {
+export function stringToInteger<T extends number>(value: string): T {
 	const converted = parseInt(value);
 	if (isNaN(converted)) {
 		throw new Error(`unable to parse "${value}" as an integer value`);
 	}
-	return converted;
+	return converted as T;
 }
 
 /**
@@ -45,12 +45,12 @@ export function stringToInteger(value: string): number {
  * @param value
  * @throws {Error}
  */
-export function stringToIntegers(value: string): number[] {
+export function stringToIntegers<T extends number>(value: string): T[] {
 	if (!isStringAnArray((value = value.trim()))) {
 		throw new Error(`unable to parse "${value}" as an array of integers`);
 	}
 	const values = value.substring(1, value.length - 1);
-	return values.split(/\s*,\s*/).map(stringToInteger);
+	return values.split(/\s*,\s*/).map(stringToInteger) as T[];
 }
 
 /**

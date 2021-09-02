@@ -12,5 +12,3 @@ export enum CircleShape {
 	 */
 	LowToHigh = 'LTH',
 }
-
-export type NumbersServer = () => number[];

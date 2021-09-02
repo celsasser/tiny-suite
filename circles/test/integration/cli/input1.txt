@@ -2,13 +2,17 @@
 # test a very basic specification
 ##################################
 
-$collection1:
+$circle1:
+diameter = 5:0
+description = to go where no man has gone before
+divisions = 8
 notes = 50
 
-$collection2 :
-notes = [60, 62, 64]
-
-$collection1 -> $collection2:
+$circle1:
+diameter = 5:0
+description = to go where no man has gone before
+divisions = 16
+notes = [50, 54]
 
 project:
-start = $collection1
+length = 5:0

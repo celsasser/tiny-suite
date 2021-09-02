@@ -1,34 +1,34 @@
 /**
  * @license MIT (see project's LICENSE file)
- *
- * We are going to be a big dummy about these guys and rely on:
- * 1. parsing to get string values
- * 2. our machine to re-cast values as necessary
  */
 
+import { MidiChannelType } from '@tiny/core';
 import { CircleShape } from './primitives';
 
 export interface ICircleProperties {
+	channel?: MidiChannelType;
 	description?: string;
-	diameter: string | number;
-	divisions: string | number;
-	min: string | number;
-	max: string | number;
+	diameter: number;
+	divisions: number;
+	min: number;
+	max: number;
 	/**
 	 * Defaulted from the ini declaration
 	 */
 	name: string;
-	phase: string | number;
+	notes: number[];
+	off?: number;
+	on?: number;
+	phase: number;
 	shape: CircleShape;
 }
 
 export interface IProjectProperties {
-	name: string;
+	name?: string;
 	/**
-	 * The maximum number of steps to be taken before forcibly ending
-	 * graph traversal
+	 * The total length described in our PPQ|B:N|B:M:N spec
 	 */
-	steps: string | number;
+	length: number;
 }
 
 export interface IParsedInput {

@@ -8,13 +8,17 @@ import {
 	CirclePropertyName,
 	CircleShape,
 	getAllVocabularyProperties,
-	ICircleProperties,
 	IParsedInput,
-	IProjectProperties,
 	IPropertyAssignment,
 	ProjectPropertyName,
 } from '../types';
+import { convert } from './convert';
 import { LexicalPatterns } from './lexical';
+import {
+	IInterimParsedInput,
+	InterimCircleProperties,
+	InterimProjectProperties,
+} from './types';
 import { validate } from './validate';
 
 /**
@@ -22,7 +26,7 @@ import { validate } from './validate';
  * @throws {Error}
  */
 export function parseInput(input: string): IParsedInput {
-	const result: Partial<IParsedInput> = {
+	const interim: Partial<IInterimParsedInput> = {
 		circles: [],
 	};
 	const buffer = new ParseTextBuffer(input);
@@ -37,21 +41,22 @@ export function parseInput(input: string): IParsedInput {
 	while (!isEnd()) {
 		let value: any;
 		if ((value = _getProject(buffer))) {
-			result.project = value;
+			interim.project = value;
 		} else if ((value = _getCircle(buffer))) {
-			result.circles!.push(value);
+			interim.circles!.push(value);
 		} else {
 			throw new Error(`unrecognized input text "${_.truncate(buffer.remainder)}"`);
 		}
 	}
-	return validate(result as IParsedInput);
+	const validated = validate(interim);
+	return convert(validated);
 }
 
-function _getCircle(buffer: ParseTextBuffer): ICircleProperties | undefined {
+function _getCircle(buffer: ParseTextBuffer): InterimCircleProperties | undefined {
 	const matches = buffer.match(LexicalPatterns.CircleDeclaration);
 	if (matches) {
 		let propertyAssignment;
-		const properties: Partial<ICircleProperties> = {
+		const properties: Partial<InterimCircleProperties> = {
 			max: '127',
 			min: '0',
 			phase: '0',
@@ -71,16 +76,16 @@ function _getCircle(buffer: ParseTextBuffer): ICircleProperties | undefined {
 				);
 			}
 		}
-		return properties as ICircleProperties;
+		return properties as InterimCircleProperties;
 	}
 	return undefined;
 }
 
-function _getProject(buffer: ParseTextBuffer): IProjectProperties | undefined {
+function _getProject(buffer: ParseTextBuffer): InterimProjectProperties | undefined {
 	const matches = buffer.match(LexicalPatterns.ProjectDeclaration);
 	if (matches) {
 		let propertyAssignment;
-		const properties: Partial<IProjectProperties> = {};
+		const properties: Partial<InterimProjectProperties> = {};
 		const supportedProperties = getAllVocabularyProperties(ProjectPropertyName);
 		while ((propertyAssignment = _getPropertyAssignment(buffer))) {
 			if (supportedProperties.includes(propertyAssignment.name)) {
@@ -92,7 +97,7 @@ function _getProject(buffer: ParseTextBuffer): IProjectProperties | undefined {
 				);
 			}
 		}
-		return properties as IProjectProperties;
+		return properties as InterimProjectProperties;
 	}
 	return undefined;
 }

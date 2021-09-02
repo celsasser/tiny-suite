@@ -55,7 +55,7 @@ Project metadata as well as some control properties
 project:
 start: Vertext-SymbolName   # starting place for playback
 * name: String
-* steps: NumericValue       # number of steps through the graph before iteration stops
+* length: PPQ|M:N|M:B:N     # length of song in our duration spec
 ```
 
 **Vertext Definition**

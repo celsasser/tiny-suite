@@ -6,16 +6,18 @@ import * as _ from 'lodash';
 import {
 	CirclePropertyName,
 	getRequiredVocabularyProperties,
-	IParsedInput,
 	ProjectPropertyName,
 } from '../types';
+import { IInterimParsedInput } from './types';
 
-export function validate(parsed: Readonly<IParsedInput>): IParsedInput {
+export function validate(
+	parsed: Readonly<Partial<IInterimParsedInput>>
+): Readonly<IInterimParsedInput> {
 	let values: string[];
 	if (
 		(values = _.difference(
 			getRequiredVocabularyProperties(ProjectPropertyName),
-			Object.values(parsed.project)
+			Object.keys(parsed.project!)
 		)).length > 0
 	) {
 		throw new Error(`missing required project values for ${values}`);
@@ -27,12 +29,12 @@ export function validate(parsed: Readonly<IParsedInput>): IParsedInput {
 			if (
 				(values = _.difference(
 					getRequiredVocabularyProperties(CirclePropertyName),
-					Object.values(circle)
+					Object.keys(circle)
 				)).length > 0
 			) {
 				throw new Error(`circle "${circle.name}" missing required values for ${values}`);
 			}
 		});
 	}
-	return parsed as IParsedInput;
+	return parsed as IInterimParsedInput;
 }
