@@ -15,8 +15,15 @@ describe(directoryToDescribeTitle(__dirname, 'random'), function () {
 	});
 
 	describe('randomIntegerFromRange', function () {
+		it('should return min/max if they are the same', function () {
+			Math.random = jest.fn().mockReturnValue(0);
+			expect(subject.randomIntegerFromRange({ max: 0, min: 0 })).toEqual(0);
+			Math.random = jest.fn().mockReturnValue(0.99999999);
+			expect(subject.randomIntegerFromRange({ max: 0, min: 0 })).toEqual(0);
+		});
+
+		// todo: these tests are not deterministic without mocking random
 		[
-			{ min: 0, max: 0 },
 			{ min: 0, max: 1 },
 			{ min: 1, max: 2 },
 			{ min: 1, max: 10 },
