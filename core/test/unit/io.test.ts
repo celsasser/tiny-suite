@@ -29,4 +29,25 @@ describe(directoryToDescribeTitle(__dirname, 'io'), function () {
 			return expect(io.readStdin()).resolves.toEqual('afternoon');
 		});
 	});
+
+	describe('writeJsonToPath', function () {
+		it('should properly write', async function () {
+			await expect(io.writeJsonToPath('path', 'data')).resolves.toEqual(undefined);
+			expect(mockedFs.writeJSON).toBeCalledWith('path', 'data', undefined);
+		});
+	});
+
+	describe('writeToPath', function () {
+		it('should properly write', async function () {
+			await expect(io.writeToPath('path', 'data')).resolves.toEqual(undefined);
+			expect(mockedFs.writeFile).toBeCalledWith('path', 'data', undefined);
+		});
+	});
+
+	describe('writeStdout', function () {
+		it('should properly write', async function () {
+			await expect(io.writeStdout('data')).resolves.toEqual(undefined);
+			expect(mockedFs.write).toBeCalledWith(process.stdout.fd, 'data');
+		});
+	});
 });
