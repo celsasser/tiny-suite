@@ -1,0 +1,11 @@
+###########################
+# test chords
+###########################
+
+$circle1:
+diameter = 2:1:0
+divisions = 2
+notes = [50, 55]
+
+project:
+length = 2:1:0

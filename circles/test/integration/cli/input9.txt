@@ -1,0 +1,13 @@
+#########################################
+# testing note "on" percentage directives
+#########################################
+
+$circle1:
+diameter = 480
+divisions = 4
+min = 64
+notes = 50
+off = 75%
+
+project:
+length = 480

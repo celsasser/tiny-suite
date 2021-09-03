@@ -17,38 +17,61 @@ import {
 	IProjectProperties,
 } from '../types';
 import { LexicalPatterns } from './lexical';
-import { IInterimParsedInput, InterimProjectProperties } from './types';
+import {
+	IInterimParsedInput,
+	InterimCircleProperties,
+	InterimProjectProperties,
+} from './types';
 
-export function convert(parsed: Readonly<IInterimParsedInput>): IParsedInput {
-	const project = convertProject(parsed.project);
+/***********************
+ * Public API
+ **********************/
+export function convertInput(parsedInput: Readonly<IInterimParsedInput>): IParsedInput {
+	const project = convertProject(parsedInput.project);
 	return {
-		circles: parsed.circles.map(
-			(interimCircle): ICircleProperties => ({
-				...interimCircle,
-				channel:
-					interimCircle.channel !== undefined
-						? stringToInteger<MidiChannelType>(interimCircle.channel)
-						: undefined,
-				diameter: midiOffsetToPulseCount(interimCircle.diameter, project),
-				divisions: stringToInteger(interimCircle.divisions),
-				max: stringToInteger(interimCircle.max),
-				min: stringToInteger(interimCircle.min),
-				notes: isStringAnArray(interimCircle.notes)
-					? stringToIntegers(interimCircle.notes)
-					: [stringToInteger(interimCircle.notes)],
-				off:
-					interimCircle.off !== undefined
-						? midiOffsetToPulseCount(interimCircle.off, project)
-						: undefined,
-				on:
-					interimCircle.on !== undefined
-						? midiOffsetToPulseCount(interimCircle.on, project)
-						: undefined,
-				phase: Number.parseFloat(interimCircle.phase),
-				shape: interimCircle.shape as CircleShape,
-			})
-		),
+		circles: parsedInput.circles.map(convertCircle.bind(null, project)),
 		project,
+	};
+}
+
+/***********************
+ * Private Interface
+ **********************/
+function convertCircle(
+	project: Readonly<IProjectProperties>,
+	interimCircle: Readonly<InterimCircleProperties>
+): ICircleProperties {
+	const diameter = midiOffsetToPulseCount(interimCircle.diameter, project);
+	const divisions = stringToInteger(interimCircle.divisions);
+	const calculateOnOrOff = (value?: string): number | undefined => {
+		if (value !== undefined) {
+			if (value.endsWith('%')) {
+				const percentage = stringToInteger(value.substring(0, value.length - 1)) / 100;
+				return Math.round((percentage * diameter) / divisions);
+			} else {
+				return midiOffsetToPulseCount(value, project);
+			}
+		}
+		return value;
+	};
+
+	return {
+		...interimCircle,
+		channel:
+			interimCircle.channel !== undefined
+				? stringToInteger<MidiChannelType>(interimCircle.channel)
+				: undefined,
+		diameter,
+		divisions,
+		max: stringToInteger(interimCircle.max),
+		min: stringToInteger(interimCircle.min),
+		notes: isStringAnArray(interimCircle.notes)
+			? stringToIntegers(interimCircle.notes)
+			: [stringToInteger(interimCircle.notes)],
+		off: calculateOnOrOff(interimCircle.off),
+		on: calculateOnOrOff(interimCircle.on),
+		phase: Number.parseFloat(interimCircle.phase),
+		shape: interimCircle.shape as CircleShape,
 	};
 }
 

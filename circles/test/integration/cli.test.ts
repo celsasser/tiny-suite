@@ -23,7 +23,8 @@ describe(directoryToDescribeTitle(__dirname, 'cli'), function () {
 	});
 
 	filterTests<ICliTest>(tests).forEach((test) => {
-		it(test.text, async function () {
+		const inputFile = test.argv.join().match(/input\d+\.txt/);
+		it(`${inputFile}: ${test.text}`, async function () {
 			await run(test.argv);
 			expect(process.exit).toBeCalledWith(test.exit || 0);
 			if (test.output) {

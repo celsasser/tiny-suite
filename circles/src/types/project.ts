@@ -18,14 +18,13 @@ export interface ICircleProperties {
 	name: string;
 	notes: number[];
 	/**
-	 * Optional off duration of the note. It should be less than the total duration of
-	 * a division.
-	 * Note: there is no reason to use both `on` and `off`
+	 * Optional off duration (or percentage) of the note. It should be less than the total
+	 * duration of a division. Note: there is no reason to use both `on` and `off`
 	 */
 	off?: number;
 	/**
-	 * Optional off duration of the note. It can be longer than the PPQ of a division.
-	 * Note: there is no reason to use both `on` and `off`
+	 * Optional on duration (or percentage) of the note. It can be longer than the PPQ of
+	 * a division. Note: there is no reason to use both `on` and `off`
 	 */
 	on?: number;
 	/**

@@ -10,7 +10,7 @@ import {
 } from '../types';
 import { IInterimParsedInput } from './types';
 
-export function validate(
+export function validateInput(
 	parsed: Readonly<Partial<IInterimParsedInput>>
 ): Readonly<IInterimParsedInput> {
 	let values: string[];

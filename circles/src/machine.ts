@@ -47,17 +47,26 @@ export class Machine {
 			// convert ppq to the position in a cycle (in radians)
 			const offset = (Math.PI * 2 * ppq) / circle.diameter;
 			const normalized = (Math.cos(startingPhase + offset) + 1) / 2;
-			return circle.min + (circle.max - circle.min) * normalized;
+			return Math.round(circle.min + (circle.max - circle.min) * normalized);
 		};
 
-		for (let ppq = 0; ppq < this._input.project.length; ppq += noteLength) {
+		for (
+			let index = 1, ppq = 0, rested = 0;
+			ppq < this._input.project.length;
+			index++, ppq += noteLength
+		) {
 			result.durations!.push(noteDuration);
 			result.notes.push(circle.notes);
 			result.velocities!.push(caclulateVelocity(ppq));
-			if (noteDuration < noteLength) {
-				result.durations!.push(noteLength - noteDuration);
+			// see whether we need to introduce some rest time to accommodate for:
+			//  a. noteLength != noteDuration
+			//  b. rational `noteLength`
+			const rest = Math.floor(noteLength * index - noteDuration * index - rested);
+			if (rest > 0) {
+				result.durations!.push(rest);
 				result.notes.push([]);
 				result.velocities!.push(0);
+				rested += rest;
 			}
 		}
 		return result;

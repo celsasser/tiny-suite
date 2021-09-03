@@ -12,14 +12,14 @@ import {
 	IPropertyAssignment,
 	ProjectPropertyName,
 } from '../types';
-import { convert } from './convert';
+import { convertInput } from './convert';
 import { LexicalPatterns } from './lexical';
 import {
 	IInterimParsedInput,
 	InterimCircleProperties,
 	InterimProjectProperties,
 } from './types';
-import { validate } from './validate';
+import { validateInput } from './validate';
 
 /**
  * Picks the jumble apart and returns it or throws an error
@@ -48,8 +48,8 @@ export function parseInput(input: string): IParsedInput {
 			throw new Error(`unrecognized input text "${_.truncate(buffer.remainder)}"`);
 		}
 	}
-	const validated = validate(interim);
-	return convert(validated);
+	const validated = validateInput(interim);
+	return convertInput(validated);
 }
 
 function _getCircle(buffer: ParseTextBuffer): InterimCircleProperties | undefined {
