@@ -3,9 +3,9 @@
 ##################################
 
 $circle1:
-diameter = 5:0
+diameter = 2:1:0
 divisions = 4
 notes = 50
 
 project:
-length = 5:0
+length = 2:1:0
