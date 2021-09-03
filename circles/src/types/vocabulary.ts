@@ -42,7 +42,9 @@ export enum CirclePropertyName {
 
 export enum ProjectPropertyName {
 	Name = '*name',
+	PPQ = '*ppq',
 	Steps = 'length',
+	TimeSignature = '*timesignature',
 }
 
 export function getAllVocabularyProperties<T extends { [property: string]: string }>(

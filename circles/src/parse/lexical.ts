@@ -9,12 +9,16 @@ import { ReservedIdentifier } from '../types';
  */
 export class LexicalPatterns {
 	/***********************
-	 * Primitives
+	 * Private Primitives
 	 * Note: with primitives we for the most part avoid capture groups.
 	 * Gets too crazy with the way we build up our lexical grammar. Some exceptions.
 	 **********************/
-	private static readonly Symbol = /[a-zA-Z$_-][0-9a-zA-Z$_-]*/;
 	private static readonly Number = /\d+/;
+	private static readonly Symbol = /[a-zA-Z$_-][0-9a-zA-Z$_-]*/;
+
+	/***********************
+	 * Public Primitives
+	 **********************/
 	/**
 	 * Either a symbol (assumed to represent a number) or a literal
 	 */
@@ -28,9 +32,10 @@ export class LexicalPatterns {
 	/**
 	 * Either a numeric value or a numeric array
 	 */
-	private static readonly NumericValueOrNumericArray = new RegExp(
+	public static readonly NumericValueOrNumericArray = new RegExp(
 		`(?:${LexicalPatterns.NumericValue.source}|${LexicalPatterns.NumericArray.source})`
 	);
+	public static readonly TimeSignature = /(\d+)\s*\/\s*(\d+)/;
 
 	/***********************
 	 * Grammar

@@ -8,8 +8,10 @@ import {
 	stringToInteger,
 	stringToIntegers,
 	MidiChannelType,
+	TimeSignature,
 } from '@tiny/core';
 import { CircleShape, ICircleProperties, IParsedInput } from '../types';
+import { LexicalPatterns } from './lexical';
 import { IInterimParsedInput } from './types';
 
 export function convert(parsed: Readonly<IInterimParsedInput>): IParsedInput {
@@ -36,13 +38,26 @@ export function convert(parsed: Readonly<IInterimParsedInput>): IParsedInput {
 					interimCircle.on !== undefined
 						? midiOffsetToPulseCount(interimCircle.on)
 						: undefined,
-				phase: midiOffsetToPulseCount(interimCircle.phase),
+				phase: Number.parseFloat(interimCircle.phase),
 				shape: interimCircle.shape as CircleShape,
 			})
 		),
 		project: {
 			...parsed.project,
 			length: midiOffsetToPulseCount(parsed.project.length),
+			ppq: stringToInteger(parsed.project.ppq!),
+			timesignature: parseTimesignature(parsed.project.timesignature!),
 		},
+	};
+}
+
+function parseTimesignature(value: string): TimeSignature {
+	const parsed = value.match(LexicalPatterns.TimeSignature);
+	if (parsed === null) {
+		throw new Error('unable to translate value to a time-signature');
+	}
+	return {
+		denominator: Number.parseInt(parsed[2]),
+		numerator: Number.parseInt(parsed[1]),
 	};
 }

@@ -3,7 +3,9 @@
 		"argv": ["node", "index.js", "--inputFile=./test/integration/cli/input1.txt"],
 		"output": [
 			{
-				"notes": [[50], [60, 62, 64]]
+				"durations": [600, 600, 600, 600],
+				"notes": [[50], [50], [50], [50]],
+				"velocities": [127, 63.5, 0, 63.499999999999986]
 			}
 		],
 		"text": "input1.txt: should properly render output for a simple specification"

@@ -42,8 +42,7 @@ export class Machine {
 			circle.off !== undefined ? noteLength - circle.off : circle.on ?? noteLength
 		);
 		const startingPhase =
-			Math.PI * 2 * (circle.phase / circle.diameter) +
-			(circle.shape === CircleShape.HighToLow ? Math.PI : 0);
+			Math.PI * 2 * circle.phase + (circle.shape === CircleShape.HighToLow ? Math.PI : 0);
 		const caclulateVelocity = (ppq: number): number => {
 			// convert ppq to the position in a cycle (in radians)
 			const offset = (Math.PI * 2 * ppq) / circle.diameter;

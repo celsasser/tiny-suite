@@ -2,7 +2,7 @@
  * @license MIT (see project's LICENSE file)
  */
 
-import { ParseTextBuffer } from '@tiny/core';
+import { getMidiDefaultSymbols, ParseTextBuffer } from '@tiny/core';
 import * as _ from 'lodash';
 import {
 	CirclePropertyName,
@@ -85,7 +85,11 @@ function _getProject(buffer: ParseTextBuffer): InterimProjectProperties | undefi
 	const matches = buffer.match(LexicalPatterns.ProjectDeclaration);
 	if (matches) {
 		let propertyAssignment;
-		const properties: Partial<InterimProjectProperties> = {};
+		const defaultMidiValues = getMidiDefaultSymbols();
+		const properties: Partial<InterimProjectProperties> = {
+			ppq: defaultMidiValues.values.ppq,
+			timesignature: `${defaultMidiValues.values.timesignature.numerator}/${defaultMidiValues.values.timesignature.denominator}`,
+		};
 		const supportedProperties = getAllVocabularyProperties(ProjectPropertyName);
 		while ((propertyAssignment = _getPropertyAssignment(buffer))) {
 			if (supportedProperties.includes(propertyAssignment.name)) {

@@ -1,18 +1,11 @@
 ##################################
-# test a very basic specification
+# test a super basic specification
 ##################################
 
 $circle1:
 diameter = 5:0
-description = to go where no man has gone before
-divisions = 8
+divisions = 4
 notes = 50
-
-$circle1:
-diameter = 5:0
-description = to go where no man has gone before
-divisions = 16
-notes = [50, 54]
 
 project:
 length = 5:0
