@@ -13,6 +13,7 @@ module.exports = {
 		'@typescript-eslint/no-non-null-assertion': 'off',
 		'@typescript-eslint/no-parameter-properties': 'off',
 		'@typescript-eslint/no-var-requires': 'off',
+		'no-mixed-spaces-and-tabs': 'off',
 		'security/detect-object-injection': 'off',
 	},
 };

@@ -23,8 +23,6 @@ import {
 } from './types';
 import { validate } from './validate';
 
-/* eslint-disable no-mixed-spaces-and-tabs */
-
 /**
  * Picks the jumble apart and returns it or throws an error
  * @throws {Error}

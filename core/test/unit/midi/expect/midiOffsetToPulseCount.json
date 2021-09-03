@@ -36,7 +36,7 @@
 		}
 	},
 	{
-		"expected": 300,
+		"expected": 60,
 		"offset": "1:1/4",
 		"ppq": 240,
 		"timesignature": {
@@ -45,7 +45,7 @@
 		}
 	},
 	{
-		"expected": 1201,
+		"expected": 1,
 		"offset": "1:1:1",
 		"ppq": 240,
 		"timesignature": {
@@ -54,7 +54,7 @@
 		}
 	},
 	{
-		"expected": 1260,
+		"expected": 60,
 		"offset": "1:1:1/4",
 		"ppq": 240,
 		"timesignature": {
@@ -63,7 +63,52 @@
 		}
 	},
 	{
-		"expected": 630,
+		"expected": 240,
+		"offset": "1:2:0",
+		"ppq": 240,
+		"timesignature": {
+			"denominator": 4,
+			"numerator": 4
+		}
+	},
+	{
+		"expected": 300,
+		"offset": "1:2:1/4",
+		"ppq": 240,
+		"timesignature": {
+			"denominator": 4,
+			"numerator": 4
+		}
+	},
+	{
+		"expected": 300,
+		"offset": "2:1/4",
+		"ppq": 240,
+		"timesignature": {
+			"denominator": 4,
+			"numerator": 4
+		}
+	},
+	{
+		"expected": 960,
+		"offset": "2:1:0",
+		"ppq": 240,
+		"timesignature": {
+			"denominator": 4,
+			"numerator": 4
+		}
+	},
+	{
+		"expected": 1020,
+		"offset": "2:1:1/4",
+		"ppq": 240,
+		"timesignature": {
+			"denominator": 4,
+			"numerator": 4
+		}
+	},
+	{
+		"expected": 30,
 		"offset": "1:1:1/4",
 		"ppq": 240,
 		"timesignature": {

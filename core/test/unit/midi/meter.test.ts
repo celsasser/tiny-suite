@@ -19,11 +19,10 @@ describe(directoryToDescribeTitle(__dirname, 'meter.ts'), function () {
 				timesignature: TimeSignature;
 			}) => {
 				it(`should return ${test.expected} for meter=${test.offset}, ppq=${test.ppq}, timesignature=${test.timesignature}`, function () {
-					const result = midiOffsetToPulseCount(
-						test.offset,
-						test.timesignature,
-						test.ppq
-					);
+					const result = midiOffsetToPulseCount(test.offset, {
+						ppq: test.ppq,
+						timesignature: test.timesignature,
+					});
 					expect(result).toStrictEqual(test.expected);
 				});
 			}
@@ -31,7 +30,7 @@ describe(directoryToDescribeTitle(__dirname, 'meter.ts'), function () {
 
 		it(`should return use defaults if not specified`, function () {
 			const result = midiOffsetToPulseCount('1:1/4');
-			expect(result).toStrictEqual(600);
+			expect(result).toStrictEqual(120);
 		});
 	});
 

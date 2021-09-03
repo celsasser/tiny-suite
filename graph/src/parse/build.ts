@@ -29,8 +29,6 @@ import {
 	VertexConstructorParams,
 } from './types';
 
-/* eslint-disable no-mixed-spaces-and-tabs */
-
 /**
  * Turns our little boy vertices and edges into men. And then builds the graph. Does
  * validate the integrity of references. Note: we may at some point want to be able to
