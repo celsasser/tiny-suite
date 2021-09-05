@@ -7,8 +7,7 @@
 				"notes": [[50], [50]],
 				"velocities": [127, 0]
 			}
-		],
-		"text": "should properly render single note values"
+		]
 	},
 	{
 		"argv": ["node", "index.js", "--inputFile=./test/integration/cli/input2.txt"],
@@ -21,8 +20,7 @@
 				],
 				"velocities": [127, 0]
 			}
-		],
-		"text": "should properly render multi note values"
+		]
 	},
 	{
 		"argv": ["node", "index.js", "--inputFile=./test/integration/cli/input3.txt"],
@@ -32,8 +30,7 @@
 				"notes": [[50], [50], [50], [50]],
 				"velocities": [127, 64, 0, 63]
 			}
-		],
-		"text": "should properly render 4 point circle"
+		]
 	},
 	{
 		"argv": ["node", "index.js", "--inputFile=./test/integration/cli/input4.txt"],
@@ -43,8 +40,7 @@
 				"notes": [[50], [50], [50], [50], [50], [50], [50], [50]],
 				"velocities": [127, 108, 64, 19, 0, 19, 63, 108]
 			}
-		],
-		"text": "should properly render 8 point circle"
+		]
 	},
 	{
 		"argv": ["node", "index.js", "--inputFile=./test/integration/cli/input5.txt"],
@@ -54,8 +50,7 @@
 				"notes": [[50], [50], [], [50], []],
 				"velocities": [127, 32, 0, 32, 0]
 			}
-		],
-		"text": "should introduce rests for uneven divisions"
+		]
 	},
 	{
 		"argv": ["node", "index.js", "--inputFile=./test/integration/cli/input6.txt"],
@@ -65,8 +60,7 @@
 				"notes": [[50], [], [50], [], [50], [], [50], []],
 				"velocities": [127, 0, 96, 0, 64, 0, 96, 0]
 			}
-		],
-		"text": "should properly apply explicit note on durations"
+		]
 	},
 	{
 		"argv": ["node", "index.js", "--inputFile=./test/integration/cli/input7.txt"],
@@ -76,8 +70,7 @@
 				"notes": [[50], [], [50], [], [50], [], [50], []],
 				"velocities": [127, 0, 96, 0, 64, 0, 96, 0]
 			}
-		],
-		"text": "should properly apply note on percentages"
+		]
 	},
 	{
 		"argv": ["node", "index.js", "--inputFile=./test/integration/cli/input8.txt"],
@@ -87,8 +80,7 @@
 				"notes": [[50], [], [50], [], [50], [], [50], []],
 				"velocities": [127, 0, 96, 0, 64, 0, 96, 0]
 			}
-		],
-		"text": "should properly apply explicit note off durations"
+		]
 	},
 	{
 		"argv": ["node", "index.js", "--inputFile=./test/integration/cli/input9.txt"],
@@ -98,7 +90,16 @@
 				"notes": [[50], [], [50], [], [50], [], [50], []],
 				"velocities": [127, 0, 96, 0, 64, 0, 96, 0]
 			}
-		],
-		"text": "should properly apply note off percentages"
+		]
+	},
+	{
+		"argv": ["node", "index.js", "--inputFile=./test/integration/cli/input10.txt"],
+		"output": [
+			{
+				"durations": [90, 30, 90, 30, 90, 30, 90, 30],
+				"notes": [[], [50], [], [50], [], [50], [], [50]],
+				"velocities": [0, 83, 0, 125, 0, 108, 0, 66]
+			}
+		]
 	}
 ]

@@ -2,6 +2,7 @@
  * @license MIT (see project's LICENSE file)
  */
 
+import * as fs from 'fs';
 import { directoryToDescribeTitle, filterTests, ITest } from '@tiny/core';
 import { run } from '../../src/cli';
 import * as output from '../../src/output';
@@ -11,7 +12,6 @@ interface ICliTest extends ITest {
 	argv: string[];
 	exit?: number;
 	output?: any;
-	text: string;
 }
 
 describe(directoryToDescribeTitle(__dirname, 'cli'), function () {
@@ -24,7 +24,11 @@ describe(directoryToDescribeTitle(__dirname, 'cli'), function () {
 
 	filterTests<ICliTest>(tests).forEach((test) => {
 		const inputFile = test.argv.join().match(/input\d+\.txt/);
-		it(`${inputFile}: ${test.text}`, async function () {
+		const testText = fs.readFileSync(`${__dirname}/cli/${inputFile}`, {
+			encoding: 'utf-8',
+		});
+		const testTitle = testText.match(/#+\s*#\s*(.+)/m)![1];
+		it(`${inputFile}: ${testTitle}`, async function () {
 			await run(test.argv);
 			expect(process.exit).toBeCalledWith(test.exit || 0);
 			if (test.output) {

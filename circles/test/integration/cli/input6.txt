@@ -1,5 +1,5 @@
 #########################################
-# testing note "on" directives
+# test explicit note "on" directives
 #########################################
 
 $circle1:

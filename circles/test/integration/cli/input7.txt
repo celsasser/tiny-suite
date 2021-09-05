@@ -1,5 +1,5 @@
 #########################################
-# testing note "on" percentage directives
+# test note "on" percentage directives
 #########################################
 
 $circle1:

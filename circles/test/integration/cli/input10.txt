@@ -1,5 +1,5 @@
 #########################################
-# test note "off" percentage directives
+# test off-to-on ordering
 #########################################
 
 $circle1:
@@ -8,6 +8,7 @@ divisions = 4
 min = 64
 notes = 50
 off = 75%
+shape = high-to-low-off-to-on
 
 project:
 length = 480

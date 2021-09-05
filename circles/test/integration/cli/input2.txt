@@ -1,5 +1,5 @@
 ###########################
-# test chords
+# test multi note values
 ###########################
 
 $circle1:

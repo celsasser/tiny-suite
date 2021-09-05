@@ -50,11 +50,11 @@ export class Machine {
 			circle.off !== undefined ? noteLength - circle.off : circle.on ?? noteLength
 		);
 		const startingPhase = Math.PI * 2 * circle.phase + (shapeIsHighToLow ? Math.PI : 0);
-		const calculateOnVelocity = (ppq: number): number => {
+		const calculateVelocity = (ppq: number): number => {
 			// convert ppq to the position in a cycle (in radians)
-			const offset = (Math.PI * 2 * ppq) / circle.diameter;
-			const normalized = (Math.cos(startingPhase + offset) + 1) / 2;
-			return Math.round(circle.min + (circle.max - circle.min) * normalized);
+			const radianOffset = (Math.PI * 2 * ppq) / circle.diameter;
+			const cosineNormalized = (Math.cos(startingPhase + radianOffset) + 1) / 2;
+			return Math.round(circle.min + (circle.max - circle.min) * cosineNormalized);
 		};
 
 		for (
@@ -66,21 +66,30 @@ export class Machine {
 			//  a. noteLength != noteDuration
 			//  b. rational `noteLength`
 			const rest = Math.floor(noteLength * index - noteOnDuration * index - rested);
+			/**
+			 * On-to-off ON
+			 */
 			if (shapeIsOnToOff) {
 				result.durations!.push(noteOnDuration);
 				result.notes.push(circle.notes);
-				result.velocities!.push(calculateOnVelocity(ppq));
+				result.velocities!.push(calculateVelocity(ppq));
 			}
+			/**
+			 * OFF for both pre and post off
+			 */
 			if (rest > 0) {
 				result.durations!.push(rest);
 				result.notes.push([]);
 				result.velocities!.push(0);
 				rested += rest;
 			}
+			/**
+			 * Off-to-on ON
+			 */
 			if (!shapeIsOnToOff) {
 				result.durations!.push(noteOnDuration);
 				result.notes.push(circle.notes);
-				result.velocities!.push(calculateOnVelocity(ppq));
+				result.velocities!.push(calculateVelocity(ppq + rest));
 			}
 		}
 		return result;
