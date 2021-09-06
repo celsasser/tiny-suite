@@ -72,7 +72,7 @@ describe(directoryToDescribeTitle(__dirname, 'primitives'), function () {
 		});
 
 		it('should ignore space', function () {
-			expect(stringToIntegers(' [ 10 ] ')).toEqual([10]);
+			expect(stringToIntegers('[ 10 ]')).toEqual([10]);
 		});
 
 		it('should raise exception if not an array', function () {

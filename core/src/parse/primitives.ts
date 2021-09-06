@@ -1,7 +1,12 @@
+import { LexicalParsePatterns } from './lexical';
+
 /**
  * @license MIT (see project's LICENSE file)
  *
- * Primitive parsing. Throws errors upon failure
+ * Primitive parsing. Throws errors upon failure.
+ * Note: We assume that all surrounding whitespace has been trimmed.
+ * It is possible to change this policy, but we are very vigilant
+ * regarding whitespace when parsing.
  */
 
 export function isStringAnArray(value: string): boolean {
@@ -15,7 +20,7 @@ export function isStringAnArray(value: string): boolean {
  * @throws {Error}
  */
 export function stringToBoolean(value: string): boolean {
-	const match = value.match(/^(true)|(false)|(\d+)$/i);
+	const match = value.match(LexicalParsePatterns.BooleanValue);
 	if (match === null) {
 		throw new Error(`unable parse "${value}" as a boolean value`);
 	} else if (match[1]) {
@@ -47,11 +52,11 @@ export function stringToInteger<T extends number>(value: string): T {
  * @throws {Error}
  */
 export function stringToIntegers<T extends number>(value: string): T[] {
-	if (!isStringAnArray((value = value.trim()))) {
+	const stripped = value.match(LexicalParsePatterns.ArrayElements);
+	if (!stripped) {
 		throw new Error(`unable to parse "${value}" as an array of integers`);
 	}
-	const values = value.substring(1, value.length - 1);
-	return values.split(/\s*,\s*/).map(stringToInteger) as T[];
+	return stripped[1].split(LexicalParsePatterns.ElementSplit).map(stringToInteger) as T[];
 }
 
 /**
