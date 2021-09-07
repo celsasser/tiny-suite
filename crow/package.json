@@ -23,18 +23,19 @@
 		"node": ">=14.0.0"
 	},
 	"license": "ISC",
-	"main": "dist/index.js",
+	"main": "build/index.js",
 	"name": "@tiny/crow",
 	"scripts": {
 		"analyze": "yarn run format && yarn run lint:fix && yarn run test",
-		"build": "npx tsc -p tsconfig.json && chmod u+x dist/index.js",
-		"clean": "rm -rf './.buildcache' '*.log' './dist'",
+		"build": "npx tsc -p tsconfig.json && chmod u+x build/index.js && npm run link",
+		"clean": "rm -rf './.buildcache' '*.log' './build'",
 		"clean:deep": "yarn run clean; rm -rf './node_modules'",
 		"coverage": "yarn run test --coverage",
 		"format": "npx prettier --write './*.(js|json)' './(src|test)/**/*.(js|json|ts)'",
+		"link": "ln -sf \"`pwd`/build/index.js\" ../build/crow",
 		"lint": "npx eslint .",
 		"lint:fix": "yarn run lint --fix",
-		"rebuild": "rm -rf './dist'; rm -f './.buildcache'; yarn run build",
+		"rebuild": "npm run clean; yarn run build",
 		"test": "npx jest './test/unit'"
 	},
 	"version": "0.0.1"

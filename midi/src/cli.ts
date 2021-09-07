@@ -41,19 +41,19 @@ function createSpecification(): tinyCoreModule.Command {
 		.option(`-of --${CliOptionNames.OutputFile} <path>`, 'Output file')
 		.option(
 			`-ppn --${CliOptionNames.PulsePerNote} <value>`,
-			'Set the pulse-per-note',
-			midiDefaults.get('ppq')
+			'Set the pulse-per-note. Used when there is no `duration` information in the input data',
+			midiDefaults.ppq
 		)
 		.option(
 			`-ppq --${CliOptionNames.PulsePerQuarter} <value>`,
 			'Set the pulse-per-quarter',
-			midiDefaults.get('ppq')
+			midiDefaults.ppq
 		)
 		.option(`-t --${CliOptionNames.Tempo} <value>`, 'Set the tempo', '120')
 		.option(
 			`-v --${CliOptionNames.Velocity} <value>`,
 			'Set the default note velocity',
-			midiDefaults.get('velocity')
+			midiDefaults.velocity
 		);
 }
 

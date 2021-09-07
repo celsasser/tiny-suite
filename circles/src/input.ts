@@ -7,7 +7,12 @@ import { CliOptions } from './types';
 
 export async function readInput(options: Readonly<CliOptions>): Promise<string> {
 	try {
-		return options.inputFile ? await readFile(options.inputFile) : await readStdin();
+		if (options.inputFile) {
+			return await readFile(options.inputFile);
+		} else {
+			console.warn(`(reading from stdin)`);
+			return await readStdin();
+		}
 	} catch (error) {
 		throw new Error(`attempt to read failed - ${error.message}`);
 	}

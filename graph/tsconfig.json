@@ -5,7 +5,7 @@
 		"declaration": false,
 		"incremental": true,
 		"module": "commonjs",
-		"outDir": "dist",
+		"outDir": "build",
 		"pretty": true,
 		"resolveJsonModule": true,
 		"strict": true,

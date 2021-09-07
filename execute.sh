@@ -14,7 +14,7 @@ fi
 # these are in order of:
 #  * least to dependencies to some
 #  * most buildable to least buildable
-MODULES="core graph midi sgl circles";
+MODULES="core graph midi sgl circles"; # crow
 
 for module in ${MODULES}
 do

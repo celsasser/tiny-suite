@@ -7,7 +7,7 @@
 		"module": "commonjs",
 		"noImplicitThis": true,
 		"noUnusedLocals": true,
-		"outDir": "dist",
+		"outDir": "build",
 		"pretty": true,
 		"resolveJsonModule": true,
 		"strict": true,
