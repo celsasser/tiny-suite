@@ -26,41 +26,52 @@ import { validateInput } from './validate';
  * @throws {Error}
  */
 export function parseInput(input: string): IParsedInput {
-	const interim: Partial<IInterimParsedInput> = {
-		circles: [],
-	};
-	const buffer = new ParseTextBuffer(input);
+	const interimInput: Partial<IInterimParsedInput> = {};
+	const circleMap: { [name: string]: InterimCircleProperties } = {};
+	const parseBuffer = new ParseTextBuffer(input);
 
 	/**
 	 * Removes meaningless stuff and then checks on where we are
 	 */
 	const isEnd = (): boolean => {
-		buffer.match(LexicalPatterns.CommentsAndSpace);
-		return buffer.isEnd();
+		parseBuffer.match(LexicalPatterns.CommentsAndSpace);
+		return parseBuffer.isEnd();
 	};
 	while (!isEnd()) {
 		let value: any;
-		if ((value = _getProject(buffer))) {
-			interim.project = value;
-		} else if ((value = _getCircle(buffer))) {
-			interim.circles!.push(value);
+		if ((value = _getProject(parseBuffer))) {
+			interimInput.project = value;
+		} else if ((value = _getCircles(parseBuffer))) {
+			value.forEach((circle: InterimCircleProperties) => {
+				if (circleMap.hasOwnProperty(circle.name)) {
+					circleMap[circle.name] = {
+						...circleMap[circle.name],
+						...circle,
+					};
+				} else {
+					circleMap[circle.name] = circle;
+				}
+			});
 		} else {
-			throw new Error(`unrecognized input text "${_.truncate(buffer.remainder)}"`);
+			throw new Error(`unrecognized input text "${_.truncate(parseBuffer.remainder)}"`);
 		}
 	}
-	const validated = validateInput(interim);
+	interimInput.circles = _.sortBy(Object.values(circleMap), 'name');
+	const validated = validateInput(interimInput);
 	return convertInput(validated);
 }
 
-function _getCircle(buffer: ParseTextBuffer): InterimCircleProperties | undefined {
-	const matches = buffer.match(LexicalPatterns.CircleDeclaration);
+function _getCircles(buffer: ParseTextBuffer): InterimCircleProperties[] | undefined {
+	const matches = buffer.match(LexicalPatterns.CirclesDeclarations);
 	if (matches) {
 		let propertyAssignment;
+		const names = matches[0]
+			.split(/\s*\n\s*/)
+			.map((line) => line.match(LexicalPatterns.Symbol)![0]);
 		const properties: Partial<InterimCircleProperties> = {
 			max: '127',
 			min: '0',
 			phase: '0',
-			name: matches[0],
 			shape: CircleShape.LowToHigh,
 		};
 		const supportedProperties = getAllVocabularyProperties(CirclePropertyName);
@@ -76,7 +87,13 @@ function _getCircle(buffer: ParseTextBuffer): InterimCircleProperties | undefine
 				);
 			}
 		}
-		return properties as InterimCircleProperties;
+		return names.map(
+			(name) =>
+				({
+					...properties,
+					...{ name },
+				} as InterimCircleProperties)
+		);
 	}
 	return undefined;
 }

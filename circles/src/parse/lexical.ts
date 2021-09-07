@@ -13,8 +13,8 @@ export class LexicalPatterns {
 	 * Note: with primitives we for the most part avoid capture groups.
 	 * Gets too crazy with the way we build up our lexical grammar. Some exceptions.
 	 **********************/
-	private static readonly Number = /\d+/;
-	private static readonly Symbol = /[a-zA-Z$_-][0-9a-zA-Z$_-]*/;
+	private static readonly _Number = /\d+/;
+	private static readonly _CommentsAndSpace = /(?:\s*(?:#.+)?\n?)*/m;
 
 	/***********************
 	 * Public Primitives
@@ -22,7 +22,7 @@ export class LexicalPatterns {
 	/**
 	 * Either a symbol (assumed to represent a number) or a literal
 	 */
-	public static readonly NumericValue = LexicalPatterns.Number;
+	public static readonly NumericValue = LexicalPatterns._Number;
 	/**
 	 * Array of numbers, symbols or both
 	 */
@@ -35,6 +35,7 @@ export class LexicalPatterns {
 	public static readonly NumericValueOrNumericArray = new RegExp(
 		`(?:${LexicalPatterns.NumericValue.source}|${LexicalPatterns.NumericArray.source})`
 	);
+	public static readonly Symbol = /[a-zA-Z$_-][0-9a-zA-Z$_-]*/;
 	public static readonly TimeSignature = /(\d+)\s*\/\s*(\d+)/;
 
 	/***********************
@@ -48,9 +49,15 @@ export class LexicalPatterns {
 	 * Current offset plus space followed or not followed by a comment, blank lines,
 	 * comment lines
 	 */
-	public static readonly CommentsAndSpace = /^(?:\s*(?:#.+)?\n?)*/m;
+	public static readonly CommentsAndSpace = new RegExp(
+		`^${LexicalPatterns._CommentsAndSpace.source}`,
+		'm'
+	);
 	public static readonly CircleDeclaration = new RegExp(
 		`^(${LexicalPatterns.Symbol.source})\\s*:`
+	);
+	public static readonly CirclesDeclarations = new RegExp(
+		`^(${LexicalPatterns.Symbol.source}${LexicalPatterns._CommentsAndSpace.source})+:`
 	);
 	public static readonly ProjectDeclaration = new RegExp(
 		`^${ReservedIdentifier.Project}\\s*:`

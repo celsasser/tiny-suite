@@ -7,7 +7,6 @@
 
 import { IChannel } from '@tiny/core';
 import {
-	CircleShape,
 	ICircleProperties,
 	IParsedInput,
 	isShapeHighToLow,

@@ -14,6 +14,7 @@ module.exports = {
 		'@typescript-eslint/no-parameter-properties': 'off',
 		'@typescript-eslint/no-var-requires': 'off',
 		'no-mixed-spaces-and-tabs': 'off',
+		'no-prototype-builtins': 'off',
 		'security/detect-object-injection': 'off',
 	},
 };

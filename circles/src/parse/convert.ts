@@ -3,11 +3,12 @@
  */
 
 import {
-	midiOffsetToPulseCount,
 	isStringAnArray,
-	stringToInteger,
-	stringToIntegers,
 	MidiChannelType,
+	midiOffsetToPulseCount,
+	stringToInteger,
+	symbolsToIntegers,
+	symbolToInteger,
 	TimeSignature,
 } from '@tiny/core';
 import {
@@ -66,8 +67,8 @@ function convertCircle(
 		max: stringToInteger(interimCircle.max),
 		min: stringToInteger(interimCircle.min),
 		notes: isStringAnArray(interimCircle.notes)
-			? stringToIntegers(interimCircle.notes)
-			: [stringToInteger(interimCircle.notes)],
+			? symbolsToIntegers(interimCircle.notes)
+			: [symbolToInteger(interimCircle.notes)],
 		off: calculateOnOrOff(interimCircle.off),
 		on: calculateOnOrOff(interimCircle.on),
 		phase: Number.parseFloat(interimCircle.phase),
