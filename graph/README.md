@@ -30,11 +30,11 @@ The grammar is a lot like ini files which used to (and may still be used) as con
 
 - _Cardinality_ => `(mono|poly)`
 - _Number_ => `\d+`
-- _NumericValue_ => `(Number|Reserved|Symbol)`
-- _NumericArray_ => `(\[NumericValue, ...\]|ValueServer)`
+- _NumericValue_ => `(Number|Predefined|Symbol)`
+- _NumericArray_ => `([NumericValue, ...]|ValueServer)`
 - _Option_ => `(cycle|reuse)`
-- _Range_ => `\[number|symbol - number|symbol\]`
-- _Reserved_ => _See core's common_ [symbols](https://github.com/celsasser/tiny-midi-suite.git/core/tree/master/res/symbols)
+- _Predefined_ => _See core's common_ [symbols](https://github.com/celsasser/tiny-midi-suite.git/core/tree/master/res/symbols)
+- _Range_ => `[(number|symbol) - (number|symbol)]`
 - _String_ => (any combination of printable characters)
 - _Symbol_ => `([a-zA-Z$_-][0-9a-zA-Z$_-]*|Reserved)`
 
