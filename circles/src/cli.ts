@@ -34,7 +34,7 @@ function createSpecification(): tinyCoreModule.Command {
 	return new tinyCoreModule.Command()
 		.version(version)
 		.description(description)
-		.option(`-if --${CliOptionNames.InputFile} <path>`, 'Input file')
+		.option(`-if --${CliOptionNames.InputFile} <path>`, 'Input file. Defaults to stdin.')
 		.option(`-of --${CliOptionNames.OutputFile} <path>`, 'Output file');
 }
 
