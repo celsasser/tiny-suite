@@ -3,6 +3,7 @@
  */
 
 import {
+	MidiChannelType,
 	MidiFileType,
 	MidiIoEvent,
 	MidiIoEventSubtype,
@@ -100,7 +101,7 @@ function _createMidiTrack(
 				typeof midiNoteOrNotes === 'number' ? [midiNoteOrNotes] : midiNoteOrNotes;
 			midiNotes.forEach((midiNote) => {
 				events.push({
-					channel: channelIndex,
+					channel: channelIndex as MidiChannelType,
 					noteNumber: midiNote,
 					offset,
 					subtype: MidiIoEventSubtype.NoteOn,
@@ -108,7 +109,7 @@ function _createMidiTrack(
 					velocity,
 				});
 				events.push({
-					channel: channelIndex,
+					channel: channelIndex as MidiChannelType,
 					noteNumber: midiNote,
 					offset: offset + duration,
 					subtype: MidiIoEventSubtype.NoteOff,

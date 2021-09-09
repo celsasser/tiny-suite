@@ -3,7 +3,7 @@
 	"dependencies": {
 		"@tiny/core": "0.0.1",
 		"joi": "17.4.0",
-		"midi-file-io": "3.0.1"
+		"midi-file-io": "3.1.1"
 	},
 	"description": "Tiny machine that converts numeric sequences into MIDI format encodings",
 	"devDependencies": {
@@ -26,7 +26,7 @@
 	"name": "@tiny/midi",
 	"scripts": {
 		"analyze": "yarn run format && yarn run lint:fix && yarn run test",
-		"build": "npx tsc -p tsconfig.json && chmod u+x build/index.js && npm run link",
+		"build": "npx tsc -p tsconfig.json && chmod u+x build/index.js && yarn run link",
 		"clean": "rm -rf './.buildcache' '*.log' './build'",
 		"clean:deep": "yarn run clean; rm -rf './node_modules'",
 		"coverage": "yarn run test --coverage",
@@ -34,7 +34,7 @@
 		"link": "ln -sf \"`pwd`/build/index.js\" ../build/midi",
 		"lint": "npx eslint .",
 		"lint:fix": "yarn run lint --fix",
-		"rebuild": "npm run clean; yarn run build",
+		"rebuild": "yarn run clean; yarn run build",
 		"test": "npx jest './test/unit'"
 	},
 	"version": "0.0.1"
