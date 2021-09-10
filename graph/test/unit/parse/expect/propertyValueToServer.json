@@ -1,0 +1,141 @@
+{
+	"deterministic": [
+		{
+			"input": "1",
+			"output": [[1]],
+			"text": "should properly assign a non scalar constant"
+		},
+		{
+			"input": "[1, 2]",
+			"output": [[1, 2]],
+			"text": "should properly assign a scalar constant"
+		},
+		{
+			"input": "cycle([1, 2])",
+			"output": [[1], [2], [1]],
+			"text": "should build a server by array"
+		},
+		{
+			"input": "cycle([c3, e3])",
+			"output": [[48], [52]],
+			"text": "should support symbols in an array"
+		},
+		{
+			"input": "cycle([1 - 3])",
+			"output": [[1], [2], [3], [1]],
+			"text": "should build a server by range"
+		},
+		{
+			"input": "cycle([c1 - d1])",
+			"output": [[24], [25], [26], [24]],
+			"text": "should support symbols in a range"
+		},
+		{
+			"input": "not([1, 4], [1 - 4])",
+			"output": [[2, 3]],
+			"text": "should build a server with max/min params = to max/min of sequence"
+		},
+		{
+			"input": "not([3, 5], [1 - 6])",
+			"output": [[1, 2, 4, 6]],
+			"text": "should build a server with max/min params outside of max/min of sequence"
+		},
+		{
+			"input": "not([1, 3, 5], [2-4])",
+			"output": [[2, 4]],
+			"text": "should build a server with max/min params outside of max/min of sequence"
+		},
+		{
+			"input": "not([1, 3, 5], [0 - 6])",
+			"output": [[0, 2, 4, 6]],
+			"text": "should build a server with range params outside of max/min of sequence"
+		},
+		{
+			"input": "not([1, 3], [1 - 4], [cycle])",
+			"output": [[2]],
+			"text": "should build a server with options"
+		},
+		{
+			"input": "not([1, 3], [1 - 2])",
+			"output": [[2]],
+			"text": "should build a server with options"
+		}
+	],
+	"random": [
+		{
+			"input": "randomGrouping([1, 2, 3], [1 - 2])",
+			"output": [1, 2, 3],
+			"text": "should properly build a server"
+		},
+		{
+			"input": "randomGrouping([1 - 3], [1 - 2])",
+			"output": [1, 2, 3],
+			"text": "should properly build a server by note range"
+		},
+		{
+			"input": "randomGrouping([[1, 2], [3, 4], 5], [2 - 4])",
+			"output": [1, 2, 3, 4, 5],
+			"text": "should properly flatten groupings"
+		},
+		{
+			"input": "randomGrouping([1, 2, 3], [1 - 2], [1, 1, 8])",
+			"output": [1, 2, 3],
+			"text": "should properly build a server with weights"
+		},
+		{
+			"input": "randomGrouping([1, 2, 3], [1 - 2], [cycle])",
+			"output": [1, 2, 3],
+			"text": "should properly build a server with cycle"
+		},
+		{
+			"input": "randomGrouping([1, 2, 3], [1 - 2], [1, 1, 8], [cycle])",
+			"output": [1, 2, 3],
+			"text": "should properly build a server with weights and cycle"
+		},
+		{
+			"input": "randomGrouping([1, 2, 3], [1 - 2], [reuse])",
+			"output": [1, 2, 3],
+			"text": "should properly build a server with reuse"
+		},
+		{
+			"input": "randomGrouping([1, 2, 3], [1 - 2], [1, 1, 8], [reuse])",
+			"output": [1, 2, 3],
+			"text": "should properly build a server with weights with reuse"
+		},
+		{
+			"input": "randomSelection([1, 2, 3])",
+			"output": [1, 2, 3],
+			"text": "should properly build a server by note array"
+		},
+		{
+			"input": "randomSelection([1 - 3])",
+			"output": [1, 2, 3],
+			"text": "should properly build a server by note range"
+		},
+		{
+			"input": "randomSelection([1, 2, 3], [1, 1, 8])",
+			"output": [1, 2, 3],
+			"text": "should properly build a server with weights"
+		},
+		{
+			"input": "randomSelection([1, 2, 3], [cycle])",
+			"output": [1, 2, 3],
+			"text": "should properly build a server with cycle"
+		},
+		{
+			"input": "randomSelection([1, 2, 3], [1, 1, 8], [cycle])",
+			"output": [1, 2, 3],
+			"text": "should properly build a server with weights and cycle"
+		},
+		{
+			"input": "randomSelection([1, 2, 3], [reuse])",
+			"output": [1, 2, 3],
+			"text": "should properly build a server with reuse"
+		},
+		{
+			"input": "randomSelection([1, 2, 3], [1, 1, 8], [reuse])",
+			"output": [1, 2, 3],
+			"text": "should properly build a server with weights with reuse"
+		}
+	]
+}

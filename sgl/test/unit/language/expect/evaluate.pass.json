@@ -1,0 +1,97 @@
+[
+	{
+		"code": "50 ^+ 5",
+		"expected": [50],
+		"title": "No initial: prefix insert operation"
+	},
+	{
+		"code": "50 +^ 5",
+		"expected": [55],
+		"title": "No initial: postfix insert operation"
+	},
+	{
+		"code": "50 -^ 5",
+		"expected": [45],
+		"title": "No initial: postfix insert operation"
+	},
+	{
+		"code": "50 *^ 2",
+		"expected": [100],
+		"title": "No initial: postfix insert operation"
+	},
+	{
+		"code": "50 ^+^ 5",
+		"expected": [50, 55],
+		"title": "No initial: prefix and postfix insert operations"
+	},
+	{
+		"code": "[50, 60] +^ [5, 10]",
+		"expected": [[55, 70]],
+		"title": "No initial: scalar to scalar"
+	},
+	{
+		"code": "[50, 60] -^ [5, 10]",
+		"expected": [[45, 50]],
+		"title": "No initial: scalar to scalar"
+	},
+	{
+		"code": "[50, 60] *^ [3, 2]",
+		"expected": [[150, 120]],
+		"title": "No initial: scalar to scalar"
+	},
+	{
+		"code": "[50, 60] +^ 5",
+		"expected": [[55, 65]],
+		"title": "No initial: scalar to primitive"
+	},
+	{
+		"code": "[50, 60] -^ 5",
+		"expected": [[45, 55]],
+		"title": "No initial: scalar to primitive"
+	},
+	{
+		"code": "[50, 60] *^ 2",
+		"expected": [[100, 120]],
+		"title": "No initial: scalar to primitive"
+	},
+	{
+		"code": " ^+ 5",
+		"expected": [50],
+		"symbols": {
+			"initialValue": 50
+		},
+		"title": "initial: prefix insert operation"
+	},
+	{
+		"code": " +^ 5",
+		"expected": [55],
+		"symbols": {
+			"initialValue": 50
+		},
+		"title": "initial: postfix insert operation"
+	},
+	{
+		"code": "50 +^ 5",
+		"expected": [60],
+		"symbols": {
+			"5": "10"
+		},
+		"title": "Symbols: numeric substitution"
+	},
+	{
+		"code": "50 +^ increment",
+		"expected": [60],
+		"symbols": {
+			"increment": "10"
+		},
+		"title": "Symbols: named variable substitution"
+	},
+	{
+		"code": "$+ + 5 ^ $- ^ 0",
+		"expected": [55, 50],
+		"symbols": {
+			"initialValue": 50
+		},
+		"title": "Push/Pop: single push/pop"
+	}
+]

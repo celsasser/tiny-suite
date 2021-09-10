@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="TS,JS,JSON" pattern="file[tiny: core]:*.js*||file[tiny: core]:src//*.ts||file[tiny: core]:test//*.ts||file[tiny: core]:res//*.json" />
+</component>

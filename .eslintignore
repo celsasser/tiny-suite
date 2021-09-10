@@ -1,0 +1,7 @@
+# node_modules will be ignored by default
+
+.eslintrc.js
+.git
+build
+dist
+jest.config.js

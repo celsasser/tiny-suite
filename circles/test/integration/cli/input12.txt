@@ -1,0 +1,18 @@
+#########################################
+# test multiple circles
+#########################################
+
+$circle1:
+$circle2:
+diameter = 480
+divisions = 4
+notes = c4
+
+$circle1:
+notes = c4
+
+$circle2:
+notes = d4
+
+project:
+length = 480

@@ -1,0 +1,13 @@
+#########################################
+# test explicit note "off" directives
+#########################################
+
+$circle1:
+diameter = 480
+divisions = 4
+min = 64
+notes = 50
+off = 40
+
+project:
+length = 480

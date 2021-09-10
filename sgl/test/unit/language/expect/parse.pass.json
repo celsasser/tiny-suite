@@ -1,0 +1,223 @@
+[
+	{
+		"expected": [],
+		"input": "",
+		"title": "should parse empty string"
+	},
+	{
+		"expected": [
+			{
+				"type": "operand",
+				"value": "1"
+			}
+		],
+		"input": "1",
+		"title": "should parse single numeric operand input"
+	},
+	{
+		"expected": [
+			{
+				"type": "operand",
+				"value": "x"
+			}
+		],
+		"input": "x",
+		"title": "should parse single symbolic operand input"
+	},
+	{
+		"expected": [
+			{
+				"type": "operand",
+				"value": "x[0]"
+			}
+		],
+		"input": "x[0]",
+		"title": "should parse single array notation of symbolic operand"
+	},
+	{
+		"expected": [
+			{
+				"type": "operand",
+				"value": "x[10][0]"
+			}
+		],
+		"input": "x[10][0]",
+		"title": "should parse complex array notation of symbolic operand"
+	},
+	{
+		"expected": [
+			{
+				"type": "operand",
+				"value": ["1", "x", "x[0]", "x[10][0]"]
+			}
+		],
+		"input": "[1, x, x[0], x[10][0]]",
+		"title": "should parse arrays of element notation"
+	},
+	{
+		"expected": [
+			{
+				"type": "operand",
+				"value": "1"
+			},
+			{
+				"type": "operator",
+				"value": "+"
+			},
+			{
+				"type": "operand",
+				"value": "2"
+			}
+		],
+		"input": "1 + 2",
+		"title": "should parse simple operation with leading numeric operand"
+	},
+	{
+		"expected": [
+			{
+				"type": "operand",
+				"value": "1"
+			},
+			{
+				"type": "operator",
+				"value": "+"
+			},
+			{
+				"type": "operand",
+				"value": "2"
+			}
+		],
+		"input": "1+2",
+		"title": "should parse simple operation without space"
+	},
+	{
+		"expected": [
+			{
+				"type": "operand",
+				"value": "x"
+			},
+			{
+				"type": "operator",
+				"value": "+"
+			},
+			{
+				"type": "operand",
+				"value": "2"
+			}
+		],
+		"input": "x + 2",
+		"title": "should parse simple operation with leading symbolic operand"
+	},
+	{
+		"expected": [
+			{
+				"type": "operator",
+				"value": "+"
+			},
+			{
+				"type": "operand",
+				"value": "1"
+			}
+		],
+		"input": "+ 1",
+		"title": "should parse single operation without leading numeric operand"
+	},
+	{
+		"expected": [
+			{
+				"type": "operator",
+				"value": "$+"
+			},
+			{
+				"type": "operator",
+				"value": "+"
+			},
+			{
+				"type": "operator",
+				"value": "^"
+			},
+			{
+				"type": "operand",
+				"value": "1"
+			}
+		],
+		"input": " $+ + ^ 1",
+		"title": "should parse a sequence of operations with space"
+	},
+	{
+		"expected": [
+			{
+				"type": "operator",
+				"value": "$+"
+			},
+			{
+				"type": "operator",
+				"value": "+"
+			},
+			{
+				"type": "operator",
+				"value": "^"
+			},
+			{
+				"type": "operand",
+				"value": "1"
+			}
+		],
+		"input": "$++^1",
+		"title": "should parse a sequence of operations without space"
+	},
+	{
+		"expected": [
+			{
+				"type": "operator",
+				"value": "+"
+			},
+			{
+				"type": "operand",
+				"value": "1"
+			},
+			{
+				"type": "operator",
+				"value": "+"
+			},
+			{
+				"type": "operand",
+				"value": "2"
+			}
+		],
+		"input": "+ 1 + 2",
+		"title": "should parse multiple operations without leading numeric operand"
+	},
+	{
+		"expected": [
+			{
+				"type": "operand",
+				"value": ["1"]
+			},
+			{
+				"type": "operator",
+				"value": "+"
+			},
+			{
+				"type": "operand",
+				"value": ["2", "3"]
+			}
+		],
+		"input": "[1] + [2, 3]",
+		"title": "should parse simple operation with leading numeric array operand"
+	},
+	{
+		"expected": [
+			{
+				"type": "operator",
+				"value": "+"
+			},
+			{
+				"type": "operand",
+				"value": ["1", "2"]
+			}
+		],
+		"input": "+ [1, 2]",
+		"title": "should parse simple operation without leading numeric array operand"
+	}
+]

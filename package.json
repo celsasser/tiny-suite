@@ -1,0 +1,54 @@
+{
+	"author": "curt.elsasser@gmail.com",
+	"description": "Suite of tiny musical instruments",
+	"devDependencies": {
+		"@types/jest": "26.0.24",
+		"@types/node": "14.17.7",
+		"@typescript-eslint/eslint-plugin": "4.29.0",
+		"@typescript-eslint/parser": "4.29.0",
+		"eslint": "7.32.0",
+		"jest": "27.0.6",
+		"jest-junit": "12.2.0",
+		"prettier": "2.3.2",
+		"ts-jest": "27.0.4",
+		"typescript": "4.3.5"
+	},
+	"engines": {
+		"node": ">=14.0.0",
+		"npm": "use yarn",
+		"yarn": ">= 1.22.0"
+	},
+	"keywords": [
+		"tiny",
+		"midi",
+		"silly",
+		"graph",
+		"noise"
+	],
+	"license": "ISC",
+	"name": "tiny-midi-suite",
+	"private": true,
+	"repository": "https://github.com/celsasser/tiny-midi-suite.git",
+	"scripts": {
+		"analyze": "./execute.sh 'yarn run analyze'",
+		"build": "mkdir -p build; ./execute.sh 'yarn run build'",
+		"clean": "./execute.sh 'yarn run clean'; rm -rf build",
+		"clean:deep": "./execute.sh 'yarn run clean:deep'; rm -rf *.lock *.log ./node_modules; git prune",
+		"coverage": "./execute.sh 'yarn run coverage'",
+		"format": "./execute.sh 'yarn run format'; ./execute.sh 'npx prettier --write \"./*.(js|json)\"'",
+		"lint": "./execute.sh 'yarn run lint'",
+		"lint:fix": "./execute.sh 'yarn run lint:fix'",
+		"postinstall": "./execute.sh 'yarn install'",
+		"rebuild": "yarn run clean && yarn run build",
+		"test": "./execute.sh 'yarn run test'"
+	},
+	"version": "0.0.1",
+	"workspaces": [
+		"circles",
+		"core",
+		"crow",
+		"graph",
+		"midi",
+		"sgl"
+	]
+}

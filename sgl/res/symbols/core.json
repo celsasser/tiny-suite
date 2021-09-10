@@ -1,0 +1,8 @@
+{
+	"name": "Core symbols that we use for all parsing",
+	"values": {
+		"#": 1,
+		"b": -1
+	}
+}
+
