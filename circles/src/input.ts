@@ -10,7 +10,6 @@ export async function readInput(options: Readonly<CliOptions>): Promise<string> 
 		if (options.inputFile) {
 			return await readFile(options.inputFile);
 		} else {
-			console.warn(`(reading from stdin)`);
 			return await readStdin();
 		}
 	} catch (error) {
