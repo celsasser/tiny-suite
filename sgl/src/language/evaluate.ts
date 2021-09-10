@@ -94,7 +94,8 @@ export class TinyMachine {
 		}
 
 		/**
-		 * Makes sure <param>state.stack</param> can be popped and pops value into <param>state.accumulator</param>
+		 * Makes sure <param>state.stack</param> can be popped and pops value into
+		 * <param>state.accumulator</param>
 		 */
 		function popStack() {
 			if (state.stack.length === 0) {

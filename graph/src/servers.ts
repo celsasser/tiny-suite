@@ -4,8 +4,8 @@
  * Our collection of value servers
  */
 
+import { INumericRange, randomIntegerFromRange, randomizeElements } from '@tiny/core';
 import * as _ from 'lodash';
-import { randomIntegerFromRange, INumericRange, randomizeElements } from '@tiny/core';
 import { FunctionName, FunctionOption, NumbersServer } from './types';
 
 /**

@@ -12,7 +12,7 @@ import { Cardinality, NumbersServer } from '../types';
  * within are considered to be immutable)
  */
 export class Vertex {
-	public readonly channel: number;
+	public readonly channel: MidiChannelType;
 	public readonly name: string;
 	/**
 	 * Whether we follow one edge or all edges (assuming this is more than one)

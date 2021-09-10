@@ -20,8 +20,8 @@ describe(directoryToDescribeTitle(__dirname, 'load.ts'), function () {
 
 	describe('loadModuleJsonResource', function () {
 		it('should properly find a test resource relative to our root', function () {
-			const result = loadModuleJsonResource('./res/symbols/intervals.json');
-			expect(result).toEqual(require('../../../res/symbols/intervals.json'));
+			const result = loadModuleJsonResource('./res/midi/symbols/intervals.json');
+			expect(result).toEqual(require('../../../res/midi/symbols/intervals.json'));
 		});
 
 		it('should throw an exception if the resource cannot be located', function () {

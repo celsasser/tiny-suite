@@ -11,8 +11,10 @@ then
 	exit 1;
 fi
 
-# these are in order of least to dependencies to some
-MODULES="core graph midi sgl";
+# these are in order of:
+#  * least to dependencies to some
+#  * most buildable to least buildable
+MODULES="core graph midi sgl circles"; # crow
 
 for module in ${MODULES}
 do

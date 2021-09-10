@@ -66,7 +66,6 @@ export const notValueServer: NumbersServerType = function (
 	options?: ReadonlyArray<FunctionOption>
 ): NumbersServerResultType {
 	const champions = _.difference(candidates, exclude);
-	// @eslint-ignore no-mixed-spaces-and-tabs
 	return (options || []).includes(FunctionOption.Cycle)
 		? cycleValueServer(
 				state,

@@ -6,24 +6,7 @@
 
 export type MonophonicArray = number[];
 export type PolyphonicArray = Array<number | number[]>;
-
-export type MidiChannelType =
-	| 0
-	| 1
-	| 2
-	| 3
-	| 4
-	| 5
-	| 6
-	| 7
-	| 8
-	| 9
-	| 10
-	| 11
-	| 12
-	| 13
-	| 14
-	| 15;
+export type StringKeyedObject = { [property: string]: any };
 
 export interface IChannel {
 	durations?: MonophonicArray;
@@ -43,11 +26,13 @@ export interface INumericRange {
 	max: number;
 }
 
+export interface IToStringLike {
+	toString(): string;
+}
+
 /**
  * For all objects to which randomness may be applied
  */
 export interface IWeighted {
 	weight: number;
 }
-
-export type StringKeyedObject = { [property: string]: any };

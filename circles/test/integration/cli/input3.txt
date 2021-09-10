@@ -1,0 +1,11 @@
+####################################
+# test a 4 point circle and chords
+####################################
+
+$circle1:
+diameter = 2:1:0
+divisions = 4
+notes = 50
+
+project:
+length = 2:1:0

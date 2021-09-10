@@ -1,0 +1,11 @@
+#########################################
+# test for correction of uneven divisions
+#########################################
+
+$circle1:
+diameter = 5
+divisions = 3
+notes = 50
+
+project:
+length = 5

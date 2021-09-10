@@ -3,4 +3,5 @@
  */
 
 export * from './primitives';
+export * from './symbols';
 export * from './textBuffer';

@@ -1,0 +1,119 @@
+[
+	{
+		"expected": 120,
+		"offset": 120,
+		"ppq": 240,
+		"timesignature": {
+			"denominator": 4,
+			"numerator": 4
+		}
+	},
+	{
+		"expected": 120,
+		"offset": "120",
+		"ppq": 240,
+		"timesignature": {
+			"denominator": 4,
+			"numerator": 4
+		}
+	},
+	{
+		"expected": 30,
+		"offset": "1/8",
+		"ppq": 240,
+		"timesignature": {
+			"denominator": 4,
+			"numerator": 4
+		}
+	},
+	{
+		"expected": 60,
+		"offset": "1/4",
+		"ppq": 240,
+		"timesignature": {
+			"denominator": 4,
+			"numerator": 4
+		}
+	},
+	{
+		"expected": 60,
+		"offset": "1:1/4",
+		"ppq": 240,
+		"timesignature": {
+			"denominator": 4,
+			"numerator": 4
+		}
+	},
+	{
+		"expected": 1,
+		"offset": "1:1:1",
+		"ppq": 240,
+		"timesignature": {
+			"denominator": 4,
+			"numerator": 4
+		}
+	},
+	{
+		"expected": 60,
+		"offset": "1:1:1/4",
+		"ppq": 240,
+		"timesignature": {
+			"denominator": 4,
+			"numerator": 4
+		}
+	},
+	{
+		"expected": 240,
+		"offset": "1:2:0",
+		"ppq": 240,
+		"timesignature": {
+			"denominator": 4,
+			"numerator": 4
+		}
+	},
+	{
+		"expected": 300,
+		"offset": "1:2:1/4",
+		"ppq": 240,
+		"timesignature": {
+			"denominator": 4,
+			"numerator": 4
+		}
+	},
+	{
+		"expected": 300,
+		"offset": "2:1/4",
+		"ppq": 240,
+		"timesignature": {
+			"denominator": 4,
+			"numerator": 4
+		}
+	},
+	{
+		"expected": 960,
+		"offset": "2:1:0",
+		"ppq": 240,
+		"timesignature": {
+			"denominator": 4,
+			"numerator": 4
+		}
+	},
+	{
+		"expected": 1020,
+		"offset": "2:1:1/4",
+		"ppq": 240,
+		"timesignature": {
+			"denominator": 4,
+			"numerator": 4
+		}
+	},
+	{
+		"expected": 30,
+		"offset": "1:1:1/4",
+		"ppq": 240,
+		"timesignature": {
+			"denominator": 8,
+			"numerator": 4
+		}
+	}
+]

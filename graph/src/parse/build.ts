@@ -2,9 +2,14 @@
  * @license MIT (see project's LICENSE file)
  */
 
+import {
+	INumericRange,
+	MidiChannelType,
+	ParseTextBuffer,
+	stringToInteger,
+	UnexpectedError,
+} from '@tiny/core';
 import * as _ from 'lodash';
-import { INumericRange, MidiChannelType, ParseTextBuffer } from '@tiny/core';
-import { stringToInteger } from '../core';
 import { Edge, Graph, Vertex } from '../graph';
 import {
 	createCycleServer,
@@ -13,13 +18,7 @@ import {
 	createRandomGroupingServer,
 	createRandomSelectionServer,
 } from '../servers';
-import {
-	FunctionOption,
-	NumbersServer,
-	TinySymbolTable,
-	UnexpectedError,
-	VertexMap,
-} from '../types';
+import { FunctionOption, NumbersServer, TinySymbolTable, VertexMap } from '../types';
 import { LexicalPatterns } from './lexical';
 import {
 	EdgeConstructorParams,
@@ -29,8 +28,6 @@ import {
 	InterimVertexConstructorParamsMap,
 	VertexConstructorParams,
 } from './types';
-
-/* eslint-disable no-mixed-spaces-and-tabs */
 
 /**
  * Turns our little boy vertices and edges into men. And then builds the graph. Does

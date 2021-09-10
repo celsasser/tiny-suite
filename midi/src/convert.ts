@@ -2,7 +2,9 @@
  * @license MIT (see project's LICENSE file)
  */
 
+import { IChannel } from '@tiny/core';
 import {
+	MidiChannelType,
 	MidiFileType,
 	MidiIoEvent,
 	MidiIoEventSubtype,
@@ -12,7 +14,6 @@ import {
 	MidiIoTrack,
 } from 'midi-file-io';
 import { CliOptions, MidiDeltaEvent, MidiOffsetEvent } from './types';
-import { IChannel } from '@tiny/core';
 
 /***********************
  * Public Interface
@@ -100,7 +101,7 @@ function _createMidiTrack(
 				typeof midiNoteOrNotes === 'number' ? [midiNoteOrNotes] : midiNoteOrNotes;
 			midiNotes.forEach((midiNote) => {
 				events.push({
-					channel: channelIndex,
+					channel: channelIndex as MidiChannelType,
 					noteNumber: midiNote,
 					offset,
 					subtype: MidiIoEventSubtype.NoteOn,
@@ -108,7 +109,7 @@ function _createMidiTrack(
 					velocity,
 				});
 				events.push({
-					channel: channelIndex,
+					channel: channelIndex as MidiChannelType,
 					noteNumber: midiNote,
 					offset: offset + duration,
 					subtype: MidiIoEventSubtype.NoteOff,

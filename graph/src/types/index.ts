@@ -3,7 +3,6 @@
  */
 
 export * from './cli';
-export * from './errors';
 export * from './interfaces';
 export * from './primitives';
 export * from './vocabulary';

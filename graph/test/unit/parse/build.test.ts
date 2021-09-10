@@ -2,15 +2,15 @@
  * @license MIT (see project's LICENSE file)
  */
 
+import { directoryToDescribeTitle, getMidiNoteNameSymbols } from '@tiny/core';
 import * as _ from 'lodash';
-import { directoryToDescribeTitle, getNoteNameSymbols } from '@tiny/core';
 import { _propertyValueToServer } from '../../../src/parse/build';
 import { FunctionName, TinySymbolTable } from '../../../src/types';
 import * as propertyValueToServerTests from './expect/propertyValueToServer.json';
 
 describe(directoryToDescribeTitle(__dirname, 'build.ts'), function () {
 	describe('_propertyValueToServer', function () {
-		const symbols = new TinySymbolTable({ symbols: getNoteNameSymbols().values });
+		const symbols = new TinySymbolTable({ symbols: getMidiNoteNameSymbols().values });
 		/**
 		 * Non random tests
 		 */

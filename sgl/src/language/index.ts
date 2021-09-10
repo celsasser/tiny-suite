@@ -2,8 +2,8 @@
  * @license MIT (see project's LICENSE file)
  */
 
+import { getMidiNoteNameSymbols, ISymbolTableResource } from '@tiny/core';
 import * as _ from 'lodash';
-import { getNoteNameSymbols, ISymbolTableResource } from '@tiny/core';
 import { loadModuleJsonResource } from '../core/resource';
 import { TinyEvaluateSequence, TinySymbolMap, TinySymbolTable } from '../types';
 import { TinyMachine } from './evaluate';
@@ -38,7 +38,7 @@ export function generateTinySequence(
  */
 export function _createSymbolTable(symbols?: TinySymbolMap): TinySymbolTable {
 	let symbolTable: TinySymbolTable = new TinySymbolTable();
-	symbolTable.addSymbols(getNoteNameSymbols().values);
+	symbolTable.addSymbols(getMidiNoteNameSymbols().values);
 	symbolTable.addSymbols(
 		loadModuleJsonResource<ISymbolTableResource<number | string>>(
 			'./res/symbols/core.json'

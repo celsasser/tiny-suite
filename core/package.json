@@ -23,20 +23,20 @@
 		"node": ">=14.0.0"
 	},
 	"license": "ISC",
-	"main": "dist/index.js",
+	"main": "build/index.js",
 	"name": "@tiny/core",
 	"scripts": {
 		"analyze": "yarn run format && yarn run lint:fix && yarn run test",
 		"build": "npx tsc -p tsconfig.json",
-		"clean": "rm -rf './.buildcache' '*.log' './dist'",
+		"clean": "rm -rf './.buildcache' '*.log' './build'",
 		"clean:deep": "yarn run clean; rm -rf './node_modules'",
 		"coverage": "yarn run test --coverage",
 		"format": "npx prettier --write './*.(js|json)' './(src|test)/**/*.(js|json|ts)'",
 		"lint": "npx eslint .",
 		"lint:fix": "yarn run lint --fix",
-		"rebuild": "rm -rf './dist'; rm -f './.buildcache'; yarn run build",
+		"rebuild": "yarn run clean; yarn run build",
 		"test": "npx jest './test/unit'"
 	},
-	"types": "dist/index.d.ts",
+	"types": "buid/index.d.ts",
 	"version": "0.0.1"
 }

@@ -2,8 +2,8 @@
  * @license MIT (see project's LICENSE file)
  */
 
+import { getMidiNoteNameSymbols, ParseTextBuffer } from '@tiny/core';
 import * as _ from 'lodash';
-import { getNoteNameSymbols, ParseTextBuffer } from '@tiny/core';
 import {
 	EdgePropertyName,
 	IParsedInput,
@@ -23,8 +23,6 @@ import {
 } from './types';
 import { validate } from './validate';
 
-/* eslint-disable no-mixed-spaces-and-tabs */
-
 /**
  * Picks the jumble apart and returns it or throws an error
  * @throws {Error}
@@ -34,7 +32,7 @@ export function parseInput(input: string): IParsedInput {
 	const buffer = new ParseTextBuffer(input);
 	const edges: InterimEdgeConstructorParamsArray = [];
 	const vertices: InterimVertexConstructorParamsMap = {};
-	const symbols = new TinySymbolTable({ symbols: getNoteNameSymbols().values });
+	const symbols = new TinySymbolTable({ symbols: getMidiNoteNameSymbols().values });
 
 	/**
 	 * Removes meaningless stuff and then checks on where we are
