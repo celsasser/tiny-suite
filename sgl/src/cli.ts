@@ -2,7 +2,7 @@
  * @license MIT (see project's LICENSE file)
  */
 
-import * as tinyCoreModule from '@tiny/core';
+import * as tiny from '@tiny/core';
 import { description, version } from '../package.json';
 
 import { readInput } from './input';
@@ -21,7 +21,7 @@ export async function run({
 	argv?: string[];
 } = {}): Promise<void> {
 	const program = createSpecification();
-	await tinyCoreModule.run({
+	await tiny.run({
 		argv,
 		callback,
 		name: 'tiny-sgl',
@@ -35,8 +35,8 @@ export async function run({
 /**
  * Builds a command description
  */
-function createSpecification(): tinyCoreModule.Command {
-	return new tinyCoreModule.Command()
+function createSpecification(): tiny.Command {
+	return new tiny.Command()
 		.version(version)
 		.description(description)
 		.option(`-if --${CliOptionNames.InputFile} <path>`, 'Input file')

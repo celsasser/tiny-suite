@@ -2,9 +2,9 @@
  * @license MIT (see project's LICENSE file)
  */
 
-import * as io from '../../src/io';
 import * as fs from 'fs-extra';
 import * as getStdin from 'get-stdin';
+import * as io from '../../src/io';
 import { directoryToDescribeTitle } from '../utils';
 
 jest.mock('get-stdin');

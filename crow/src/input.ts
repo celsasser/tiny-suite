@@ -3,7 +3,7 @@
  */
 
 import { readFile, readStdin } from '@tiny/core';
-import { CliOptions, IStaticInput } from './types';
+import { CliOptions } from './types';
 
 export async function readInputData(
 	options: Readonly<CliOptions>,

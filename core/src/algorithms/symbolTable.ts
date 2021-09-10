@@ -13,8 +13,8 @@ import { RuntimeError, SymbolMap, UnknownSymbolError } from '../types';
 export class SymbolTable<V = unknown> {
 	private readonly _table: Map<string, V> = new Map<string, V>();
 	/**
-	 * This is our means of supporting scopes. Honestly, I am playing. I don't have a use case
-	 * But like the idea of being able to preserve our "global" collection
+	 * This is our means of supporting scopes. Honestly, I am playing. I don't have a use
+	 * case But like the idea of being able to preserve our "global" collection
 	 * @private
 	 */
 	private readonly _parent?: SymbolTable<V>;
@@ -73,7 +73,8 @@ export class SymbolTable<V = unknown> {
 	}
 
 	/**
-	 * May add a batch of symbols. And may add case variations if you like. Repeats will be overwritten
+	 * May add a batch of symbols. And may add case variations if you like. Repeats will
+	 * be overwritten
 	 */
 	public addSymbols(
 		symbols: Readonly<SymbolMap<V>>,
@@ -103,7 +104,8 @@ export class SymbolTable<V = unknown> {
 	/**
 	 * Looks for symbol from the top down. And returns the first instance found.
 	 * @param key - key of the value you are looking for
-	 * @param deepResolve - whether to search a chain of possible references from one result to anther's key
+	 * @param deepResolve - whether to search a chain of possible references from one
+	 *    result to anther's key
 	 * @throws {UnknownSymbolError} if symbol cannot be found
 	 */
 	public getSymbol<T = V>(key: string, deepResolve = true): T {
@@ -126,7 +128,8 @@ export class SymbolTable<V = unknown> {
 	 * Looks for symbol from the top down. And returns the first instance found.
 	 * @param key - key of the value you are looking for
 	 * @param defaultValue - optional default value if key cannot be found
-	 * @param deepResolve - whether to search a chain of possible references from one result to anther's key
+	 * @param deepResolve - whether to search a chain of possible references from one
+	 *    result to anther's key
 	 */
 	public getSymbolWithDefault<T = V>(
 		key: string,

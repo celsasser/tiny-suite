@@ -2,10 +2,9 @@
  * @license MIT (see project's LICENSE file)
  */
 
-import * as fs from 'fs';
 import { directoryToDescribeTitle, filterTests, ITest } from '@tiny/core';
+import * as fs from 'fs-extra';
 import { run } from '../../src/cli';
-import * as output from '../../src/output';
 import * as tests from './cli/tests.json';
 
 interface ICliTest extends ITest {
@@ -15,10 +14,9 @@ interface ICliTest extends ITest {
 }
 
 describe(directoryToDescribeTitle(__dirname, 'cli'), function () {
-	let writeOutput: jest.SpyInstance;
-
 	beforeEach(function () {
-		writeOutput = jest.spyOn(output, 'writeOutput');
+		jest.spyOn(fs, 'write');
+		// having some issues stubbing writeChannelOutput
 		jest.spyOn(process, 'exit').mockImplementation();
 	});
 
@@ -32,7 +30,7 @@ describe(directoryToDescribeTitle(__dirname, 'cli'), function () {
 			await run(test.argv);
 			expect(process.exit).toBeCalledWith(test.exit || 0);
 			if (test.output) {
-				expect(writeOutput.mock.calls[0][0]).toEqual(test.output);
+				expect(fs.write).toBeCalledWith(1, JSON.stringify(test.output));
 			}
 		});
 	});

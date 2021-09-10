@@ -2,8 +2,8 @@
  * @license MIT (see project's LICENSE file)
  */
 
-import * as _ from 'lodash';
 import { getMidiNoteNameSymbols, ParseTextBuffer } from '@tiny/core';
+import * as _ from 'lodash';
 import {
 	EdgePropertyName,
 	IParsedInput,

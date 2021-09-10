@@ -1,5 +1,5 @@
-import { MidiIoSong } from 'midi-file-io';
 import { readFileSync } from 'fs';
+import { MidiIoSong } from 'midi-file-io';
 import { writeOutput } from '../../src/output';
 import { CliOptions } from '../../src/types';
 import * as tests from './expect/writeOutput.json';

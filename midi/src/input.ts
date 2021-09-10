@@ -4,9 +4,12 @@ import { CliOptions } from './types';
 
 export async function getInput(options: Readonly<CliOptions>): Promise<IChannel[]> {
 	try {
-		const rawInput = options.inputFile
-			? await readFile(options.inputFile)
-			: await readStdin();
+		let rawInput;
+		if (options.inputFile) {
+			rawInput = await readFile(options.inputFile);
+		} else {
+			rawInput = await readStdin();
+		}
 		const parsed = JSON.parse(rawInput);
 		return _normalizeInput(parsed);
 	} catch (error) {

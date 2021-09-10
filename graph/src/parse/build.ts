@@ -2,14 +2,14 @@
  * @license MIT (see project's LICENSE file)
  */
 
-import * as _ from 'lodash';
 import {
-	stringToInteger,
 	INumericRange,
 	MidiChannelType,
 	ParseTextBuffer,
+	stringToInteger,
 	UnexpectedError,
 } from '@tiny/core';
+import * as _ from 'lodash';
 import { Edge, Graph, Vertex } from '../graph';
 import {
 	createCycleServer,

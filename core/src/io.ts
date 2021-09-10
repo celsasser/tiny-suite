@@ -6,9 +6,10 @@
 
 import * as fs from 'fs-extra';
 import * as getStdin from 'get-stdin';
+import { IChannel } from './types';
 
 /***********************
- * Public Interface
+ * Read API
  **********************/
 export async function readFile(path: string, encoding = 'utf-8'): Promise<string> {
 	return fs.readFile(path, { encoding });
@@ -21,9 +22,39 @@ export async function readJsonFromPath(
 	return fs.readJson(path, options);
 }
 
-export async function readStdin(): Promise<string> {
+/**
+ * Reads from stdin
+ * @param warn - warns user that we are reading from stdin.
+ */
+export async function readStdin(warn = true): Promise<string> {
+	if (warn) {
+		console.warn(`(reading from stdin)`);
+	}
 	const buffer = await getStdin();
 	return buffer.toString();
+}
+
+/***********************
+ * Write API
+ **********************/
+/**
+ * Writes generated sequence to stdout or to a file
+ * @param data
+ * @param outputFile - if specified then written to file otherwise written to stdout
+ */
+export async function writeChannelOutput(
+	data: ReadonlyArray<IChannel>,
+	outputFile?: string
+): Promise<void> {
+	try {
+		if (outputFile) {
+			await writeJsonToPath(outputFile, data);
+		} else {
+			await writeStdout(JSON.stringify(data));
+		}
+	} catch (error) {
+		throw new Error(`attempt to write failed: ${error.message}`);
+	}
 }
 
 export async function writeJsonToPath<T = unknown>(

@@ -13,7 +13,11 @@ export async function readInput(
 		if (args.length > 0) {
 			return args[0];
 		} else {
-			return options.inputFile ? await readFile(options.inputFile) : await readStdin();
+			if (options.inputFile) {
+				return await readFile(options.inputFile);
+			} else {
+				return await readStdin();
+			}
 		}
 	} catch (error) {
 		throw new Error(`attempt to read failed - ${error.message}`);

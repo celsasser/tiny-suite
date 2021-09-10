@@ -2,12 +2,11 @@
  * @license MIT (see project's LICENSE file)
  */
 
-import * as tinyCoreModule from '@tiny/core';
+import * as tiny from '@tiny/core';
 import { description, version } from '../package.json';
 
 import { readInput } from './input';
 import { Machine } from './machine';
-import { writeOutput } from './output';
 import { parseInput } from './parse';
 import { CliOptionNames, CliOptions } from './types';
 
@@ -16,7 +15,7 @@ import { CliOptionNames, CliOptions } from './types';
  */
 export async function run(argv: string[] = process.argv): Promise<void> {
 	const program = createSpecification();
-	await tinyCoreModule.run({
+	await tiny.run({
 		argv,
 		callback,
 		name: 'tiny-gts',
@@ -30,8 +29,8 @@ export async function run(argv: string[] = process.argv): Promise<void> {
 /**
  * Builds a command description
  */
-function createSpecification(): tinyCoreModule.Command {
-	return new tinyCoreModule.Command()
+function createSpecification(): tiny.Command {
+	return new tiny.Command()
 		.version(version)
 		.description(description)
 		.option(`-if --${CliOptionNames.InputFile} <path>`, 'Input file')
@@ -43,5 +42,5 @@ async function callback(options: Readonly<CliOptions>): Promise<void> {
 	const parsed = parseInput(input);
 	const machine = new Machine(parsed);
 	const output = machine.run();
-	await writeOutput(output, options);
+	await tiny.writeChannelOutput(output, options.outputFile);
 }

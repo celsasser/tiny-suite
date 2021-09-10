@@ -2,8 +2,8 @@
  * @license MIT (see project's LICENSE file)
  */
 
-import * as _ from 'lodash';
 import { directoryToDescribeTitle, getMidiNoteNameSymbols } from '@tiny/core';
+import * as _ from 'lodash';
 import { _propertyValueToServer } from '../../../src/parse/build';
 import { FunctionName, TinySymbolTable } from '../../../src/types';
 import * as propertyValueToServerTests from './expect/propertyValueToServer.json';

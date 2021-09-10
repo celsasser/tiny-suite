@@ -5,8 +5,8 @@
  * fella, but I wasn't coming up with anything I liked better
  */
 
-import * as _ from 'lodash';
 import { appendArray, findChampionByInterface, IChannel, TinyDefault } from '@tiny/core';
+import * as _ from 'lodash';
 import { Edge, Vertex } from './graph';
 import { Cardinality, IParsedInput } from './types';
 

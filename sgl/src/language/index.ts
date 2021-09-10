@@ -2,8 +2,8 @@
  * @license MIT (see project's LICENSE file)
  */
 
-import * as _ from 'lodash';
 import { getMidiNoteNameSymbols, ISymbolTableResource } from '@tiny/core';
+import * as _ from 'lodash';
 import { loadModuleJsonResource } from '../core/resource';
 import { TinyEvaluateSequence, TinySymbolMap, TinySymbolTable } from '../types';
 import { TinyMachine } from './evaluate';

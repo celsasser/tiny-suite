@@ -2,8 +2,8 @@
  * @license MIT (see project's LICENSE file)
  */
 
-import * as _ from 'lodash';
 import { SymbolMap } from '@tiny/core';
+import * as _ from 'lodash';
 import { TinyInstrument, TinyInstrumentString } from '../types';
 
 /**

@@ -2,12 +2,12 @@
  * @license MIT (see project's LICENSE file)
  */
 
-import * as tinyCoreModule from '@tiny/core';
+import * as tiny from '@tiny/core';
+import { description, version } from '../package.json';
 import { channelsToMidiFormat } from './convert';
 import { getInput } from './input';
 import { writeOutput } from './output';
 import { CliOptionNames, CliOptions } from './types';
-import { description, version } from '../package.json';
 
 /**
  * The orchestrator. He works with our support cast to fully process this request.
@@ -18,7 +18,7 @@ export async function run({
 	argv?: string[];
 } = {}): Promise<void> {
 	const program = createSpecification();
-	await tinyCoreModule.run({
+	await tiny.run({
 		argv,
 		callback,
 		name: 'tiny-sc',
@@ -32,9 +32,9 @@ export async function run({
 /**
  * Builds a meta command description
  */
-function createSpecification(): tinyCoreModule.Command {
-	const midiDefaults = tinyCoreModule.getMidiDefaultSymbols().values;
-	return new tinyCoreModule.Command()
+function createSpecification(): tiny.Command {
+	const midiDefaults = tiny.getMidiDefaultSymbols().values;
+	return new tiny.Command()
 		.version(version)
 		.description(description)
 		.option(`-if --${CliOptionNames.InputFile} <path>`, 'Input file')

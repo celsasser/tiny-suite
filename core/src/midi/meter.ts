@@ -15,14 +15,15 @@ const midiDefaults = getMidiDefaultSymbols();
  *  - measure, beat and rhythmic:  For example, "1:1:1/4", "2:2:1/8", etc.
  *  - measure, beat and offset:  For example, "1:1:60", "2:2:30", etc.
  *
- *  Discussion: what is 0 in terms of B:R and M:B:R? By default we are going to use classic
- *  notation indexing which is 1 based. For example, "Measure 1, beat 1" = 1:1:0. BUT we
- *  allow for the caller to specify a `relativeTo` offset. If you should like to treat something
- *  else as 0 then you may set `relativeTo` to any value you want to use as the "origin"
+ *  Discussion: what is 0 in terms of B:R and M:B:R? By default we are going to use
+ * classic notation indexing which is 1 based. For example, "Measure 1, beat 1" = 1:1:0.
+ * BUT we allow for the caller to specify a `relativeTo` offset. If you should like to
+ * treat something else as 0 then you may set `relativeTo` to any value you want to use
+ * as the "origin"
  * @param offset - value for which you want a PPQ
  * @param ppq - the formal PPQ
- * @param relativeTo - location from. We set it to 0 for speed. Assuming the indexing discussed
- * 	above this is equivalent to `1:1:0`
+ * @param relativeTo - location from. We set it to 0 for speed. Assuming the indexing
+ *    discussed above this is equivalent to `1:1:0`
  * @param timesignature
  */
 export function midiOffsetToPulseCount(

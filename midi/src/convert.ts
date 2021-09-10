@@ -2,6 +2,7 @@
  * @license MIT (see project's LICENSE file)
  */
 
+import { IChannel } from '@tiny/core';
 import {
 	MidiChannelType,
 	MidiFileType,
@@ -13,7 +14,6 @@ import {
 	MidiIoTrack,
 } from 'midi-file-io';
 import { CliOptions, MidiDeltaEvent, MidiOffsetEvent } from './types';
-import { IChannel } from '@tiny/core';
 
 /***********************
  * Public Interface

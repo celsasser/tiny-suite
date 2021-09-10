@@ -29,8 +29,8 @@ class LexicalPatterns {
  *  operations: operator+ operand
  *  operand: /[#b]*\d+/
  *    "#" - by default increases by 1
- *    "b" - by default decreases by 1 (conflict with variable names but think we will error on side of consistency here)
- *  operator: "+"|"-"|"^"|"$+"|"$-"
+ *    "b" - by default decreases by 1 (conflict with variable names but think we will
+ * error on side of consistency here) operator: "+"|"-"|"^"|"$+"|"$-"
  */
 export class TinyParser {
 	private buffer: ParseTextBuffer = new ParseTextBuffer('');
