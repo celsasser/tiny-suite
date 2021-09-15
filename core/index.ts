@@ -2,7 +2,7 @@
  * @license MIT (see project's LICENSE file)
  */
 
-export { Command } from 'commander';
+export { Command, Option as CommanderOption } from 'commander';
 export * from './src/algorithms';
 export * from './src/cli';
 export * from './src/core';

@@ -18,7 +18,7 @@ export async function run(argv: string[] = process.argv): Promise<void> {
 	await tiny.run({
 		argv,
 		callback,
-		name: 'tiny-gts',
+		name: 'tiny-graph',
 		program,
 	});
 }

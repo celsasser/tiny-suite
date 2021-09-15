@@ -1,0 +1,7 @@
+[
+	{
+		"argv": ["node", "index.js", "--inputFile=./test/integration/cli/input1.mid"],
+		"output": {},
+		"text": "Test 1. Todo"
+	}
+]
