@@ -42,6 +42,12 @@ function createSpecification(): tiny.Command {
 		)
 		.addOption(
 			new tiny.CommanderOption(
+				`-nn --${CliOptionNames.NoteNames}`,
+				'Show note names vs. MIDI values.'
+			)
+		)
+		.addOption(
+			new tiny.CommanderOption(
 				`-of --${CliOptionNames.OutputChannel} <channel>`,
 				'Output channel number. All dumped if not specified.'
 			).choices(_.range(1, 16).map(_.toString))

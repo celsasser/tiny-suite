@@ -4,6 +4,7 @@
 
 export enum CliOptionNames {
 	InputFile = 'inputFile',
+	NoteNames = 'noteNames',
 	OutputChannel = 'outputChannel',
 	OutputFormat = 'outputFormat',
 }
