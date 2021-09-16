@@ -39,8 +39,8 @@ function formatData(data: Readonly<MidiIoSong>, options: Readonly<CliOptions>): 
 	}
 
 	let dumpTracks: MidiIoTrack[];
-	if (options.outputChannel) {
-		const channel = stringToInteger(options.outputChannel) - 1;
+	if (options.channel) {
+		const channel = stringToInteger(options.channel) - 1;
 		dumpTracks = data.tracks.filter((track) => trackToChannel(track) === channel);
 	} else {
 		dumpTracks =

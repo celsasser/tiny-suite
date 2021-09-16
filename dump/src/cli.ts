@@ -36,6 +36,12 @@ function createSpecification(): tiny.Command {
 		.description(description)
 		.addOption(
 			new tiny.CommanderOption(
+				`-ch --${CliOptionNames.Channel} <channel>`,
+				'Filter by channel. All dumped if not specified.'
+			).choices(_.range(1, 16).map(_.toString))
+		)
+		.addOption(
+			new tiny.CommanderOption(
 				`-if --${CliOptionNames.InputFile} <path>`,
 				'Input file. Defaults to stdin.'
 			)
@@ -45,12 +51,6 @@ function createSpecification(): tiny.Command {
 				`-nn --${CliOptionNames.NoteNames}`,
 				'Show note names vs. MIDI values.'
 			)
-		)
-		.addOption(
-			new tiny.CommanderOption(
-				`-of --${CliOptionNames.OutputChannel} <channel>`,
-				'Output channel number. All dumped if not specified.'
-			).choices(_.range(1, 16).map(_.toString))
 		)
 		.addOption(
 			new tiny.CommanderOption(

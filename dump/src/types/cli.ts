@@ -3,9 +3,9 @@
  */
 
 export enum CliOptionNames {
+	Channel = 'channel',
 	InputFile = 'inputFile',
 	NoteNames = 'noteNames',
-	OutputChannel = 'outputChannel',
 	OutputFormat = 'outputFormat',
 }
 

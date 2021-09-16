@@ -7,7 +7,7 @@
 				"notes": ["48", "50", "52", "53", "55", "57", "59", "60"]
 			},
 			{
-				"channel": 0,
+				"channel": 1,
 				"notes": ["60", "59", "57", "55", "53", "52", "50", "48"]
 			}
 		],
@@ -18,13 +18,38 @@
 		"output": [
 			{
 				"channel": 0,
-				"notes": ["gb3", "ab3", "bb3", "b3", "db4", "eb4", "f4", "gb4"]
+				"notes": ["f3", "g3", "a3", "bb3", "c4", "d4", "e4", "f4"]
 			},
 			{
-				"channel": 0,
-				"notes": ["gb4", "f4", "eb4", "db4", "b3", "bb3", "ab3", "gb3"]
+				"channel": 1,
+				"notes": ["f4", "e4", "d4", "c4", "bb3", "a3", "g3", "f3"]
 			}
 		],
 		"text": "should properly render note names for f-major"
+	},
+	{
+		"argv": ["node", "index.js", "--noteNames", "--inputFile=./test/res/g-major.mid"],
+		"output": [
+			{
+				"channel": 0,
+				"notes": ["g3", "a3", "b3", "c4", "d4", "e4", "f#4", "g4"]
+			},
+			{
+				"channel": 1,
+				"notes": ["g4", "f#4", "e4", "d4", "c4", "b3", "a3", "g3"]
+			}
+		],
+		"text": "should properly render note names for f-major"
+	},
+	{
+		"options": ["only"],
+		"argv": ["node", "index.js", "--inputFile=./test/res/c-major.mid", "--channel=1"],
+		"output": [
+			{
+				"channel": 0,
+				"notes": ["48", "50", "52", "53", "55", "57", "59", "60"]
+			}
+		],
+		"text": "should properly filter by channel"
 	}
 ]
