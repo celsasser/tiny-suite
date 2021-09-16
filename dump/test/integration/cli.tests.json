@@ -1,0 +1,30 @@
+[
+	{
+		"argv": ["node", "index.js", "--inputFile=./test/res/c-major.mid"],
+		"output": [
+			{
+				"channel": 0,
+				"notes": ["48", "50", "52", "53", "55", "57", "59", "60"]
+			},
+			{
+				"channel": 0,
+				"notes": ["60", "59", "57", "55", "53", "52", "50", "48"]
+			}
+		],
+		"text": "should properly dump simple by default"
+	},
+	{
+		"argv": ["node", "index.js", "--noteNames", "--inputFile=./test/res/f-major.mid"],
+		"output": [
+			{
+				"channel": 0,
+				"notes": ["gb3", "ab3", "bb3", "b3", "db4", "eb4", "f4", "gb4"]
+			},
+			{
+				"channel": 0,
+				"notes": ["gb4", "f4", "eb4", "db4", "b3", "bb3", "ab3", "gb3"]
+			}
+		],
+		"text": "should properly render note names for f-major"
+	}
+]

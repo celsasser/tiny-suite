@@ -11,6 +11,7 @@ import {
 	MidiIoSong,
 	MidiIoTrack,
 } from 'midi-file-io';
+import { MidiFileType } from 'midi-file-io/dist/types';
 import { CliFormatTypes, CliOptions } from './types';
 
 type MidiNoteFormatter = (note: number) => string;
@@ -30,7 +31,7 @@ export async function writeOutput(
 
 function formatData(data: Readonly<MidiIoSong>, options: Readonly<CliOptions>): string {
 	function trackToChannel(track: Readonly<MidiIoTrack>): number | undefined {
-		for (let event of track) {
+		for (const event of track) {
 			if (event.channel !== undefined) {
 				return event.channel;
 			}
@@ -42,7 +43,8 @@ function formatData(data: Readonly<MidiIoSong>, options: Readonly<CliOptions>): 
 		const channel = stringToInteger(options.outputChannel) - 1;
 		dumpTracks = data.tracks.filter((track) => trackToChannel(track) === channel);
 	} else {
-		dumpTracks = data.tracks;
+		dumpTracks =
+			data.header.formatType === MidiFileType.Single ? data.tracks : data.tracks.slice(1);
 	}
 
 	let noteFormatter: MidiNoteFormatter;

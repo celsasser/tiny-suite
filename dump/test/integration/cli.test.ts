@@ -5,7 +5,7 @@
 import { directoryToDescribeTitle, filterTests, ITest } from '@tiny/core';
 import * as fs from 'fs-extra';
 import { run } from '../../src/cli';
-import * as tests from './cli/tests.json';
+import * as tests from './cli.tests.json';
 
 interface ICliTest extends ITest {
 	argv: string[];
@@ -17,7 +17,6 @@ interface ICliTest extends ITest {
 describe(directoryToDescribeTitle(__dirname, 'cli'), function () {
 	beforeEach(function () {
 		jest.spyOn(fs, 'write');
-		// having some issues stubbing writeChannelOutput
 		jest.spyOn(process, 'exit').mockImplementation();
 	});
 
@@ -26,7 +25,7 @@ describe(directoryToDescribeTitle(__dirname, 'cli'), function () {
 			await run(test.argv);
 			expect(process.exit).toBeCalledWith(test.exit || 0);
 			if (test.output) {
-				expect(fs.write).toBeCalledWith(1, JSON.stringify(test.output));
+				expect(fs.write).toBeCalledWith(1, JSON.stringify(test.output, null, '   '));
 			}
 		});
 	});
