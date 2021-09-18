@@ -3,7 +3,7 @@
  */
 
 import { midiNoteToName, writeStdout } from '@tiny/core';
-import { stringToInteger } from '@tiny/core/build';
+import { stringToInteger } from '@tiny/core';
 import * as _ from 'lodash';
 import {
 	MidiChannelType,

@@ -18,11 +18,11 @@
 		"output": [
 			{
 				"channel": 0,
-				"notes": ["f3", "g3", "a3", "bb3", "c4", "d4", "e4", "f4"]
+				"notes": ["F3", "G3", "A3", "Bb3", "C4", "D4", "E4", "F4"]
 			},
 			{
 				"channel": 1,
-				"notes": ["f4", "e4", "d4", "c4", "bb3", "a3", "g3", "f3"]
+				"notes": ["F4", "E4", "D4", "C4", "Bb3", "A3", "G3", "F3"]
 			}
 		],
 		"text": "should properly render note names for f-major"
@@ -32,17 +32,16 @@
 		"output": [
 			{
 				"channel": 0,
-				"notes": ["g3", "a3", "b3", "c4", "d4", "e4", "f#4", "g4"]
+				"notes": ["G3", "A3", "B3", "C4", "D4", "E4", "F#4", "G4"]
 			},
 			{
 				"channel": 1,
-				"notes": ["g4", "f#4", "e4", "d4", "c4", "b3", "a3", "g3"]
+				"notes": ["G4", "F#4", "E4", "D4", "C4", "B3", "A3", "G3"]
 			}
 		],
 		"text": "should properly render note names for f-major"
 	},
 	{
-		"options": ["only"],
 		"argv": ["node", "index.js", "--inputFile=./test/res/c-major.mid", "--channel=1"],
 		"output": [
 			{

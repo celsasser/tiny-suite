@@ -4,8 +4,8 @@
 
 import { MidiSharpFlatCount } from 'midi-file-io';
 
-const noteNamesFlat = ['c', 'db', 'd', 'eb', 'e', 'f', 'gb', 'g', 'ab', 'a', 'bb', 'b'];
-const noteNamesSharp = ['c', 'c#', 'd', 'd#', 'e', 'f', 'f#', 'g', 'g#', 'a', 'a#', 'b'];
+const noteNamesFlat = ['C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'];
+const noteNamesSharp = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
 
 export function midiNoteToName(note: number, key: MidiSharpFlatCount): string {
 	const names = key < 1 ? noteNamesFlat : noteNamesSharp;
