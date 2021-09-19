@@ -6,6 +6,7 @@ import {
 	isStringAnArray,
 	MidiChannelType,
 	midiOffsetToPulseCount,
+	stringToFloat,
 	stringToInteger,
 	symbolsToIntegers,
 	symbolToInteger,
@@ -71,7 +72,7 @@ function convertCircle(
 			: [symbolToInteger(interimCircle.notes)],
 		off: calculateOnOrOff(interimCircle.off),
 		on: calculateOnOrOff(interimCircle.on),
-		phase: Number.parseFloat(interimCircle.phase),
+		phase: stringToFloat(interimCircle.phase),
 		shape: interimCircle.shape as CircleShape,
 	};
 }

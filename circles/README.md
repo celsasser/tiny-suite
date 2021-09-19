@@ -6,13 +6,13 @@ It's a simple markup language for describing velocity cycles that cycle in the s
 
 ## Language
 
-It knows of two object types: _project_ and _circle_. `project:` is a reserved keyword whereas circles are
-dynamically named. All named objects that are not `project` are assumed to be a circle. We will dig into the
+It knows of two object types: _project_ and _circle_. _project_ is a reserved keyword whereas circles are
+dynamically named. All named objects that are not _project_ are assumed to be circles. We will dig into the
 grammar below.
 
-### Grammar
+### Grammar/Syntax
 
-The grammar is a lot like ini files which used to (and may still be used) as configuration files by windows.
+The grammar and syntax is a lot like Windows old INI grammar and syntax.
 
 `*` - property values prefaced with `*` are optional.
 
@@ -41,14 +41,14 @@ Please see core for [defaults](../core/res/midi/symbols/defaults.json).
 
 Project metadata as well as some control properties
 
-```css
+```gitignore
 project:
-/* The total length described in our PPQ|B:N|B:M:N spec */
+# The total length described in our PPQ|B:N|B:M:N spec
 length = <PPQ>|<M:N>|<M:B:N>
 *name = String
-/* Defaults to core's default PPQ */
+# Defaults to core's default PPQ
 *ppq = Number
-/* Defaults to core's default timesignature */
+# Defaults to core's default timesignature
 *timesignature = Number/Number
 ```
 
@@ -56,21 +56,21 @@ length = <PPQ>|<M:N>|<M:B:N>
 
 A vertex which is where notes with friends are defined. Vertexes are joined by edges.
 
-```css
+```gitignore
 <CircleName:Symbol>:
-/* Defaults to core's default channel */
+# Defaults to core's default channel
 *channel = NumericValue
 *description = String
 diameter = <PPQ>|<M:N>|<M:B:N>
 divisions = Number
-/* Maximum velocity value */
+# Maximum velocity value 
 *max = Number
-/* Minimum velocity value */
+# Minimum velocity value 
 *min = Number
 notes = NumericValue|NumericArray
-/* Off-time per note duration. Must be less than "on" time */
+# Off-time per note duration. Must be less than "on" time 
 *off = <PPQ>|<M:N>|<M:B:N>
-/* On-time per note duration. Defaults to diameter/divisions */
+# On-time per note duration. Defaults to diameter/divisions 
 *on = <PPQ>|<M:N>|<M:B:N>
 *phase = Number
 *shape = high-to-low|low-to-high|high-to-low-on-to-off|low-to-high-on-to-off|high-to-low-off-to-on||low-to-high-off-to-on

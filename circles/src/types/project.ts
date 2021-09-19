@@ -19,7 +19,7 @@ export interface ICircleProperties {
 	 */
 	min: number;
 	/**
-	 * Defaulted from the ini declaration
+	 * Defaulted from the spec's declaration
 	 */
 	name: string;
 	notes: number[];
@@ -34,14 +34,15 @@ export interface ICircleProperties {
 	 */
 	on?: number;
 	/**
-	 * Normalized ([0-1)) value of phase. Why not based on the more standard 2*PI.
-	 * 'Cause we have no painless access to PI within our ini files.
+	 * Normalized ([0-1)) value of phase. Why not based on the more standard 2*PI?
+	 * To keep things simple and not dependent on PI (though we will add a definition to our defaults)
 	 * Defaults to 0.
 	 */
 	phase: number;
 	shape: CircleShape;
 }
 
+Math.PI;
 export interface IProjectProperties {
 	/**
 	 * The total length described in our PPQ|B:N|B:M:N spec

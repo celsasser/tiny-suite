@@ -37,12 +37,25 @@ export function stringToBoolean(value: string): boolean {
  * @param value
  * @throws {Error}
  */
+export function stringToFloat(value: string): number {
+	const parsed = Number.parseFloat(value);
+	if (isNaN(parsed)) {
+		throw new Error(`unable to parse "${value}" as a float value`);
+	}
+	return parsed;
+}
+
+/**
+ * Parses and returns the integer or throws an error if parse fails
+ * @param value
+ * @throws {Error}
+ */
 export function stringToInteger<T extends number>(value: string): T {
-	const converted = Number.parseInt(value);
-	if (isNaN(converted)) {
+	const parsed = Number.parseInt(value);
+	if (isNaN(parsed)) {
 		throw new Error(`unable to parse "${value}" as an integer value`);
 	}
-	return converted as T;
+	return parsed as T;
 }
 
 /**

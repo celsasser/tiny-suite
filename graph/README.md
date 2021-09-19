@@ -20,9 +20,9 @@ Limitations:
 2. Don't allow user to create their own symbols. It's a simple addition should this guy's maiden voyage
    shows promise.
 
-### Grammar
+### Grammar/Syntax
 
-The grammar is a lot like ini files which used to (and may still be used) as configuration files by windows.
+The grammar and syntax is a lot like Windows old INI grammar and syntax.
 
 `*` - property values prefaced with `*` are optional.
 
@@ -51,18 +51,20 @@ avoid inline comments 'cause we don't parse them.
 
 Project metadata as well as some control properties
 
-```css
+```gitignore
 project:
-start = Vertext-SymbolName   # starting place for playback
+# starting place for playback
+start = Vertext-SymbolName   
 name = String
-steps = NumericValue       # number of steps through the graph before iteration stops
+# number of steps through the graph before iteration stops
+steps = NumericValue       
 ```
 
 **Vertext Definition**
 
 A vertex which is where notes with friends are defined. Vertexes are joined by edges.
 
-```css
+```gitignore
 <VertexName:Symbol>:
 channel = NumericValue
 name = String
@@ -76,7 +78,7 @@ weights = NumericArray
 
 Combines two vertices
 
-```css
+```gitignore
 <VertexName:Symbol> -> <VertexName:Symbol>:
 name = String
 panOffset = NumericArray
