@@ -33,7 +33,7 @@ The grammar is a lot like ini files which used to (and may still be used) as con
 - _NumericValue_ => `(Number|Predefined|Symbol)`
 - _NumericArray_ => `([NumericValue, ...]|ValueServer)`
 - _Option_ => `(cycle|reuse)`
-- _Predefined_ => _See core's common_ [symbols](https://github.com/celsasser/tiny-midi-suite.git/core/tree/master/res/symbols)
+- _Predefined_ => _See core's common_ [symbols](../core/res/midi/symbols)
 - _Range_ => `[(number|symbol) - (number|symbol)]`
 - _String_ => (any combination of printable characters)
 - _Symbol_ => `([a-zA-Z$_-][0-9a-zA-Z$_-]*|Reserved)`
@@ -51,36 +51,37 @@ avoid inline comments 'cause we don't parse them.
 
 Project metadata as well as some control properties
 
-```
+```css
 project:
-start: Vertext-SymbolName   # starting place for playback
-* name: String
-* steps: NumericValue       # number of steps through the graph before iteration stops
+start = Vertext-SymbolName   # starting place for playback
+name = String
+steps = NumericValue       # number of steps through the graph before iteration stops
 ```
 
 **Vertext Definition**
 
 A vertex which is where notes with friends are defined. Vertexes are joined by edges.
 
-```
-<SymbolName>:
-* channel: NumericValue
-* name: String
-* notes: NumericArray
-* transition: Cardinality
-* velocity: NumericArray
-* weights: NumericArray
+```css
+<VertexName:Symbol>:
+channel = NumericValue
+name = String
+notes = NumericArray
+transition = Cardinality
+velocity = NumericArray
+weights = NumericArray
 ```
 
 **Edge Definition**
 
 Combines two vertices
 
-```
-* name: String
-* panOffset: NumericArray
-* velocityOffset: NumericArray
-* weight: NumericArray
+```css
+<VertexName:Symbol> -> <VertexName:Symbol>:
+name = String
+panOffset = NumericArray
+velocityOffset = NumericArray
+weight = NumericArray
 ```
 
 **Value Servers**

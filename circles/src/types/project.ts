@@ -10,8 +10,14 @@ export interface ICircleProperties {
 	description?: string;
 	diameter: number;
 	divisions: number;
-	min: number;
+	/**
+	 * Maximum velocity value
+	 */
 	max: number;
+	/**
+	 * Minimum velocity value
+	 */
+	min: number;
 	/**
 	 * Defaulted from the ini declaration
 	 */
@@ -37,12 +43,12 @@ export interface ICircleProperties {
 }
 
 export interface IProjectProperties {
-	name?: string;
-	ppq?: number;
 	/**
 	 * The total length described in our PPQ|B:N|B:M:N spec
 	 */
 	length: number;
+	name?: string;
+	ppq?: number;
 	timesignature?: TimeSignature;
 }
 

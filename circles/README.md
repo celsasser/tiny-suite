@@ -1,15 +1,14 @@
 # Tiny Circles
 
-## Overview 
+## Overview
 
-It's a simple markup language for describing velocity cycles that cycle in the shape of a circle (or more accurately ellipses).
+It's a simple markup language for describing velocity cycles that cycle in the shape of a circle or more accurately ellipses.
 
 ## Language
 
-It knows of two object types: _project_ and _circle_. `project:` is a reserved keyword whereas circles are 
+It knows of two object types: _project_ and _circle_. `project:` is a reserved keyword whereas circles are
 dynamically named. All named objects that are not `project` are assumed to be a circle. We will dig into the
-grammar below. 
-
+grammar below.
 
 ### Grammar
 
@@ -22,7 +21,7 @@ The grammar is a lot like ini files which used to (and may still be used) as con
 - _Number_ => `\d+`
 - _NumericValue_ => `(Number|Symbol)`
 - _NumericArray_ => `([NumericValue, ...]|ValueServer)`
-- _Reserved_ => _See core's common_ [symbols](https://github.com/celsasser/tiny-midi-suite.git/core/tree/master/res/symbols)
+- _Reserved_ => _See core's common_ [symbols](../core/res/midi/symbols)
 - _String_ => (any combination of printable characters)
 - _Symbol_ => `([a-zA-Z$_-][0-9a-zA-Z$_-]*|Reserved)`
 
@@ -35,26 +34,44 @@ Comments should mostly be limited to line comments and not inline comments. The 
 that `#` is allowed character in symbol names (c#). So, where symbol names _may_ be used
 avoid inline comments 'cause we don't parse them.
 
+**Defaults**
+Please see core for [defaults](../core/res/midi/symbols/defaults.json).
+
 **Project Definition**
 
 Project metadata as well as some control properties
 
-```
+```css
 project:
-* name: String
-* length: PPQ|M:N|M:B:N     # length of song in our duration spec
+/* The total length described in our PPQ|B:N|B:M:N spec */
+length = <PPQ>|<M:N>|<M:B:N>
+*name = String
+/* Defaults to core's default PPQ */
+*ppq = Number
+/* Defaults to core's default timesignature */
+*timesignature = Number/Number
 ```
 
 **Circle Definition**
 
 A vertex which is where notes with friends are defined. Vertexes are joined by edges.
 
-```
-<SymbolName>:
-* channel: NumericValue
-* name: String
-* notes: NumericArray
-* transition: Cardinality
-* velocity: NumericArray
-* weights: NumericArray
+```css
+<CircleName:Symbol>:
+/* Defaults to core's default channel */
+*channel = NumericValue
+*description = String
+diameter = <PPQ>|<M:N>|<M:B:N>
+divisions = Number
+/* Maximum velocity value */
+*max = Number
+/* Minimum velocity value */
+*min = Number
+notes = NumericValue|NumericArray
+/* Off-time per note duration. Must be less than "on" time */
+*off = <PPQ>|<M:N>|<M:B:N>
+/* On-time per note duration. Defaults to diameter/divisions */
+*on = <PPQ>|<M:N>|<M:B:N>
+*phase = Number
+*shape = high-to-low|low-to-high|high-to-low-on-to-off|low-to-high-on-to-off|high-to-low-off-to-on||low-to-high-off-to-on
 ```
