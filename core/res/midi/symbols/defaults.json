@@ -2,6 +2,7 @@
 	"description": "Default MIDI control values",
 	"values": {
 		"pan": 0,
+		"PI": 3.141592653589793,
 		"ppq": 480,
 		"timesignature": {
 			"denominator": 4,

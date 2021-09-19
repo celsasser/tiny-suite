@@ -1,0 +1,15 @@
+{
+	"compilerOptions": {
+		"allowUnreachableCode": false,
+		"alwaysStrict": true,
+		"declaration": false,
+		"incremental": true,
+		"module": "commonjs",
+		"outDir": "build",
+		"pretty": true,
+		"resolveJsonModule": true,
+		"strict": true,
+		"target": "ES2020"
+	},
+	"include": ["index.ts", "src/**/*", "res/**/*.json"]
+}

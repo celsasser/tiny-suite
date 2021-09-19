@@ -1,0 +1,54 @@
+[
+	{
+		"argv": ["node", "index.js", "--inputFile=./test/res/c-major.mid"],
+		"output": [
+			{
+				"channel": 0,
+				"notes": ["48", "50", "52", "53", "55", "57", "59", "60"]
+			},
+			{
+				"channel": 1,
+				"notes": ["60", "59", "57", "55", "53", "52", "50", "48"]
+			}
+		],
+		"text": "should properly dump simple by default"
+	},
+	{
+		"argv": ["node", "index.js", "--noteNames", "--inputFile=./test/res/f-major.mid"],
+		"output": [
+			{
+				"channel": 0,
+				"notes": ["F3", "G3", "A3", "Bb3", "C4", "D4", "E4", "F4"]
+			},
+			{
+				"channel": 1,
+				"notes": ["F4", "E4", "D4", "C4", "Bb3", "A3", "G3", "F3"]
+			}
+		],
+		"text": "should properly render note names for f-major"
+	},
+	{
+		"argv": ["node", "index.js", "--noteNames", "--inputFile=./test/res/g-major.mid"],
+		"output": [
+			{
+				"channel": 0,
+				"notes": ["G3", "A3", "B3", "C4", "D4", "E4", "F#4", "G4"]
+			},
+			{
+				"channel": 1,
+				"notes": ["G4", "F#4", "E4", "D4", "C4", "B3", "A3", "G3"]
+			}
+		],
+		"text": "should properly render note names for f-major"
+	},
+	{
+		"argv": ["node", "index.js", "--inputFile=./test/res/c-major.mid", "--channel=1"],
+		"output": [
+			{
+				"channel": 0,
+				"notes": ["48", "50", "52", "53", "55", "57", "59", "60"]
+			}
+		],
+		"text": "should properly filter by channel"
+	}
+]

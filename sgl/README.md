@@ -3,6 +3,10 @@
 ## Draft
 I am a big dummy. I tore this out of a larger MIDI "compiler" called [pig-pen](https://github.com/celsasser/pig-pen-server) (see [tiny](https://github.com/celsasser/pig-pen-server/tree/master/src/song/tiny)). That was in the context of a scripting environment. This is not and the grammar isn't very useful as it is. I started thinking a little about support for some operations that could help but need to give it some thought:
 
+_TODO: I have build script handling into [crow](../crow/src/machine/script.ts). We can 
+do something very similar to that and allow these guys to be run in a javascript 
+context._
+
 ### Repitition
 Repeat a sequence. Here are some sketches:
 
