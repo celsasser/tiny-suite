@@ -19,7 +19,7 @@ describe(directoryToDescribeTitle(__dirname, 'meter.ts'), function () {
 				ppq: number;
 				timesignature: TimeSignature;
 			}) => {
-				it(`should return ${test.expected} for meter=${test.offset}, ppq=${test.ppq}, timesignature=${test.timesignature}`, function () {
+				it(`should return ${test.expected} for meter=${test.offset}, ppq=${test.ppq}, timesignature=${test.timesignature.numerator}/${test.timesignature.denominator}`, function () {
 					const result = midiOffsetToPulseCount(test.offset, {
 						ppq: test.ppq,
 						timesignature: test.timesignature,
@@ -43,7 +43,7 @@ describe(directoryToDescribeTitle(__dirname, 'meter.ts'), function () {
 				ppq: number;
 				timesignature: TimeSignature;
 			}) => {
-				it(`should return ${test.expected} for meter=${test.offset}, ppq=${test.ppq}, timesignature=${test.timesignature}`, function () {
+				it(`should return ${test.expected} for meter=${test.offset}, ppq=${test.ppq}, timesignature=${test.timesignature.numerator}/${test.timesignature.denominator}`, function () {
 					const result = midiDurationToPulseCount(test.offset, {
 						ppq: test.ppq,
 						timesignature: test.timesignature,
@@ -55,7 +55,7 @@ describe(directoryToDescribeTitle(__dirname, 'meter.ts'), function () {
 
 		it(`should return use defaults if not specified`, function () {
 			const result = midiDurationToPulseCount('1/4');
-			expect(result).toStrictEqual(120);
+			expect(result).toStrictEqual(480);
 		});
 	});
 

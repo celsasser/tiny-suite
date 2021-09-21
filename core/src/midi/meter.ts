@@ -43,10 +43,10 @@ export function midiOffsetToPulseCount(
 		relativeTo === 0
 			? 0
 			: midiOffsetToPulseCount(relativeTo, {
-				ppq,
-				relativeTo: 0,
-				timesignature,
-			});
+					ppq,
+					relativeTo: 0,
+					timesignature,
+			  });
 	if (typeof offset === 'number') {
 		return offset - relativeToOffset;
 	} else {
@@ -55,11 +55,7 @@ export function midiOffsetToPulseCount(
 			throw new Error(`could not match offset "${offset}" to spec ${meterRegex}`);
 		} else {
 			let result = 0;
-			const measure = match[1];
-			const beat = match[2];
-			const offset = match[3];
-			const numerator = match[4];
-			const denominator = match[5];
+			const [, measure, beat, offset, numerator, denominator] = match;
 			const pulsesPerBeat = midiTimesignatureToPulsesPerBeat(timesignature, ppq);
 			if (measure !== undefined) {
 				result += (Number(measure) - 1) * timesignature.numerator * pulsesPerBeat;
@@ -70,7 +66,11 @@ export function midiOffsetToPulseCount(
 			if (offset) {
 				result += Number(offset);
 			} else {
-				result += Math.round((Number(numerator) / Number(denominator)) * timesignature.denominator * pulsesPerBeat);
+				result += Math.round(
+					(Number(numerator) / Number(denominator)) *
+						timesignature.denominator *
+						pulsesPerBeat
+				);
 			}
 			return result - relativeToOffset;
 		}
@@ -103,11 +103,7 @@ export function midiDurationToPulseCount(
 			throw new Error(`could not match offset "${offset}" to spec ${meterRegex}`);
 		} else {
 			let result = 0;
-			const measure = match[1];
-			const beat = match[2];
-			const offset = match[3];
-			const numerator = match[4];
-			const denominator = match[5];
+			const [, measure, beat, offset, numerator, denominator] = match;
 			const pulsesPerBeat = midiTimesignatureToPulsesPerBeat(timesignature, ppq);
 			if (measure !== undefined) {
 				result += Number(measure) * timesignature.numerator * pulsesPerBeat;
@@ -118,7 +114,11 @@ export function midiDurationToPulseCount(
 			if (offset) {
 				result += Number(offset);
 			} else {
-				result += Math.round((Number(numerator) / Number(denominator)) * timesignature.denominator * pulsesPerBeat);
+				result += Math.round(
+					(Number(numerator) / Number(denominator)) *
+						timesignature.denominator *
+						pulsesPerBeat
+				);
 			}
 			return result;
 		}
