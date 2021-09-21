@@ -18,7 +18,7 @@
 		}
 	},
 	{
-		"expected": 120,
+		"expected": 30,
 		"offset": "1/8",
 		"ppq": 240,
 		"timesignature": {
@@ -27,7 +27,7 @@
 		}
 	},
 	{
-		"expected": 240,
+		"expected": 60,
 		"offset": "1/4",
 		"ppq": 240,
 		"timesignature": {
@@ -36,7 +36,7 @@
 		}
 	},
 	{
-		"expected": 240,
+		"expected": 480,
 		"offset": "1:1/4",
 		"ppq": 240,
 		"timesignature": {
@@ -46,15 +46,15 @@
 	},
 	{
 		"expected": 1,
-		"offset": "1:1:1",
-		"ppq": 240,
+		"offset": "1:0:0",
+		"ppq": 1020,
 		"timesignature": {
 			"denominator": 4,
 			"numerator": 4
 		}
 	},
 	{
-		"expected": 240,
+		"expected": 60,
 		"offset": "1:1:1/4",
 		"ppq": 240,
 		"timesignature": {
@@ -72,7 +72,7 @@
 		}
 	},
 	{
-		"expected": 480,
+		"expected": 300,
 		"offset": "1:2:1/4",
 		"ppq": 240,
 		"timesignature": {
@@ -81,7 +81,7 @@
 		}
 	},
 	{
-		"expected": 480,
+		"expected": 300,
 		"offset": "2:1/4",
 		"ppq": 240,
 		"timesignature": {
@@ -99,11 +99,20 @@
 		}
 	},
 	{
-		"expected": 1200,
+		"expected": 1020,
 		"offset": "2:1:1/4",
 		"ppq": 240,
 		"timesignature": {
 			"denominator": 4,
+			"numerator": 4
+		}
+	},
+	{
+		"expected": 30,
+		"offset": "1:1:1/4",
+		"ppq": 240,
+		"timesignature": {
+			"denominator": 8,
 			"numerator": 4
 		}
 	}

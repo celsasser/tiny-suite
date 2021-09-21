@@ -3,6 +3,7 @@
  */
 
 import {
+	midiDurationToPulseCount,
 	midiOffsetToPulseCount,
 	midiTimesignatureToPulsesPerBeat,
 } from '../../../src/midi';
@@ -28,8 +29,32 @@ describe(directoryToDescribeTitle(__dirname, 'meter.ts'), function () {
 			}
 		);
 
-		it(`should return use defaults if not specified`, function () {
+		it(`should use defaults if not specified`, function () {
 			const result = midiOffsetToPulseCount('1:1/4');
+			expect(result).toStrictEqual(480);
+		});
+	});
+
+	describe('midiDurationToPulseCount', function () {
+		require('./expect/midiDurationToPulseCount.json').forEach(
+			(test: {
+				expected: number;
+				offset: any;
+				ppq: number;
+				timesignature: TimeSignature;
+			}) => {
+				it(`should return ${test.expected} for meter=${test.offset}, ppq=${test.ppq}, timesignature=${test.timesignature}`, function () {
+					const result = midiDurationToPulseCount(test.offset, {
+						ppq: test.ppq,
+						timesignature: test.timesignature,
+					});
+					expect(result).toStrictEqual(test.expected);
+				});
+			}
+		);
+
+		it(`should return use defaults if not specified`, function () {
+			const result = midiDurationToPulseCount('1/4');
 			expect(result).toStrictEqual(120);
 		});
 	});
