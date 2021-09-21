@@ -22,7 +22,7 @@ import {
 	InterimCircleProperties,
 	InterimProjectProperties,
 } from './types';
-import { validateInput } from './validate';
+import { validateInterimInput } from './validate';
 
 /**
  * Picks the jumble apart and returns it or throws an error
@@ -60,7 +60,7 @@ export function parseInput(input: string): IParsedInput {
 		}
 	}
 	interimInput.circles = _.sortBy(Object.values(circleMap), 'name');
-	const validated = validateInput(interimInput);
+	const validated = validateInterimInput(interimInput);
 	return convertInput(validated);
 }
 

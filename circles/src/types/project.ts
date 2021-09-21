@@ -35,8 +35,8 @@ export interface ICircleProperties {
 	on?: number;
 	/**
 	 * Normalized ([0-1)) value of phase. Why not based on the more standard 2*PI?
-	 * To keep things simple and not dependent on PI (though we will add a definition to our defaults)
-	 * Defaults to 0.
+	 * To keep things simple and not dependent on PI (though we will add a definition to
+	 * our defaults) Defaults to 0.
 	 */
 	phase: number;
 	shape: CircleShape;

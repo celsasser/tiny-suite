@@ -14,7 +14,7 @@ export class LexicalPatterns {
 	 * Gets too crazy with the way we build up our lexical grammar. Some exceptions.
 	 **********************/
 	private static readonly _Number = /\d+/;
-	private static readonly _CommentsAndSpace = /(?:\s*(?:#.+)?\n?)*/m;
+	private static readonly _CommentsAndSpace = /(?:\s*(?:#.*)?\n?)*/m;
 
 	/***********************
 	 * Public Primitives

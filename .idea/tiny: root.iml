@@ -24,6 +24,8 @@
       <excludeFolder url="file://$MODULE_DIR$/midi/build" />
       <excludeFolder url="file://$MODULE_DIR$/sgl/build" />
       <excludeFolder url="file://$MODULE_DIR$/crow/build" />
+      <excludeFolder url="file://$MODULE_DIR$/dump/build" />
+      <excludeFolder url="file://$MODULE_DIR$/dump/coverage" />
       <excludePattern pattern="*-lock.json" />
     </content>
     <orderEntry type="inheritedJdk" />
