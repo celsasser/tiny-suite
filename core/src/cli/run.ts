@@ -34,7 +34,7 @@ export async function run<TOptions = { [property: string]: string }>({
 		await callback(program.opts<TOptions>(), program.args);
 		process.exit(0);
 	} catch (error) {
-		console.error(`${name}: ${error.message}`);
+		console.error(`${name} error: ${error.message}`);
 		// todo: get rid of once the dust settles
 		console.debug(error.stack.split(/\n/).slice(1));
 		process.exit(1);

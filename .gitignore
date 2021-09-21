@@ -12,6 +12,7 @@
 
 
 # build and test stuff that we don't want to keep in VCS
+examples/**/*.mid
 **/*.lock
 **/build
 **/coverage

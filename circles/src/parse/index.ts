@@ -73,7 +73,8 @@ function _getCircles(buffer: ParseTextBuffer): InterimCircleProperties[] | undef
 			.map((line) => line.match(LexicalPatterns.Symbol)![0]);
 		const properties: Partial<InterimCircleProperties> = {
 			max: '127',
-			min: '0',
+			// we set the default min to 1 'cause 0 is treated as note off
+			min: '1',
 			phase: '0',
 			shape: CircleShape.LowToHigh,
 		};

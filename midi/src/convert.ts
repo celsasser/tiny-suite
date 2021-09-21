@@ -2,7 +2,7 @@
  * @license MIT (see project's LICENSE file)
  */
 
-import { IChannel } from '@tiny/core';
+import { getGeneralMidiProgramSymbols, IChannel } from '@tiny/core';
 import {
 	MidiChannelType,
 	MidiFileType,
@@ -116,13 +116,33 @@ function _createMidiTrack(
 	 */
 	function _channelToOffsetEventArray(): MidiOffsetEvent[] {
 		let offset = 0;
+		const generalMidi = getGeneralMidiProgramSymbols().values;
 		const durationSequence = _circularNumericGenerator(
 			channel.durations ? channel.durations : Number(options.pulsePerNote)
 		);
 		const velocitySequence = _circularNumericGenerator(
 			channel.velocities ? channel.velocities : Number(options.velocity)
 		);
-		const events: MidiOffsetEvent[] = [];
+		const events: MidiOffsetEvent[] = [
+			{
+				offset: 0,
+				subtype: MidiIoEventSubtype.TrackName,
+				text: channel.name ?? `track ${channelIndex + 1}`,
+				type: MidiIoEventType.Meta,
+			},
+			{
+				offset: 0,
+				subtype: MidiIoEventSubtype.InstrumentName,
+				text: channel.program ?? generalMidi['1'],
+				type: MidiIoEventType.Meta,
+			},
+			{
+				offset: 0,
+				subtype: MidiIoEventSubtype.MidiChannelPrefix,
+				type: MidiIoEventType.Meta,
+				channel: channel.channel ?? 0,
+			},
+		];
 		channel.notes.forEach((midiNoteOrNotes): void => {
 			const duration = _justifyDuration(durationSequence.next().value);
 			const velocity = _justifyVelocity(velocitySequence.next().value);

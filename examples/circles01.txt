@@ -1,0 +1,32 @@
+##########################################################################################
+# Play on Cmaj7 -> sus4
+#
+# usage from the root:
+# ./build/circles -if ./examples/circles01.txt | ./build/midi -of ./examples/circles01.mid
+##########################################################################################
+
+project:
+length = 4:1:0
+
+$circle1:
+diameter = 1:0:0
+divisions = 32
+min = 64
+notes = C5
+
+$circle2:
+diameter = 2:0:0
+divisions = 32
+notes = F4
+
+$circle3:
+diameter = 2:0:0
+divisions = 32
+notes = G4
+phase = 0.5
+
+$circle4:
+diameter = 4:0:0
+divisions = 128
+notes = B4
+
