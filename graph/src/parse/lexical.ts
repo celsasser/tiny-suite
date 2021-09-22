@@ -65,7 +65,7 @@ export class LexicalPatterns {
 	 * Current offset plus space followed or not followed by a comment, blank lines,
 	 * comment lines
 	 */
-	public static readonly CommentsAndSpace = /^(\s*(#.+)?\n?)*/m;
+	public static readonly CommentsAndSpace = /^(\s*(#.*)?\n?)*/m;
 	public static readonly EdgeDeclaration = new RegExp(
 		`^((${LexicalPatterns.Symbol.source})\\s*->\\s*(${LexicalPatterns.Symbol.source}))\\s*:`
 	);

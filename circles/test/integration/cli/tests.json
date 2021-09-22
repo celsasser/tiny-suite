@@ -5,7 +5,7 @@
 			{
 				"durations": [960, 960],
 				"notes": [[50], [50]],
-				"velocities": [127, 0]
+				"velocities": [127, 1]
 			}
 		]
 	},
@@ -18,7 +18,7 @@
 					[50, 55],
 					[50, 55]
 				],
-				"velocities": [127, 0]
+				"velocities": [127, 1]
 			}
 		]
 	},
@@ -28,7 +28,7 @@
 			{
 				"durations": [480, 480, 480, 480],
 				"notes": [[50], [50], [50], [50]],
-				"velocities": [127, 64, 0, 63]
+				"velocities": [127, 64, 1, 64]
 			}
 		]
 	},
@@ -38,7 +38,7 @@
 			{
 				"durations": [240, 240, 240, 240, 240, 240, 240, 240],
 				"notes": [[50], [50], [50], [50], [50], [50], [50], [50]],
-				"velocities": [127, 108, 64, 19, 0, 19, 63, 108]
+				"velocities": [127, 109, 64, 19, 1, 19, 64, 109]
 			}
 		]
 	},
@@ -48,7 +48,7 @@
 			{
 				"durations": [1, 1, 1, 1, 1],
 				"notes": [[50], [50], [], [50], []],
-				"velocities": [127, 32, 0, 32, 0]
+				"velocities": [127, 32, 0, 33, 0]
 			}
 		]
 	},
@@ -108,12 +108,87 @@
 			{
 				"durations": [120, 120, 120, 120],
 				"notes": [[60], [60], [60], [60]],
-				"velocities": [127, 64, 0, 63]
+				"velocities": [127, 64, 1, 64]
 			},
 			{
 				"durations": [120, 120, 120, 120],
 				"notes": [[62], [62], [62], [62]],
-				"velocities": [127, 64, 0, 63]
+				"velocities": [127, 64, 1, 64]
+			}
+		]
+	},
+	{
+		"argv": ["node", "index.js", "--inputFile=./test/integration/cli/input12.txt"],
+		"output": [
+			{
+				"durations": [120, 120, 120, 120],
+				"notes": [[60], [60], [60], [60]],
+				"velocities": [127, 64, 1, 64]
+			},
+			{
+				"durations": [120, 120, 120, 120],
+				"notes": [[62], [62], [62], [62]],
+				"velocities": [127, 64, 1, 64]
+			}
+		]
+	},
+	{
+		"argv": ["node", "index.js", "--inputFile=./test/integration/cli/input13.txt"],
+		"output": [
+			{
+				"durations": [480, 480, 480, 480, 480, 480, 480, 480],
+				"notes": [[50], [50], [50], [50], [50], [50], [50], [50]],
+				"velocities": [1, 33, 64, 96, 1, 33, 64, 96]
+			}
+		]
+	},
+	{
+		"argv": ["node", "index.js", "--inputFile=./test/integration/cli/input14.txt"],
+		"output": [
+			{
+				"durations": [480, 480, 480, 480, 480, 480, 480, 480],
+				"notes": [[50], [50], [50], [50], [50], [50], [50], [50]],
+				"velocities": [127, 96, 64, 33, 127, 96, 64, 33]
+			}
+		]
+	},
+	{
+		"argv": ["node", "index.js", "--inputFile=./test/integration/cli/input15.txt"],
+		"output": [
+			{
+				"durations": [480, 480, 480, 480, 480, 480, 480, 480],
+				"notes": [[50], [50], [50], [50], [50], [50], [50], [50]],
+				"velocities": [64, 96, 1, 33, 64, 96, 1, 33]
+			}
+		]
+	},
+	{
+		"argv": ["node", "index.js", "--inputFile=./test/integration/cli/input16.txt"],
+		"output": [
+			{
+				"durations": [480, 480, 480, 480, 480, 480, 480, 480],
+				"notes": [[50], [50], [50], [50], [50], [50], [50], [50]],
+				"velocities": [1, 1, 127, 127, 1, 1, 127, 127]
+			}
+		]
+	},
+	{
+		"argv": ["node", "index.js", "--inputFile=./test/integration/cli/input17.txt"],
+		"output": [
+			{
+				"durations": [480, 480, 480, 480, 480, 480, 480, 480],
+				"notes": [[50], [50], [50], [50], [50], [50], [50], [50]],
+				"velocities": [127, 127, 1, 1, 127, 127, 1, 1]
+			}
+		]
+	},
+	{
+		"argv": ["node", "index.js", "--inputFile=./test/integration/cli/input18.txt"],
+		"output": [
+			{
+				"durations": [480, 480, 480, 480, 480, 480, 480, 480],
+				"notes": [[50], [50], [50], [50], [50], [50], [50], [50]],
+				"velocities": [127, 127, 1, 1, 127, 127, 1, 1]
 			}
 		]
 	}

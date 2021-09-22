@@ -9,6 +9,7 @@ import {
 } from '@tiny/core';
 import * as _ from 'lodash';
 import {
+	CircleFlow,
 	CirclePropertyName,
 	CircleShape,
 	IParsedInput,
@@ -22,7 +23,7 @@ import {
 	InterimCircleProperties,
 	InterimProjectProperties,
 } from './types';
-import { validateInput } from './validate';
+import { validateInterimInput } from './validate';
 
 /**
  * Picks the jumble apart and returns it or throws an error
@@ -60,22 +61,25 @@ export function parseInput(input: string): IParsedInput {
 		}
 	}
 	interimInput.circles = _.sortBy(Object.values(circleMap), 'name');
-	const validated = validateInput(interimInput);
+	const validated = validateInterimInput(interimInput);
 	return convertInput(validated);
 }
 
 function _getCircles(buffer: ParseTextBuffer): InterimCircleProperties[] | undefined {
-	const matches = buffer.match(LexicalPatterns.CirclesDeclarations);
-	if (matches) {
+	let match;
+	const names: string[] = [];
+	while ((match = buffer.match(LexicalPatterns.CircleDeclaration))) {
+		names.push(match[0]);
+	}
+	if (names.length > 0) {
 		let propertyAssignment;
-		const names = matches[0]
-			.split(/\s*\n\s*/)
-			.map((line) => line.match(LexicalPatterns.Symbol)![0]);
 		const properties: Partial<InterimCircleProperties> = {
+			flow: CircleFlow.LowToHigh,
+			// we set the default min to 1 'cause 0 is treated as note off
 			max: '127',
-			min: '0',
+			min: '1',
 			phase: '0',
-			shape: CircleShape.LowToHigh,
+			shape: CircleShape.Sine,
 		};
 		const supportedProperties = getAllVocabularyProperties(CirclePropertyName);
 		while ((propertyAssignment = _getPropertyAssignment(buffer))) {

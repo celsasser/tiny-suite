@@ -5,7 +5,7 @@
 import {
 	isStringAnArray,
 	MidiChannelType,
-	midiOffsetToPulseCount,
+	midiDurationToPulseCount,
 	stringToFloat,
 	stringToInteger,
 	symbolsToIntegers,
@@ -13,6 +13,7 @@ import {
 	TimeSignature,
 } from '@tiny/core';
 import {
+	CircleFlow,
 	CircleShape,
 	ICircleProperties,
 	IParsedInput,
@@ -24,6 +25,7 @@ import {
 	InterimCircleProperties,
 	InterimProjectProperties,
 } from './types';
+import { validateConvertedCircle } from './validate';
 
 /***********************
  * Public API
@@ -43,7 +45,7 @@ function convertCircle(
 	project: Readonly<IProjectProperties>,
 	interimCircle: Readonly<InterimCircleProperties>
 ): ICircleProperties {
-	const diameter = midiOffsetToPulseCount(interimCircle.diameter, project);
+	const diameter = midiDurationToPulseCount(interimCircle.diameter, project);
 	const divisions = stringToInteger(interimCircle.divisions);
 	const calculateOnOrOff = (value?: string): number | undefined => {
 		if (value !== undefined) {
@@ -51,13 +53,13 @@ function convertCircle(
 				const percentage = stringToInteger(value.substring(0, value.length - 1)) / 100;
 				return Math.round((percentage * diameter) / divisions);
 			} else {
-				return midiOffsetToPulseCount(value, project);
+				return midiDurationToPulseCount(value, project);
 			}
 		}
 		return value;
 	};
 
-	return {
+	const circle: ICircleProperties = {
 		...interimCircle,
 		channel:
 			interimCircle.channel !== undefined
@@ -65,6 +67,7 @@ function convertCircle(
 				: undefined,
 		diameter,
 		divisions,
+		flow: interimCircle.flow as CircleFlow,
 		max: stringToInteger(interimCircle.max),
 		min: stringToInteger(interimCircle.min),
 		notes: isStringAnArray(interimCircle.notes)
@@ -75,6 +78,8 @@ function convertCircle(
 		phase: stringToFloat(interimCircle.phase),
 		shape: interimCircle.shape as CircleShape,
 	};
+	validateConvertedCircle(circle);
+	return circle;
 }
 
 function convertProject(
@@ -82,7 +87,7 @@ function convertProject(
 ): IProjectProperties {
 	const ppq = stringToInteger(interimProject.ppq!);
 	const timesignature = parseTimesignature(interimProject.timesignature!);
-	const length = midiOffsetToPulseCount(interimProject.length, { ppq, timesignature });
+	const length = midiDurationToPulseCount(interimProject.length, { ppq, timesignature });
 	return {
 		...interimProject,
 		length,

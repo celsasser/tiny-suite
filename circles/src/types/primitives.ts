@@ -2,7 +2,7 @@
  * @license MIT (see project's LICENSE file)
  */
 
-export enum CircleShape {
+export enum CircleFlow {
 	/**
 	 * From high to low, on to off
 	 */
@@ -29,29 +29,35 @@ export enum CircleShape {
 	LowToHighOffToOn = 'low-to-high-off-to-on',
 }
 
-export function isShapeHighToLow(shape: CircleShape): boolean {
-	switch (shape) {
-		case CircleShape.HighToLow:
-		case CircleShape.HighToLowOffToOn:
-		case CircleShape.HighToLowOnToOff: {
+export enum CircleShape {
+	Sawtooth = 'sawtooth',
+	Sine = 'sine',
+	Square = 'square',
+}
+
+export function isFlowHighToLow(flow: CircleFlow): boolean {
+	switch (flow) {
+		case CircleFlow.HighToLow:
+		case CircleFlow.HighToLowOffToOn:
+		case CircleFlow.HighToLowOnToOff: {
 			return true;
 		}
 	}
 	return false;
 }
 
-export function isShapeLowToHigh(shape: CircleShape): boolean {
-	return !isShapeHighToLow(shape);
+export function isFlowLowToHigh(flow: CircleFlow): boolean {
+	return !isFlowHighToLow(flow);
 }
 
-export function isShapeOnToOff(shape: CircleShape): boolean {
-	return !isShapeOffToOn(shape);
+export function isFlowOnToOff(flow: CircleFlow): boolean {
+	return !isFlowOffToOn(flow);
 }
 
-export function isShapeOffToOn(shape: CircleShape): boolean {
-	switch (shape) {
-		case CircleShape.HighToLowOffToOn:
-		case CircleShape.LowToHighOffToOn: {
+export function isFlowOffToOn(flow: CircleFlow): boolean {
+	switch (flow) {
+		case CircleFlow.HighToLowOffToOn:
+		case CircleFlow.LowToHighOffToOn: {
 			return true;
 		}
 	}

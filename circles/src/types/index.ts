@@ -3,6 +3,7 @@
  */
 
 export * from './cli';
+export * from './factory';
 export * from './parse';
 export * from './project';
 export * from './primitives';

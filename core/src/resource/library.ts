@@ -10,6 +10,10 @@ import { loadModuleJsonResource } from './load';
 
 const cache = new Cache();
 
+export function getGeneralMidiProgramSymbols(): Readonly<ISymbolTableResource<string>> {
+	return _getCachedResource('./res/midi/symbols/generalMidi.json');
+}
+
 export function getMidiDefaultSymbols(): Readonly<ISymbolTableResource<any>> {
 	return _getCachedResource('./res/midi/symbols/defaults.json');
 }

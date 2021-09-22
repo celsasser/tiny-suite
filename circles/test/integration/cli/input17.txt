@@ -1,11 +1,13 @@
 ####################################
-# test an 8 point circle and chords
+# testing square flow
 ####################################
 
 $circle1:
 diameter = 1:0:0
-divisions = 8
+divisions = 4
+flow = high-to-low
 notes = 50
+shape = square
 
 project:
-length = 1:0:0
+length = 2:0:0

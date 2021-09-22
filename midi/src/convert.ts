@@ -2,7 +2,7 @@
  * @license MIT (see project's LICENSE file)
  */
 
-import { IChannel } from '@tiny/core';
+import { getGeneralMidiProgramSymbols, IChannel } from '@tiny/core';
 import {
 	MidiChannelType,
 	MidiFileType,
@@ -82,26 +82,76 @@ function _createMidiTrack(
 	channel: Readonly<IChannel>,
 	channelIndex: number
 ): MidiIoTrack {
+	function _justifyChannel(value: number): MidiChannelType {
+		if (value < 0 || value > 15) {
+			console.warn(`bad MIDI data: channel = ${value}`);
+			return Math.max(0, Math.min(15, value)) as MidiChannelType;
+		}
+		return value as MidiChannelType;
+	}
+	function _justifyDuration(value: number): number {
+		if (value < 0) {
+			console.warn(`bad MIDI data: duration = ${value}`);
+			return 0;
+		}
+		return value;
+	}
+	function _justifyNote(value: number): number {
+		if (value < 0 || value > 127) {
+			console.warn(`bad MIDI data: note = ${value}`);
+			return Math.max(0, Math.min(127, value));
+		}
+		return value;
+	}
+	function _justifyVelocity(value: number): number {
+		if (value < 0 || value > 127) {
+			console.warn(`bad MIDI data: velocity = ${value}`);
+			return Math.max(0, Math.min(127, value));
+		}
+		return value;
+	}
+
 	/**
 	 * Creates an event list with offsets vs. relative deltas from the `channel`
 	 */
 	function _channelToOffsetEventArray(): MidiOffsetEvent[] {
 		let offset = 0;
+		const generalMidi = getGeneralMidiProgramSymbols().values;
 		const durationSequence = _circularNumericGenerator(
 			channel.durations ? channel.durations : Number(options.pulsePerNote)
 		);
 		const velocitySequence = _circularNumericGenerator(
 			channel.velocities ? channel.velocities : Number(options.velocity)
 		);
-		const events: MidiOffsetEvent[] = [];
+		const events: MidiOffsetEvent[] = [
+			{
+				offset: 0,
+				subtype: MidiIoEventSubtype.TrackName,
+				text: channel.name ?? `track ${channelIndex + 1}`,
+				type: MidiIoEventType.Meta,
+			},
+			{
+				offset: 0,
+				subtype: MidiIoEventSubtype.InstrumentName,
+				text: channel.program ?? generalMidi['1'],
+				type: MidiIoEventType.Meta,
+			},
+			{
+				offset: 0,
+				subtype: MidiIoEventSubtype.MidiChannelPrefix,
+				type: MidiIoEventType.Meta,
+				channel: channel.channel ?? 0,
+			},
+		];
 		channel.notes.forEach((midiNoteOrNotes): void => {
-			const { value: duration } = durationSequence.next();
-			const { value: velocity } = velocitySequence.next();
+			const duration = _justifyDuration(durationSequence.next().value);
+			const velocity = _justifyVelocity(velocitySequence.next().value);
 			const midiNotes =
 				typeof midiNoteOrNotes === 'number' ? [midiNoteOrNotes] : midiNoteOrNotes;
 			midiNotes.forEach((midiNote) => {
+				midiNote = _justifyNote(midiNote);
 				events.push({
-					channel: channelIndex as MidiChannelType,
+					channel: _justifyChannel(channelIndex),
 					noteNumber: midiNote,
 					offset,
 					subtype: MidiIoEventSubtype.NoteOn,
@@ -109,7 +159,7 @@ function _createMidiTrack(
 					velocity,
 				});
 				events.push({
-					channel: channelIndex as MidiChannelType,
+					channel: _justifyChannel(channelIndex),
 					noteNumber: midiNote,
 					offset: offset + duration,
 					subtype: MidiIoEventSubtype.NoteOff,

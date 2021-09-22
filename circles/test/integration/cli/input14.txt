@@ -1,11 +1,13 @@
 ####################################
-# test an 8 point circle and chords
+# testing sawtooth flow
 ####################################
 
 $circle1:
 diameter = 1:0:0
-divisions = 8
+divisions = 4
+flow = high-to-low
 notes = 50
+shape = sawtooth
 
 project:
-length = 1:0:0
+length = 2:0:0

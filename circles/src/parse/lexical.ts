@@ -14,7 +14,6 @@ export class LexicalPatterns {
 	 * Gets too crazy with the way we build up our lexical grammar. Some exceptions.
 	 **********************/
 	private static readonly _Number = /\d+/;
-	private static readonly _CommentsAndSpace = /(?:\s*(?:#.+)?\n?)*/m;
 
 	/***********************
 	 * Public Primitives
@@ -49,15 +48,9 @@ export class LexicalPatterns {
 	 * Current offset plus space followed or not followed by a comment, blank lines,
 	 * comment lines
 	 */
-	public static readonly CommentsAndSpace = new RegExp(
-		`^${LexicalPatterns._CommentsAndSpace.source}`,
-		'm'
-	);
+	public static readonly CommentsAndSpace = /(?:\s*(?:#.*)?\n?)*/m;
 	public static readonly CircleDeclaration = new RegExp(
-		`^(${LexicalPatterns.Symbol.source})\\s*:`
-	);
-	public static readonly CirclesDeclarations = new RegExp(
-		`^(${LexicalPatterns.Symbol.source}${LexicalPatterns._CommentsAndSpace.source})+:`
+		`^(${LexicalPatterns.Symbol.source})\\s*:${LexicalPatterns.CommentsAndSpace.source}`
 	);
 	public static readonly ProjectDeclaration = new RegExp(
 		`^${ReservedIdentifier.Project}\\s*:`

@@ -3,6 +3,7 @@
  */
 
 import { readFileSync } from 'fs';
+import * as hjson from 'hjson';
 import { resolve } from 'path';
 
 /********************
@@ -22,12 +23,13 @@ export function loadModuleResource(
 
 /**
  * Loads resource as a `relativePath` that is relative to this module's root
+ * Note: uses hjson so bring on the decorated JSON files.
  * @param relativePath
  * @throws {Error} if FS or format issues
  */
 export function loadModuleJsonResource<T>(relativePath: string): T {
 	const content = loadModuleResource(relativePath);
-	return JSON.parse(content);
+	return hjson.parse(content);
 }
 
 /********************

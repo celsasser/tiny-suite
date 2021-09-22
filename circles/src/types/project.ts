@@ -3,13 +3,14 @@
  */
 
 import { MidiChannelType, TimeSignature } from '@tiny/core';
-import { CircleShape } from './primitives';
+import { CircleFlow, CircleShape } from './primitives';
 
 export interface ICircleProperties {
 	channel?: MidiChannelType;
 	description?: string;
 	diameter: number;
 	divisions: number;
+	flow: CircleFlow;
 	/**
 	 * Maximum velocity value
 	 */
@@ -35,14 +36,13 @@ export interface ICircleProperties {
 	on?: number;
 	/**
 	 * Normalized ([0-1)) value of phase. Why not based on the more standard 2*PI?
-	 * To keep things simple and not dependent on PI (though we will add a definition to our defaults)
-	 * Defaults to 0.
+	 * To keep things simple and not dependent on PI (though we will add a definition to
+	 * our defaults) Defaults to 0.
 	 */
 	phase: number;
 	shape: CircleShape;
 }
 
-Math.PI;
 export interface IProjectProperties {
 	/**
 	 * The total length described in our PPQ|B:N|B:M:N spec

@@ -3,15 +3,25 @@
  *
  * Types that are part of tiny's ecosystem
  */
+import { MidiChannelType } from 'midi-file-io';
 
 export type MonophonicArray = number[];
 export type PolyphonicArray = Array<number | number[]>;
 export type StringKeyedObject = { [property: string]: any };
 
 export interface IChannel {
+	channel?: MidiChannelType;
 	durations?: MonophonicArray;
+	/**
+	 * Optional name of this channel. Will default to `track <index+1>`
+	 */
+	name?: string;
 	notes: PolyphonicArray;
 	pan?: MonophonicArray;
+	/**
+	 * Optional name of the MIDI program for this channel. See `generalMidi.json`
+	 */
+	program?: string;
 	velocities?: MonophonicArray;
 }
 
