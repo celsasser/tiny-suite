@@ -1,5 +1,5 @@
 ####################################
-# test a 4 point circle and chords
+# testing sawtooth flow
 ####################################
 
 $circle1:
