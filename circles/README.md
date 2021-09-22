@@ -63,6 +63,7 @@ A vertex which is where notes with friends are defined. Vertexes are joined by e
 *description = String
 diameter = <PPQ>|<M:N>|<M:B:N>
 divisions = Number
+*flow = high-to-low|low-to-high|high-to-low-on-to-off|low-to-high-on-to-off|high-to-low-off-to-on||low-to-high-off-to-on
 # Maximum velocity value 
 *max = Number
 # Minimum velocity value 
@@ -73,5 +74,5 @@ notes = NumericValue|NumericArray
 # On-time per note duration. Defaults to diameter/divisions 
 *on = <PPQ>|<M:N>|<M:B:N>
 *phase = Number
-*shape = high-to-low|low-to-high|high-to-low-on-to-off|low-to-high-on-to-off|high-to-low-off-to-on||low-to-high-off-to-on
+*shape = sine|sawtooth|square
 ```

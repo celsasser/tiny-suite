@@ -3,13 +3,14 @@
  */
 
 import { MidiChannelType, TimeSignature } from '@tiny/core';
-import { CircleShape } from './primitives';
+import { CircleFlow, CircleShape } from './primitives';
 
 export interface ICircleProperties {
 	channel?: MidiChannelType;
 	description?: string;
 	diameter: number;
 	divisions: number;
+	flow: CircleFlow;
 	/**
 	 * Maximum velocity value
 	 */
@@ -42,7 +43,6 @@ export interface ICircleProperties {
 	shape: CircleShape;
 }
 
-Math.PI;
 export interface IProjectProperties {
 	/**
 	 * The total length described in our PPQ|B:N|B:M:N spec

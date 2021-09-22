@@ -9,6 +9,7 @@ import {
 } from '@tiny/core';
 import * as _ from 'lodash';
 import {
+	CircleFlow,
 	CirclePropertyName,
 	CircleShape,
 	IParsedInput,
@@ -65,18 +66,20 @@ export function parseInput(input: string): IParsedInput {
 }
 
 function _getCircles(buffer: ParseTextBuffer): InterimCircleProperties[] | undefined {
-	const matches = buffer.match(LexicalPatterns.CirclesDeclarations);
-	if (matches) {
+	let match;
+	let names: string[] = [];
+	while ((match = buffer.match(LexicalPatterns.CircleDeclaration))) {
+		names.push(match[0]);
+	}
+	if (names.length > 0) {
 		let propertyAssignment;
-		const names = matches[0]
-			.split(/\s*\n\s*/)
-			.map((line) => line.match(LexicalPatterns.Symbol)![0]);
 		const properties: Partial<InterimCircleProperties> = {
-			max: '127',
+			flow: CircleFlow.LowToHigh,
 			// we set the default min to 1 'cause 0 is treated as note off
+			max: '127',
 			min: '1',
 			phase: '0',
-			shape: CircleShape.LowToHigh,
+			shape: CircleShape.Sine,
 		};
 		const supportedProperties = getAllVocabularyProperties(CirclePropertyName);
 		while ((propertyAssignment = _getPropertyAssignment(buffer))) {

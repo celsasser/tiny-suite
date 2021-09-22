@@ -16,6 +16,10 @@ export enum CirclePropertyName {
 	 */
 	Diameter = 'diameter',
 	Divisions = 'divisions',
+	/**
+	 * The flow
+	 */
+	Flow = 'flow',
 	Min = 'min',
 	Max = 'max',
 	Name = '*name',
@@ -34,9 +38,6 @@ export enum CirclePropertyName {
 	 * Phase of shape
 	 */
 	Phase = '*phase',
-	/**
-	 * The flow
-	 */
 	Shape = 'shape',
 }
 

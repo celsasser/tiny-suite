@@ -6,12 +6,8 @@
  */
 
 import { IChannel } from '@tiny/core';
-import {
-	ICircleProperties,
-	IParsedInput,
-	isShapeHighToLow,
-	isShapeOnToOff,
-} from './types';
+import { createShapeFunction } from './factory/shape';
+import { ICircleProperties, IParsedInput, isFlowHighToLow, isFlowOnToOff } from './types';
 
 /**
  * Processes parsed input and traverses the graph and generates a channel stream
@@ -42,19 +38,12 @@ export class Machine {
 			notes: [],
 			velocities: [],
 		};
-		const shapeIsHighToLow = isShapeHighToLow(circle.shape);
-		const shapeIsOnToOff = isShapeOnToOff(circle.shape);
+		const velocityFunction = createShapeFunction(circle);
+		const shapeIsOnToOff = isFlowOnToOff(circle.flow);
 		const noteLength = circle.diameter / circle.divisions;
 		const noteOnDuration = Math.floor(
 			circle.off !== undefined ? noteLength - circle.off : circle.on ?? noteLength
 		);
-		const startingPhase = Math.PI * 2 * circle.phase + (shapeIsHighToLow ? Math.PI : 0);
-		const calculateVelocity = (ppq: number): number => {
-			// convert ppq to the position in a cycle (in radians)
-			const radianOffset = (Math.PI * 2 * ppq) / circle.diameter;
-			const cosineNormalized = (Math.cos(startingPhase + radianOffset) + 1) / 2;
-			return Math.round(circle.min + (circle.max - circle.min) * cosineNormalized);
-		};
 
 		for (
 			let index = 1, ppq = 0, rested = 0;
@@ -71,7 +60,7 @@ export class Machine {
 			if (shapeIsOnToOff) {
 				result.durations!.push(noteOnDuration);
 				result.notes.push(circle.notes);
-				result.velocities!.push(calculateVelocity(ppq));
+				result.velocities!.push(velocityFunction(ppq));
 			}
 			/**
 			 * OFF for both pre and post off
@@ -88,7 +77,7 @@ export class Machine {
 			if (!shapeIsOnToOff) {
 				result.durations!.push(noteOnDuration);
 				result.notes.push(circle.notes);
-				result.velocities!.push(calculateVelocity(ppq + rest));
+				result.velocities!.push(velocityFunction(ppq + rest));
 			}
 		}
 		return result;

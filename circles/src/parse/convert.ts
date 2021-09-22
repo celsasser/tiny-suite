@@ -13,6 +13,7 @@ import {
 	TimeSignature,
 } from '@tiny/core';
 import {
+	CircleFlow,
 	CircleShape,
 	ICircleProperties,
 	IParsedInput,
@@ -66,6 +67,7 @@ function convertCircle(
 				: undefined,
 		diameter,
 		divisions,
+		flow: interimCircle.flow as CircleFlow,
 		max: stringToInteger(interimCircle.max),
 		min: stringToInteger(interimCircle.min),
 		notes: isStringAnArray(interimCircle.notes)
