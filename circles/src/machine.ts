@@ -7,7 +7,7 @@
 
 import { IChannel } from '@tiny/core';
 import { createShapeFunction } from './factory/shape';
-import { ICircleProperties, IParsedInput, isFlowHighToLow, isFlowOnToOff } from './types';
+import { ICircleProperties, IParsedInput, isFlowOnToOff } from './types';
 
 /**
  * Processes parsed input and traverses the graph and generates a channel stream

@@ -67,7 +67,7 @@ export function parseInput(input: string): IParsedInput {
 
 function _getCircles(buffer: ParseTextBuffer): InterimCircleProperties[] | undefined {
 	let match;
-	let names: string[] = [];
+	const names: string[] = [];
 	while ((match = buffer.match(LexicalPatterns.CircleDeclaration))) {
 		names.push(match[0]);
 	}
