@@ -1,4 +1,4 @@
-import { LexicalParsePatterns } from './lexical';
+import { LexicalPatterns } from '../types/lexical';
 
 /**
  * @license MIT (see project's LICENSE file)
@@ -20,7 +20,7 @@ export function isStringAnArray(value: string): boolean {
  * @throws {Error}
  */
 export function stringToBoolean(value: string): boolean {
-	const match = value.match(LexicalParsePatterns.BooleanValue);
+	const match = value.match(LexicalPatterns.BooleanValue);
 	if (match === null) {
 		throw new Error(`unable parse "${value}" as a boolean value`);
 	} else if (match[1]) {
@@ -65,11 +65,11 @@ export function stringToInteger<T extends number>(value: string): T {
  * @throws {Error}
  */
 export function stringToIntegers<T extends number>(value: string): T[] {
-	const stripped = value.match(LexicalParsePatterns.ArrayElements);
+	const stripped = value.match(LexicalPatterns.ArrayContents);
 	if (!stripped) {
 		throw new Error(`unable to parse "${value}" as an array of integers`);
 	}
-	return stripped[1].split(LexicalParsePatterns.ElementSplit).map(stringToInteger) as T[];
+	return stripped[1].split(/\s*,\s*/).map(stringToInteger) as T[];
 }
 
 /**

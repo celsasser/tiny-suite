@@ -25,6 +25,11 @@ export interface IChannel {
 	velocities?: MonophonicArray;
 }
 
+export interface IKeyValuePair<K = string, V = string> {
+	key: K;
+	value: V;
+}
+
 export interface INumericRange {
 	/**
 	 * minimum allowed value

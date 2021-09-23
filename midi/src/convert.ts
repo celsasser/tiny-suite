@@ -127,7 +127,7 @@ function _createMidiTrack(
 			{
 				offset: 0,
 				subtype: MidiIoEventSubtype.TrackName,
-				text: channel.name ?? `track ${channelIndex + 1}`,
+				text: channel.name ?? `Track ${channelIndex + 1}`,
 				type: MidiIoEventType.Meta,
 			},
 			{

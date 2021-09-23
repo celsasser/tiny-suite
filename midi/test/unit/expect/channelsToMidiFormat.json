@@ -35,6 +35,24 @@
 				],
 				[
 					{
+						"deltaTime": 0,
+						"subtype": "trackName",
+						"text": "Track 1",
+						"type": "meta"
+					},
+					{
+						"deltaTime": 0,
+						"subtype": "instrumentName",
+						"text": "Acoustic Grand Piano",
+						"type": "meta"
+					},
+					{
+						"channel": 0,
+						"deltaTime": 0,
+						"subtype": "midiChannelPrefix",
+						"type": "meta"
+					},
+					{
 						"channel": 0,
 						"deltaTime": 0,
 						"noteNumber": 25,
@@ -115,6 +133,24 @@
 				],
 				[
 					{
+						"deltaTime": 0,
+						"subtype": "trackName",
+						"text": "Track 1",
+						"type": "meta"
+					},
+					{
+						"deltaTime": 0,
+						"subtype": "instrumentName",
+						"text": "Acoustic Grand Piano",
+						"type": "meta"
+					},
+					{
+						"channel": 0,
+						"deltaTime": 0,
+						"subtype": "midiChannelPrefix",
+						"type": "meta"
+					},
+					{
 						"channel": 0,
 						"deltaTime": 0,
 						"noteNumber": 25,
@@ -192,9 +228,11 @@
 		"input": {
 			"channels": [
 				{
+					"channel": 0,
 					"notes": [25, 28]
 				},
 				{
+					"channel": 1,
 					"notes": [30, 33]
 				}
 			],
@@ -227,6 +265,24 @@
 				],
 				[
 					{
+						"deltaTime": 0,
+						"subtype": "trackName",
+						"text": "Track 1",
+						"type": "meta"
+					},
+					{
+						"deltaTime": 0,
+						"subtype": "instrumentName",
+						"text": "Acoustic Grand Piano",
+						"type": "meta"
+					},
+					{
+						"channel": 0,
+						"deltaTime": 0,
+						"subtype": "midiChannelPrefix",
+						"type": "meta"
+					},
+					{
 						"channel": 0,
 						"deltaTime": 0,
 						"noteNumber": 25,
@@ -265,6 +321,24 @@
 					}
 				],
 				[
+					{
+						"deltaTime": 0,
+						"subtype": "trackName",
+						"text": "Track 2",
+						"type": "meta"
+					},
+					{
+						"deltaTime": 0,
+						"subtype": "instrumentName",
+						"text": "Acoustic Grand Piano",
+						"type": "meta"
+					},
+					{
+						"channel": 1,
+						"deltaTime": 0,
+						"subtype": "midiChannelPrefix",
+						"type": "meta"
+					},
 					{
 						"channel": 1,
 						"deltaTime": 0,
@@ -343,6 +417,24 @@
 					}
 				],
 				[
+					{
+						"deltaTime": 0,
+						"subtype": "trackName",
+						"text": "Track 1",
+						"type": "meta"
+					},
+					{
+						"deltaTime": 0,
+						"subtype": "instrumentName",
+						"text": "Acoustic Grand Piano",
+						"type": "meta"
+					},
+					{
+						"channel": 0,
+						"deltaTime": 0,
+						"subtype": "midiChannelPrefix",
+						"type": "meta"
+					},
 					{
 						"channel": 0,
 						"deltaTime": 0,
@@ -453,6 +545,24 @@
 					}
 				],
 				[
+					{
+						"deltaTime": 0,
+						"subtype": "trackName",
+						"text": "Track 1",
+						"type": "meta"
+					},
+					{
+						"deltaTime": 0,
+						"subtype": "instrumentName",
+						"text": "Acoustic Grand Piano",
+						"type": "meta"
+					},
+					{
+						"channel": 0,
+						"deltaTime": 0,
+						"subtype": "midiChannelPrefix",
+						"type": "meta"
+					},
 					{
 						"channel": 0,
 						"deltaTime": 0,

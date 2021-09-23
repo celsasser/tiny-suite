@@ -4,12 +4,16 @@
  * Our language's vocabulary
  */
 
-/***********************
- * We don't declare any vocabulary enums here but we support this convention
- * throughout our suite. Here we include API to support our vocabularies.
- * - to support dynamically discovered optional properties we preface
- *   enum values with '*'.
- **********************/
+export enum ReservedIdentifier {
+	Project = 'project',
+}
+
+/*****************************************************************
+ * We only declare a minimum of common vocabulary enums here.
+ * We additionally support this convention throughout our suite.
+ * Here we include API to support our vocabularies:
+ * - support dynamically discovered optional properties we preface enum values with '*'.
+ ****************************************************************/
 
 /**
  * Gets all works in T's vocabulary. '*' prefixes are stripped.

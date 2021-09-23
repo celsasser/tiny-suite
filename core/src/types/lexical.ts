@@ -2,10 +2,10 @@
  * @license MIT (see project's LICENSE file)
  */
 
-import { ReservedIdentifier } from '../types';
+import { ReservedIdentifier } from './vocabulary';
 
 /**
- * Library of patterns we use to identify parts of a tiny expression
+ * Some local patterns
  */
 export class LexicalPatterns {
 	/***********************
@@ -19,11 +19,18 @@ export class LexicalPatterns {
 	 * Public Primitives
 	 **********************/
 	/**
+	 * Includes a capture group to get a trimmed copy of the cream
+	 * in the donut array.
+	 */
+	public static readonly ArrayContents = /^\[\s*(.+?)\s*]$/;
+	public static readonly BooleanValue = /^(true)|(false)|(\d+)$/i;
+
+	/**
 	 * Either a symbol (assumed to represent a number) or a literal
 	 */
 	public static readonly NumericValue = LexicalPatterns._Number;
 	/**
-	 * Array of numbers, symbols or both
+	 * Array of numbers, symbols or both. No capture groups. Matches the entire array definition.
 	 */
 	public static readonly NumericArray = new RegExp(
 		`\\[\\s*${LexicalPatterns.NumericValue.source}?\\s*(?:,\\s*${LexicalPatterns.NumericValue.source}\\s*)*]`
@@ -49,11 +56,15 @@ export class LexicalPatterns {
 	 * comment lines
 	 */
 	public static readonly CommentsAndSpace = /(?:\s*(?:#.*)?\n?)*/m;
-	public static readonly CircleDeclaration = new RegExp(
-		`^(${LexicalPatterns.Symbol.source})\\s*:${LexicalPatterns.CommentsAndSpace.source}`
+
+	/***********************
+	 * INI file patterns
+	 **********************/
+	public static readonly IniProjectDeclaration = new RegExp(
+		`^(${ReservedIdentifier.Project})\\s*:${LexicalPatterns.CommentsAndSpace.source}`
 	);
-	public static readonly ProjectDeclaration = new RegExp(
-		`^${ReservedIdentifier.Project}\\s*:`
+	public static readonly IniSymbolDeclaration = new RegExp(
+		`^(${LexicalPatterns.Symbol.source})\\s*:${LexicalPatterns.CommentsAndSpace.source}`
 	);
 	/**
 	 * Designed to pull any R-Value in minus trailing white space and comment
@@ -62,7 +73,7 @@ export class LexicalPatterns {
 	 * change our comment convention or adopt a line terminator or just not support
 	 * inline comments vs. dedicated line comments
 	 */
-	public static readonly PropertyAssignment = new RegExp(
+	public static readonly IniPropertyAssignment = new RegExp(
 		`${LexicalPatterns.CommentsAndSpace.source}(\\w+)\\s*=\\s*(.+?)\\s*?(?:\\n|$)`
 	);
 }

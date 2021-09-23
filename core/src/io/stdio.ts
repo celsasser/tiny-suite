@@ -6,7 +6,7 @@
 
 import * as fs from 'fs-extra';
 import * as getStdin from 'get-stdin';
-import { IChannel } from './types';
+import { IChannel } from '../types';
 
 /***********************
  * Read API

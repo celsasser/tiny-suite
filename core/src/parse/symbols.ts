@@ -8,7 +8,7 @@
  */
 import { SymbolTable } from '../algorithms';
 import { getMidiNoteNameSymbols } from '../resource';
-import { LexicalParsePatterns } from './lexical';
+import { LexicalPatterns } from '../types/lexical';
 import { stringToInteger } from './primitives';
 
 /**
@@ -40,12 +40,12 @@ export function symbolsToIntegers<T extends number>(
 	value: string,
 	table: SymbolTable = getDefaultSymbolTable()
 ): T[] {
-	const stripped = value.match(LexicalParsePatterns.ArrayElements);
+	const stripped = value.match(LexicalPatterns.ArrayContents);
 	if (!stripped) {
 		throw new Error(`unable to parse "${value}" as an array of integers/symbols`);
 	}
 	return stripped[1]
-		.split(LexicalParsePatterns.ElementSplit)
+		.split(/\s*,\s*/)
 		.map((value) => symbolToInteger(value, table)) as T[];
 }
 

@@ -4,6 +4,7 @@
 
 import {
 	isStringAnArray,
+	LexicalPatterns,
 	MidiChannelType,
 	midiDurationToPulseCount,
 	stringToFloat,
@@ -19,7 +20,6 @@ import {
 	IParsedInput,
 	IProjectProperties,
 } from '../types';
-import { LexicalPatterns } from './lexical';
 import {
 	IInterimParsedInput,
 	InterimCircleProperties,

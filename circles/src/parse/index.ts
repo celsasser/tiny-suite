@@ -4,7 +4,11 @@
 
 import {
 	getAllVocabularyProperties,
+	getIniHeadings,
+	getIniProjectHeading,
+	getIniPropertyAssignment,
 	getMidiDefaultSymbols,
+	LexicalPatterns,
 	ParseTextBuffer,
 } from '@tiny/core';
 import * as _ from 'lodash';
@@ -13,11 +17,9 @@ import {
 	CirclePropertyName,
 	CircleShape,
 	IParsedInput,
-	IPropertyAssignment,
 	ProjectPropertyName,
 } from '../types';
 import { convertInput } from './convert';
-import { LexicalPatterns } from './lexical';
 import {
 	IInterimParsedInput,
 	InterimCircleProperties,
@@ -66,12 +68,8 @@ export function parseInput(input: string): IParsedInput {
 }
 
 function _getCircles(buffer: ParseTextBuffer): InterimCircleProperties[] | undefined {
-	let match;
-	const names: string[] = [];
-	while ((match = buffer.match(LexicalPatterns.CircleDeclaration))) {
-		names.push(match[0]);
-	}
-	if (names.length > 0) {
+	const names = getIniHeadings(buffer);
+	if (names) {
 		let propertyAssignment;
 		const properties: Partial<InterimCircleProperties> = {
 			flow: CircleFlow.LowToHigh,
@@ -82,15 +80,15 @@ function _getCircles(buffer: ParseTextBuffer): InterimCircleProperties[] | undef
 			shape: CircleShape.Sine,
 		};
 		const supportedProperties = getAllVocabularyProperties(CirclePropertyName);
-		while ((propertyAssignment = _getPropertyAssignment(buffer))) {
+		while ((propertyAssignment = getIniPropertyAssignment(buffer))) {
 			// we really don't care if the user adds properties but our concern is that they
 			// may have misspelled a known property
-			if (supportedProperties.includes(propertyAssignment.name)) {
-				// @ts-expect-error: he doesn't trust me (with good reason)
-				properties[propertyAssignment.name] = propertyAssignment.rvalue;
+			if (supportedProperties.includes(propertyAssignment.key)) {
+				// @ts-expect-error: he doesn't trust me
+				properties[propertyAssignment.key] = propertyAssignment.value;
 			} else {
 				throw new Error(
-					`property "${propertyAssignment.name}" does not exist on "${properties.name!}"`
+					`property "${propertyAssignment.key}" does not exist on "${properties.name!}"`
 				);
 			}
 		}
@@ -106,8 +104,8 @@ function _getCircles(buffer: ParseTextBuffer): InterimCircleProperties[] | undef
 }
 
 function _getProject(buffer: ParseTextBuffer): InterimProjectProperties | undefined {
-	const matches = buffer.match(LexicalPatterns.ProjectDeclaration);
-	if (matches) {
+	const match = getIniProjectHeading(buffer);
+	if (match) {
 		let propertyAssignment;
 		const defaultMidiValues = getMidiDefaultSymbols();
 		const properties: Partial<InterimProjectProperties> = {
@@ -115,34 +113,17 @@ function _getProject(buffer: ParseTextBuffer): InterimProjectProperties | undefi
 			timesignature: `${defaultMidiValues.values.timesignature.numerator}/${defaultMidiValues.values.timesignature.denominator}`,
 		};
 		const supportedProperties = getAllVocabularyProperties(ProjectPropertyName);
-		while ((propertyAssignment = _getPropertyAssignment(buffer))) {
-			if (supportedProperties.includes(propertyAssignment.name)) {
+		while ((propertyAssignment = getIniPropertyAssignment(buffer))) {
+			if (supportedProperties.includes(propertyAssignment.key)) {
 				// @ts-expect-error: he doesn't trust me (with good reason)
-				properties[propertyAssignment.name] = propertyAssignment.rvalue;
+				properties[propertyAssignment.key] = propertyAssignment.value;
 			} else {
 				throw new Error(
-					`property "${propertyAssignment.name}" does not exist on "project:"`
+					`property "${propertyAssignment.key}" does not exist on "project:"`
 				);
 			}
 		}
 		return properties as InterimProjectProperties;
 	}
 	return undefined;
-}
-
-/**
- * Very low investment for now
- * @param buffer
- */
-function _getPropertyAssignment(
-	buffer: ParseTextBuffer
-): IPropertyAssignment | undefined {
-	const match = buffer.match(LexicalPatterns.PropertyAssignment);
-	/* eslint-disable no-mixed-spaces-and-tabs */
-	return match
-		? {
-				name: match[0],
-				rvalue: match[1],
-		  }
-		: undefined;
 }
