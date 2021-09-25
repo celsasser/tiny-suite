@@ -1,0 +1,23 @@
+##########################################################################################
+# Noisy #2
+#
+# usage from the root:
+# ./build/circles -if ./examples/circles03.txt | ./build/midi -of ./examples/circles03.mid
+##########################################################################################
+
+project:
+length = 4:0:0
+
+$circle1:
+diameter = 2:0:0
+divisions = 32
+min = 24
+notes = [C3, D3, E3, F3, G3]
+
+$circle2:
+diameter = 2:0:0
+divisions = 32
+min = 24
+phase = 0.5
+notes = [G3, A3, B2, C3, D3]
+

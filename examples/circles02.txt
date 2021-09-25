@@ -1,5 +1,5 @@
 ##########################################################################################
-# Play on Cmaj7 -> sus4
+# Noisy #1
 #
 # usage from the root:
 # ./build/circles -if ./examples/circles02.txt | ./build/midi -of ./examples/circles02.mid
