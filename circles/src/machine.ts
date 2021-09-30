@@ -60,7 +60,7 @@ export class Machine {
 			if (shapeIsOnToOff) {
 				result.durations!.push(noteOnDuration);
 				result.notes.push(circle.notes);
-				result.velocities!.push(velocityFunction(ppq));
+				result.velocities!.push(Math.round(velocityFunction(ppq)));
 			}
 			/**
 			 * OFF for both pre and post off
@@ -77,7 +77,7 @@ export class Machine {
 			if (!shapeIsOnToOff) {
 				result.durations!.push(noteOnDuration);
 				result.notes.push(circle.notes);
-				result.velocities!.push(velocityFunction(ppq + rest));
+				result.velocities!.push(Math.round(velocityFunction(ppq + rest)));
 			}
 		}
 		return result;

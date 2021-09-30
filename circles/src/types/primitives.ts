@@ -33,6 +33,7 @@ export enum CircleShape {
 	Sawtooth = 'sawtooth',
 	Sine = 'sine',
 	Square = 'square',
+	Triangle = 'triangle',
 }
 
 export function isFlowHighToLow(flow: CircleFlow): boolean {

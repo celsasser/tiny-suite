@@ -74,5 +74,5 @@ notes = NumericValue|NumericArray
 # On-time per note duration. Defaults to diameter/divisions 
 *on = <PPQ>|<M:N>|<M:B:N>
 *phase = Number
-*shape = sine|sawtooth|square
+*shape = sine|sawtooth|square|triangle
 ```

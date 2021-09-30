@@ -1,0 +1,32 @@
+[
+	{
+		"expect": [0, 2, 4, 6, 8, 10, 8, 6, 4, 2],
+		"input": {
+			"circle": {
+				"diameter": 10,
+				"flow": "low-to-high",
+				"max": 10,
+				"min": 0,
+				"phase": 0,
+				"shape": "triangle"
+			},
+			"ppqs": 10
+		},
+		"text": "should properly build a low-to-high triangle wave"
+	},
+	{
+		"expect": [10, 8, 6, 4, 2, 0, 2, 4, 6, 8],
+		"input": {
+			"circle": {
+				"diameter": 10,
+				"flow": "high-to-low",
+				"max": 10,
+				"min": 0,
+				"phase": 0,
+				"shape": "triangle"
+			},
+			"ppqs": 10
+		},
+		"text": "should properly build a high-to-low triangle wave"
+	}
+]

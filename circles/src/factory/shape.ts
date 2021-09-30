@@ -12,6 +12,8 @@ export function createShapeFunction(circle: Readonly<ICircleProperties>): ShapeF
 			return createSineFunction(circle);
 		case CircleShape.Square:
 			return createSquareFunction(circle);
+		case CircleShape.Triangle:
+			return createTriangleFunction(circle);
 		default: {
 			throw Error(`unknown circle shape "${circle.shape}"`);
 		}
@@ -24,10 +26,8 @@ function createSawtoothFunction(circle: Readonly<ICircleProperties>): ShapeFunct
 	return (ppq: number): number => {
 		const ppqOffset = (ppq + phaseOffset) % circle.diameter;
 		return shapeIsHighToLow
-			? Math.round(circle.max - (circle.max - circle.min) * (ppqOffset / circle.diameter))
-			: Math.round(
-					circle.min + (circle.max - circle.min) * (ppqOffset / circle.diameter)
-			  );
+			? circle.max - (circle.max - circle.min) * (ppqOffset / circle.diameter)
+			: circle.min + (circle.max - circle.min) * (ppqOffset / circle.diameter);
 	};
 }
 
@@ -38,7 +38,7 @@ function createSineFunction(circle: Readonly<ICircleProperties>): ShapeFunction 
 		// convert ppq to the position in a cycle (in radians)
 		const radianOffset = (Math.PI * 2 * ppq) / circle.diameter;
 		const cosineNormalized = (Math.cos(startingPhase + radianOffset) + 1) / 2;
-		return Math.round(circle.min + (circle.max - circle.min) * cosineNormalized);
+		return circle.min + (circle.max - circle.min) * cosineNormalized;
 	};
 }
 
@@ -52,5 +52,18 @@ function createSquareFunction(circle: Readonly<ICircleProperties>): ShapeFunctio
 		} else {
 			return ppqOffset < circle.diameter / 2 ? circle.min : circle.max;
 		}
+	};
+}
+
+function createTriangleFunction(circle: Readonly<ICircleProperties>): ShapeFunction {
+	const shapeIsHighToLow = isFlowHighToLow(circle.flow);
+	const phaseOffset = circle.diameter * (circle.phase + (shapeIsHighToLow ? 0.5 : 0));
+	const halfDiameter = circle.diameter / 2;
+	return (ppq: number): number => {
+		const ppqOffset = (ppq + phaseOffset) % circle.diameter;
+		return ppqOffset < halfDiameter
+			? circle.min + (circle.max - circle.min) * (ppqOffset / halfDiameter)
+			: circle.max -
+					(circle.max - circle.min) * ((ppqOffset - halfDiameter) / halfDiameter);
 	};
 }
